@@ -67,7 +67,11 @@ explain <M-code>                 Explain a compiler diagnostic
 
 ## Benchmarks
 
-The included report records five synthetic tasks with behavior and mutation tests. Across OpenAI o200k_base, Llama 3, and DeepSeek V3 tokenizers, the reported median source-token reduction against strict TypeScript is **71.6–74.7%**.
+![Median code-token reduction across three tokenizers, measured on five synthetic tasks.](docs/images/tokenizer-savings.svg)
+
+![Full-source token counts by task, with and without the shared validation runtime.](docs/images/source-runtime.svg)
+
+The included report records five synthetic tasks with behavior and mutation tests. Across OpenAI o200k_base, Llama 3, and DeepSeek V3 tokenizers, the reported median extracted code-token reduction is **71.6–74.7%**. The separate full-source comparison against strict TypeScript records a **73.8%** median reduction using o200k_base, before shared runtime overhead.
 
 These are fixture measurements from manual runs, not evidence of lower end-to-end cost or improved output quality. Results depend on workload and tokenizer. The roughly 1,300-token validation runtime can outweigh the savings of one small module before its cost is amortized. Code and explanatory text are measured separately; their percentage savings must not be added together.
 
@@ -77,6 +81,8 @@ node bench/run.mjs
 ```
 
 See [methodology](docs/BENCHMARKS.md) and the [detailed report](bench/REPORT.md) for baselines and limitations.
+
+Charts are generated from `bench/results.json`. To regenerate them, install Python with Matplotlib and run `python bench/charts.py`.
 
 ## Repository structure
 
