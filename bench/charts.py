@@ -46,6 +46,7 @@ save(fig,"tokenizer-savings")
 
 tasks=data["tasks"]
 names=[t["task"].split("-",1)[1].replace("-"," ").title() for t in tasks]
+names=[n.replace("Api", "API").replace("Csv", "CSV") for n in names]
 ts=[t["sizes"]["ts_source_tokens"] for t in tasks]
 mote=[t["sizes"]["mote_source_tokens"] for t in tasks]
 cold=[t["sizes"]["cold_start"]["mote"] for t in tasks]
@@ -67,7 +68,8 @@ for ax, values, title, color in [(axes[0],mote,"SOURCE ONLY",TEAL),(axes[1],cold
     ax.set_axisbelow(True);ax.grid(axis="x",color="#E8EDF3",linewidth=.7)
     ax.tick_params(axis="both",length=0,pad=7)
 axes[0].set_yticks(y,names);axes[0].invert_yaxis()
-axes[0].legend(loc="upper left",bbox_to_anchor=(0,-.17),frameon=False,ncol=2,fontsize=9)
+for ax in axes:
+    ax.legend(loc="upper left",bbox_to_anchor=(0,-.17),frameon=False,ncol=2,fontsize=9)
 fig.text(.035,.075,f"The {data['runtimeSharedTokens']:,}-token shared runtime is counted once in the right panel; it can be amortized across modules.",fontsize=9,color="#52647A")
 fig.text(.035,.03,"Strict TypeScript includes validation. Its helpers are counted per file. These results do not measure end-to-end cost.",fontsize=9,color="#52647A")
 save(fig,"source-runtime")
