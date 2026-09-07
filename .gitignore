@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.mote-run-*.mjs
+bench/tasks/**/tests/.mote-*.mjs
+*.log

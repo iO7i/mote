@@ -1,0 +1,8 @@
+{
+  "task": "03-csv-importer",
+  "variant": "tarse-mote",
+  "model": "manual",
+  "date": "2026-07-04",
+  "prompt_file": "task.md",
+  "notes": "Manual comparison; not provider-verified"
+}
