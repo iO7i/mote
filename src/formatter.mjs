@@ -159,7 +159,7 @@ function parenBin(node, parentPrec, side, parentOp, r, indent) {
 
 function formatObject(node, r, indent) {
   if (!node.props.length) return "{}";
-  const key = (p) => (p.keyIsString ? p.key : p.key);
+  const key = (p) => (p.keyIsString ? JSON.stringify(p.key) : p.key);
   if (!r) return `{${node.props.map((p) => `${key(p)}:${formatExpr(p.value, r, indent + 1)}`).join(",")}}`;
   const pad = "  ".repeat(indent + 1);
   const close = "  ".repeat(indent);

@@ -11,6 +11,8 @@ const KEYWORDS = new Set([
 
 const TWO_CHAR_OPS = ["==", "!=", "<=", ">=", "&&", "||", "??", "->"];
 const SINGLE_CHAR_OPS = "(){}[],:;.?=<>+-*/%!|";
+const MAX_SOURCE_CHARS = 1_000_000;
+const MAX_TOKENS = 100_000;
 
 function isIdStart(c) { return /[A-Za-z_$]/.test(c); }
 function isIdPart(c) { return /[A-Za-z0-9_$]/.test(c); }
@@ -23,11 +25,18 @@ export function lexError(msg, line, col, file) {
 }
 
 export function lex(src, file = "<input>") {
+  if (typeof src !== "string") throw lexError("source must be text", 1, 1, file);
+  if (src.length > MAX_SOURCE_CHARS) {
+    throw lexError(`source exceeds ${MAX_SOURCE_CHARS} character limit`, 1, 1, file);
+  }
   const tokens = [];
   let i = 0, line = 1, col = 1;
   const n = src.length;
 
-  const push = (type, value, l, c) => tokens.push({ type, value, line: l, col: c });
+  const push = (type, value, l, c) => {
+    if (tokens.length >= MAX_TOKENS) throw lexError(`source exceeds ${MAX_TOKENS} token limit`, l, c, file);
+    tokens.push({ type, value, line: l, col: c });
+  };
 
   while (i < n) {
     const c = src[i];
@@ -51,7 +60,7 @@ export function lex(src, file = "<input>") {
       let buf = quote;
       while (j < n && src[j] !== quote) {
         if (src[j] === "\\") { buf += src[j] + (src[j + 1] ?? ""); j += 2; continue; }
-        if (src[j] === "\n") line++;
+        if (src[j] === "\n") { line++; col = 0; }
         buf += src[j];
         j++;
       }

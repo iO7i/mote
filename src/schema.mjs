@@ -37,8 +37,12 @@ export function tsType(type) {
 function tsObject(type) {
   if (!type.fields.length) return "{}";
   const parts = type.fields.map((f) =>
-    `${f.name}${f.optional ? "?" : ""}: ${tsType(f.type)}`);
+    `${tsProperty(f.name)}${f.optional ? "?" : ""}: ${tsType(f.type)}`);
   return `{ ${parts.join("; ")} }`;
+}
+
+export function tsProperty(name) {
+  return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(name) ? name : JSON.stringify(name);
 }
 
 function wrapUnionMember(type) {
@@ -63,7 +67,7 @@ export function schemaLiteral(type) {
     case "named":
       return `{ k: "ref", name: ${JSON.stringify(type.name)} }`;
     case "var":
-      return `{ k: "unknown" }`; // generic erased at runtime
+      throw new Error("generic type variables cannot be erased into runtime schemas");
     case "opt":
       return `{ k: "opt", inner: ${schemaLiteral(type.inner)} }`;
     case "union":

@@ -11,6 +11,11 @@ export type Schema =
 
 export type Registry = Record<string, Schema>;
 
+// The generated runtime intentionally has no @types/node dependency. Node
+// supplies this global at execution time; other hosts simply report env values
+// as absent through the guarded access below.
+declare const process: { env: Record<string, string | undefined> } | undefined;
+
 export interface ValidationDetail {
   path: string;
   expected: string;
@@ -45,6 +50,13 @@ const err = (path: string, expected: string, got: string): Result<never> =>
   ({ ok: false, error: { path, expected, got } });
 
 export function validate(value: unknown, schema: Schema, registry: Registry, path = "$"): Result<unknown> {
+  return validateInner(value, schema, registry, path, new Set(), 0);
+}
+
+function validateInner(
+  value: unknown, schema: Schema, registry: Registry, path: string, refs: Set<string>, depth: number,
+): Result<unknown> {
+  if (depth > 128) return err(path, "acyclic schema (max depth 128)", "schema depth exceeded");
   switch (schema.k) {
     case "any":
     case "unknown":
@@ -52,31 +64,34 @@ export function validate(value: unknown, schema: Schema, registry: Registry, pat
     case "str":
       return typeof value === "string" ? ok(value) : err(path, "str", typeName(value));
     case "num":
-      return typeof value === "number" && !Number.isNaN(value)
+      return typeof value === "number" && Number.isFinite(value)
         ? ok(value) : err(path, "num", typeName(value));
     case "bool":
       return typeof value === "boolean" ? ok(value) : err(path, "bool", typeName(value));
     case "nil":
-      return value === null || value === undefined ? ok(value) : err(path, "nil", typeName(value));
+      return value === null ? ok(value) : err(path, "nil", typeName(value));
     case "opt":
-      if (value === null || value === undefined) return ok(value);
-      return validate(value, schema.inner, registry, path);
+      return validateInner(value, schema.inner, registry, path, refs, depth + 1);
     case "ref": {
       const target = registry[schema.name];
-      if (!target) throw new Error(`unknown schema ref '${schema.name}'`);
-      return validate(value, target, registry, path);
+      if (!target) return err(path, schema.name, "unknown schema");
+      if (refs.has(schema.name)) return err(path, schema.name, "cyclic schema");
+      refs.add(schema.name);
+      const result = validateInner(value, target, registry, path, refs, depth + 1);
+      refs.delete(schema.name);
+      return result;
     }
     case "array": {
       if (!Array.isArray(value)) return err(path, "array", typeName(value));
       for (let i = 0; i < value.length; i++) {
-        const r = validate(value[i], schema.element, registry, `${path}[${i}]`);
+        const r = validateInner(value[i], schema.element, registry, `${path}[${i}]`, refs, depth + 1);
         if (!r.ok) return r;
       }
       return ok(value);
     }
     case "union": {
       for (const opt of schema.options) {
-        const r = validate(value, opt, registry, path);
+        const r = validateInner(value, opt, registry, path, refs, depth + 1);
         if (r.ok) return r;
       }
       return err(path, schema.options.map(describe).join("|"), typeName(value));
@@ -90,7 +105,7 @@ export function validate(value: unknown, schema: Schema, registry: Registry, pat
           if (f.optional) continue;
           return err(`${path}.${f.name}`, `${describe(f.schema)} (required)`, "nil");
         }
-        const r = validate(obj[f.name], f.schema, registry, `${path}.${f.name}`);
+        const r = validateInner(obj[f.name], f.schema, registry, `${path}.${f.name}`, refs, depth + 1);
         if (!r.ok) return r;
       }
       return ok(value);

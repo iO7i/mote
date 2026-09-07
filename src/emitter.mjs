@@ -3,7 +3,7 @@
 // import, a `$schemas` registry, `type` declarations, and functions with
 // resolved annotations. Set ctx.emitTypes=false to produce runnable JavaScript.
 
-import { tsType, schemaLiteral } from "./schema.mjs";
+import { tsProperty, tsType, schemaLiteral } from "./schema.mjs";
 
 const OPMAP = { "==": "===", "!=": "!==" };
 const PREC = {
@@ -36,7 +36,7 @@ export function emit(program, ctx = {}) {
 
   if (ctx.needsRuntime) push(`import * as $mote from ${JSON.stringify(runtimeImport)};`, 1);
 
-  for (const s of program.body) if (s.kind === "Use") push(emitUse(s), s.line);
+  for (const s of program.body) if (s.kind === "Use") push(emitUse(s, ctx), s.line);
 
   if (emitTypes) {
     for (const s of program.body) if (s.kind === "TypeDecl") push(emitTypeDecl(s), s.line);
@@ -67,8 +67,15 @@ function assemble(chunks) {
   return { code: lines.join("\n") + "\n", lineMap };
 }
 
-function emitUse(s) {
-  return `import * as ${s.alias} from ${s.module};`;
+function emitUse(s, ctx) {
+  // Parser preserves the original quoted literal for exact source rendering.
+  // Decode only when the directory compiler needs to rewrite a local .mt edge.
+  let decoded;
+  try { decoded = JSON.parse(s.module); } catch {
+    decoded = /^['"].*['"]$/.test(s.module) ? s.module.slice(1, -1) : null;
+  }
+  const rewritten = decoded && ctx.resolveImport ? ctx.resolveImport(decoded) : null;
+  return `import * as ${s.alias} from ${rewritten ? JSON.stringify(rewritten) : s.module};`;
 }
 
 function emitTypeDecl(s) {
@@ -188,7 +195,7 @@ function emitObject(node, indent) {
   if (node.props.length === 0) return "{}";
   const pad = "  ".repeat(indent + 1);
   const closePad = "  ".repeat(indent);
-  const parts = node.props.map((p) => `${pad}${p.key}: ${emitExpr(p.value, indent + 1)},`);
+  const parts = node.props.map((p) => `${pad}${tsProperty(p.key)}: ${emitExpr(p.value, indent + 1)},`);
   return `{\n${parts.join("\n")}\n${closePad}}`;
 }
 

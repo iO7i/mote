@@ -21,6 +21,11 @@ export const CODES = {
     explain: "A type reference points to a 'type' that was never declared.\n" +
       "hint: declare it with 'type Name = ...' or fix the name.",
   },
+  M111: {
+    title: "Cyclic type alias",
+    explain: "A named type expands through itself and cannot be safely checked or reified.\n" +
+      "hint: model recursion through a supported non-recursive boundary, or remove the cycle.",
+  },
   M201: {
     title: "Nullable access without handling",
     explain: "A member was accessed on an optional ('T?') value.\n" +
@@ -47,6 +52,11 @@ export const CODES = {
     title: "Invalid generic use",
     explain: "A generic function or builtin was used with the wrong number or\n" +
       "kind of type arguments (e.g. json<T> requires one named type).",
+  },
+  M311: {
+    title: "Type cannot be validated at runtime",
+    explain: "A json<T>/check<T>/env<T> boundary needs a concrete, reifiable named type.\n" +
+      "hint: avoid generic, any, unknown, or unresolved parts at this boundary.",
   },
   M401: {
     title: "Invalid return type",
@@ -75,6 +85,11 @@ export const CODES = {
     explain: "At runtime, external data failed validation against its Mote type.\n" +
       "The message includes a JSON path such as '$.data.order.money.subtotal'.",
   },
+  M902: {
+    title: "Compiler internal error",
+    explain: "The compiler hit an unexpected internal condition and did not produce output.\n" +
+      "hint: report the diagnostic and source that triggered it.",
+  },
 };
 
 export class Diagnostics {
@@ -91,12 +106,27 @@ export class Diagnostics {
     this.items.push({ severity: "warning", code, message, ...loc(node), file: this.file });
   }
 
+  add(item) { this.items.push(item); }
+
   get errors() { return this.items.filter((d) => d.severity === "error"); }
   get hasErrors() { return this.errors.length > 0; }
 
   format() {
     return this.items.map((d) => formatOne(d, this.file)).join("\n");
   }
+}
+
+/** Convert lexer/parser failures into the same stable envelope as checker errors. */
+export function controlledDiagnostic(error, file = "<input>") {
+  const mote = error?.mote;
+  return {
+    severity: "error",
+    code: mote?.code ?? "M001",
+    message: String(error?.message ?? "invalid source").replace(/^.*?:\d+:\d+: (?:lex|parse) error: /, ""),
+    file: mote?.file ?? file,
+    line: mote?.line ?? 0,
+    col: mote?.col ?? 0,
+  };
 }
 
 function loc(node) {

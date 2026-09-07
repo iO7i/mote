@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "seed": 1592639710,
+  "cases": [
+    { "id": "boundary-valid", "source": "type Event={id:str}\nfn parse(raw:str)=json<Event>(raw)", "expectedCodes": [] },
+    { "id": "boundary-any-rejected", "source": "type Event={id:any}\nfn parse(raw:str)=json<Event>(raw)", "expectedCodes": ["M311"] },
+    { "id": "alias-cycle-rejected", "source": "type A=B\ntype B=A", "expectedCodes": ["M111"] }
+  ]
+}

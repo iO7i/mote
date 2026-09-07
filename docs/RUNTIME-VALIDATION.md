@@ -22,7 +22,7 @@ let cfg = env<Config>("APP")? # (scaffolded) validate an env var
 `let e = json<Event>(raw)?` becomes:
 
 ```ts
-import * as $mote from "./mote-runtime";
+import * as $mote from "./mote-runtime.js";
 
 const $schemas: $mote.Registry = {};
 $schemas["Money"] = { k: "object", fields: [ /* ... */ ] };
@@ -61,6 +61,9 @@ $.tags[1] expected str, got num                                 # array member
   an optional `str`).
 - The runtime resolves `{k:"ref"}` through the emitted `$schemas` registry, so
   declaration order does not matter.
+- `num` accepts finite JavaScript numbers only; `nil` accepts JSON `null` only.
+  Unknown, malformed, or cyclic schema references become validation failures,
+  never uncaught runtime-schema exceptions.
 
 ## Try it
 
@@ -75,15 +78,14 @@ The validator runtime is a fixed ~1.3k-token module. How it's counted against a
 project depends on how it's shipped:
 
 1. **Vendored** (default, offline) — `mote compile` writes `mote-runtime.ts` into
-   the output and imports `./mote-runtime`. Worst case for token accounting: the
+   the output and imports `./mote-runtime.js`. Worst case for token accounting: the
    runtime source lives in your repo, so a single tiny module "pays" the whole
    runtime (see the cold-start / break-even numbers in `bench/REPORT.md`,
    break-even ≈ 5 validated modules).
 
-2. **Installed package** — `mote compile --runtime @mote/runtime` emits
-   `import * as $mote from "@mote/runtime"` and does NOT vendor the runtime. The
-   runtime then lives in `node_modules` (published from `src/runtime/`, which is
-   the `@mote/runtime` package) and does not count against per-module context —
+2. **Installed package** — `mote compile --runtime mote/runtime` emits
+   `import * as $mote from "mote/runtime"` and does NOT vendor the runtime. The
+   runtime then lives in `node_modules` and does not count against per-module context —
    exactly like `zod`. Under this view Mote wins even at N=1.
 
 3. **Trusted / no-validation** — `cast<T>(value)` asserts a type WITHOUT any

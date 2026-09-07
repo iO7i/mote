@@ -4,10 +4,10 @@
 import {
   readFileSync, writeFileSync, mkdirSync, unlinkSync, statSync, readdirSync, copyFileSync,
 } from "node:fs";
-import { basename, join, dirname, resolve } from "node:path";
+import { basename, join, dirname, resolve, relative, sep } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
-import { compile } from "../src/compile.mjs";
+import { compileSource } from "../src/api.mjs";
 import { parse } from "../src/parser.mjs";
 import { formatMote } from "../src/formatter.mjs";
 import { explain } from "../src/diagnostics.mjs";
@@ -21,11 +21,12 @@ const TSCONFIG = JSON.stringify({
   compilerOptions: {
     strict: true,
     target: "ES2022",
-    module: "ESNext",
-    moduleResolution: "bundler",
-    noEmit: true,
+    module: "NodeNext",
+    moduleResolution: "NodeNext",
+    outDir: "./js",
+    declaration: true,
+    sourceMap: true,
     skipLibCheck: true,
-    types: ["node"],
   },
   include: ["*.ts"],
 }, null, 2) + "\n";
@@ -47,12 +48,12 @@ function motFiles(target) {
 
 function compileFile(file, opts) {
   const src = readFileSync(file, "utf8");
-  try {
-    return compile(src, { file, strict: !has("--loose"), ...opts });
-  } catch (e) {
-    if (e.mote) fail(e.message);
-    throw e;
-  }
+  return compileSource(src, { file, strict: !has("--loose"), ...opts });
+}
+
+function printDiagnostics(result) {
+  if (has("--json")) process.stdout.write(JSON.stringify(result.envelope, null, 2) + "\n");
+  else if (result.diagnostics.items.length) console.log(result.diagnostics.format());
 }
 
 function main() {
@@ -74,8 +75,8 @@ function printHelp() {
   console.log(`mote v0.2 — typed, token-aware language that compiles to TypeScript
 
 usage:
-  mote check <file|dir> [--loose]    type-check, print diagnostics (--loose: allow untyped pub fns)
-  mote compile <file|dir> [--out d]  emit .ts + .d.ts + runtime + source map
+  mote check <file|dir> [--loose] [--json] type-check with a stable diagnostic envelope
+  mote compile <file|dir> [--out d] [--json] emit .ts + .d.ts + runtime + source map
   mote run <file.mt>                 type-check then execute with node
   mote emit <file.mt> [--js]         print emitted TypeScript (or JS with --js)
   mote fmt <file.mt> [--compact|--readable]
@@ -90,38 +91,56 @@ function cmdEmit() {
   const emitTypes = !has("--js");
   const r = compileFile(file, {
     emitTypes,
-    runtimeImport: emitTypes ? flag("--runtime", "./mote-runtime") : pathToFileURL(RUNTIME_MJS).href,
+    runtimeImport: emitTypes ? flag("--runtime", "./mote-runtime.js") : pathToFileURL(RUNTIME_MJS).href,
   });
-  if (r.diagnostics.hasErrors) { console.error(r.diagnostics.format()); process.exit(1); }
+  if (r.diagnostics.hasErrors) { printDiagnostics(r); process.exit(1); }
   process.stdout.write(r.code);
 }
 
 function cmdCheck() {
   const target = positionals()[0];
   if (!target) fail("usage: mote check <file|dir>");
-  let errors = 0;
+  const results = [];
   for (const file of motFiles(target)) {
     const r = compileFile(file, { emitTypes: true });
-    const text = r.diagnostics.format();
-    if (text) console.log(text);
-    errors += r.diagnostics.errors.length;
+    results.push(r);
+    if (!has("--json")) printDiagnostics(r);
   }
-  if (errors === 0) console.log("ok — no type errors");
+  const errors = results.reduce((count, r) => count + r.diagnostics.errors.length, 0);
+  if (has("--json")) {
+    process.stdout.write(JSON.stringify({ schemaVersion: 1, ok: errors === 0, files: results.map((r) => r.envelope) }, null, 2) + "\n");
+  } else if (errors === 0) console.log("ok — no type errors");
   process.exit(errors === 0 ? 0 : 1);
 }
 
 function cmdCompile() {
   const target = positionals()[0];
   if (!target) fail("usage: mote compile <file|dir> [--out dir]");
-  const outDir = flag("--out", "dist");
-  mkdirSync(outDir, { recursive: true });
-  let errors = 0;
+  const outDir = resolve(flag("--out", "dist"));
   let wroteRuntime = false;
-  const runtimeSpec = flag("--runtime", "./mote-runtime"); // e.g. --runtime @mote/runtime
-  for (const file of motFiles(target)) {
-    const r = compileFile(file, { emitTypes: true, runtimeImport: runtimeSpec });
-    if (r.diagnostics.hasErrors) { console.error(r.diagnostics.format()); errors++; continue; }
+  const runtimeSpec = flag("--runtime", "./mote-runtime.js"); // e.g. --runtime mote/runtime
+  const files = motFiles(target).map((file) => resolve(file));
+  const names = new Set();
+  const plans = files.map((file) => {
     const stem = basename(file).replace(/\.mt$/, "");
+    if (names.has(stem)) fail(`duplicate output name '${stem}.ts'`);
+    names.add(stem);
+    const r = compileFile(file, {
+      emitTypes: true,
+      runtimeImport: runtimeSpec,
+      resolveImport: (specifier) => resolveMoteImport(file, specifier, files),
+    });
+    return { file, stem, r };
+  });
+  const errors = plans.reduce((count, plan) => count + plan.r.diagnostics.errors.length, 0);
+  if (errors) {
+    for (const plan of plans) printDiagnostics(plan.r);
+    process.exit(1);
+  }
+  // Validation completed for every input before this point: failed runs never
+  // create partial source artifacts or a misleading tsconfig.
+  mkdirSync(outDir, { recursive: true });
+  for (const { file, stem, r } of plans) {
     const tsName = `${stem}.ts`;
     writeFileSync(join(outDir, tsName), r.code + `//# sourceMappingURL=${tsName}.map\n`);
     writeFileSync(join(outDir, `${tsName}.map`), r.sourceMap(tsName));
@@ -132,10 +151,27 @@ function cmdCompile() {
       copyFileSync(RUNTIME_TS, join(outDir, "mote-runtime.ts"));
       wroteRuntime = true;
     }
-    console.error(`wrote ${join(outDir, tsName)}`);
+    if (!has("--json")) console.error(`wrote ${join(outDir, tsName)}`);
   }
   writeFileSync(join(outDir, "tsconfig.json"), TSCONFIG);
-  process.exit(errors === 0 ? 0 : 1);
+  writeFileSync(join(outDir, "package.json"), JSON.stringify({ private: true, type: "module" }, null, 2) + "\n");
+  if (has("--json")) {
+    process.stdout.write(JSON.stringify({
+      schemaVersion: 1, ok: true, output: outDir,
+      files: plans.map((plan) => plan.r.envelope),
+    }, null, 2) + "\n");
+  }
+}
+
+function resolveMoteImport(fromFile, specifier, files) {
+  if (!specifier.startsWith(".")) return specifier;
+  const sourceTarget = resolve(dirname(fromFile), specifier.endsWith(".mt") ? specifier : `${specifier}.mt`);
+  if (!files.includes(sourceTarget)) return specifier;
+  const targetStem = basename(sourceTarget).replace(/\.mt$/, ".js");
+  const emittedFrom = join(dirname(fromFile), "placeholder.js");
+  let outputPath = relative(dirname(emittedFrom), join(dirname(sourceTarget), targetStem)).split(sep).join("/");
+  if (!outputPath.startsWith(".")) outputPath = `./${outputPath}`;
+  return outputPath;
 }
 
 function cmdRun() {
@@ -145,7 +181,7 @@ function cmdRun() {
     emitTypes: false,
     runtimeImport: pathToFileURL(RUNTIME_MJS).href,
   });
-  if (r.diagnostics.hasErrors) { console.error(r.diagnostics.format()); process.exit(1); }
+  if (r.diagnostics.hasErrors) { printDiagnostics(r); process.exit(1); }
   const tmp = join(process.cwd(), `.mote-run-${process.pid}.mjs`);
   writeFileSync(tmp, r.code);
   const cleanup = () => { try { unlinkSync(tmp); } catch { /* ignore */ } };
