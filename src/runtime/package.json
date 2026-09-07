@@ -1,0 +1,15 @@
+{
+  "name": "@mote/runtime",
+  "version": "0.2.0",
+  "description": "Mote runtime — schema-driven validation for generated TypeScript. Installed once per project; not counted against per-module token context.",
+  "type": "module",
+  "main": "mote.mjs",
+  "types": "mote.ts",
+  "exports": {
+    ".": {
+      "types": "./mote.ts",
+      "import": "./mote.mjs"
+    }
+  },
+  "license": "MIT"
+}

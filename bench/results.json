@@ -1,0 +1,2029 @@
+{
+  "generatedFrom": "committed bench/runs files",
+  "mode": "manual",
+  "headlineAdapter": {
+    "name": "openai/o200k_base",
+    "version": "gpt-tokenizer",
+    "status": "VERIFIED"
+  },
+  "adapters": [
+    {
+      "name": "chars-3.8 (code-ish)",
+      "version": "heuristic-1",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "chars-4.0 (prose-ish)",
+      "version": "heuristic-1",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "whitespace-words",
+      "version": "heuristic-1",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "openai/o200k_base",
+      "version": "gpt-tokenizer",
+      "status": "VERIFIED"
+    },
+    {
+      "name": "meta/llama-3",
+      "version": "@lenml/tokenizer-llama3",
+      "status": "VERIFIED"
+    },
+    {
+      "name": "deepseek/v3",
+      "version": "@lenml/tokenizer-deepseek_v3",
+      "status": "VERIFIED"
+    }
+  ],
+  "runtimeSharedTokens": 1273,
+  "tasksMeasured": 5,
+  "medians": {
+    "mote_code_saving": 74.7,
+    "combined_D_vs_A": 65.7,
+    "mote_vs_ts_source_saving": 73.8
+  },
+  "perTokenizer": [
+    {
+      "name": "chars-3.8 (code-ish)",
+      "status": "UNVERIFIED",
+      "code_saving_median": 76.8,
+      "combined_median": 67.9
+    },
+    {
+      "name": "chars-4.0 (prose-ish)",
+      "status": "UNVERIFIED",
+      "code_saving_median": 76.8,
+      "combined_median": 68.2
+    },
+    {
+      "name": "whitespace-words",
+      "status": "UNVERIFIED",
+      "code_saving_median": 93.2,
+      "combined_median": 82.4
+    },
+    {
+      "name": "openai/o200k_base",
+      "status": "VERIFIED",
+      "code_saving_median": 74.7,
+      "combined_median": 65.7
+    },
+    {
+      "name": "meta/llama-3",
+      "status": "VERIFIED",
+      "code_saving_median": 74.7,
+      "combined_median": 65.4
+    },
+    {
+      "name": "deepseek/v3",
+      "status": "VERIFIED",
+      "code_saving_median": 71.6,
+      "combined_median": 61.1
+    }
+  ],
+  "publicThreshold": {
+    "required": {
+      "tasks": 5,
+      "tokenizerFamilies": 3,
+      "sharedNegativeTests": true,
+      "reportMedian": true,
+      "productionWorkflowRuns": true
+    },
+    "met": {
+      "tasks": 5,
+      "tokenizerFamilies": 3,
+      "productionWorkflowRuns": false
+    },
+    "mechanicalGate": true,
+    "ready": false
+  },
+  "tasks": [
+    {
+      "task": "01-webhook-verifier",
+      "status": {
+        "mote": "Pass",
+        "ts": "Pass",
+        "tests": "Pass",
+        "mutation": "Pass"
+      },
+      "sizes": {
+        "runtime_shared_tokens": 1273,
+        "mote_source_tokens": 236,
+        "generated_ts_tokens": 564,
+        "ts_source_tokens": 764,
+        "mote_vs_ts_source_saving": 69.1,
+        "cold_start": {
+          "mote": 1509,
+          "ts": 764,
+          "saving": -97.5
+        },
+        "amortized": [
+          {
+            "N": 1,
+            "mote": 1509,
+            "ts": 764,
+            "saving": -97.5
+          },
+          {
+            "N": 5,
+            "mote": 2453,
+            "ts": 3820,
+            "saving": 35.8
+          },
+          {
+            "N": 10,
+            "mote": 3633,
+            "ts": 7640,
+            "saving": 52.4
+          }
+        ],
+        "break_even_modules": 3,
+        "dependency_view": {
+          "mote": 248,
+          "ts": 764,
+          "saving": 67.5
+        }
+      },
+      "adapters": {
+        "chars-3.8 (code-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 178,
+              "code": 676,
+              "total": 854
+            },
+            "B": {
+              "prose": 80,
+              "code": 676,
+              "total": 756
+            },
+            "C": {
+              "prose": 178,
+              "code": 157,
+              "total": 335
+            },
+            "D": {
+              "prose": 80,
+              "code": 157,
+              "total": 237
+            }
+          },
+          "mote_code_saving": 76.8,
+          "tarse_prose_saving": 55.1,
+          "whole_output": {
+            "B_vs_A": 11.5,
+            "C_vs_A": 60.8,
+            "D_vs_A": 72.2,
+            "D_vs_B": 68.7,
+            "D_vs_C": 29.3
+          }
+        },
+        "chars-4.0 (prose-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 169,
+              "code": 642,
+              "total": 811
+            },
+            "B": {
+              "prose": 76,
+              "code": 642,
+              "total": 718
+            },
+            "C": {
+              "prose": 169,
+              "code": 149,
+              "total": 318
+            },
+            "D": {
+              "prose": 76,
+              "code": 149,
+              "total": 225
+            }
+          },
+          "mote_code_saving": 76.8,
+          "tarse_prose_saving": 55,
+          "whole_output": {
+            "B_vs_A": 11.5,
+            "C_vs_A": 60.8,
+            "D_vs_A": 72.3,
+            "D_vs_B": 68.7,
+            "D_vs_C": 29.2
+          }
+        },
+        "whitespace-words": {
+          "tokens": {
+            "A": {
+              "prose": 108,
+              "code": 322,
+              "total": 430
+            },
+            "B": {
+              "prose": 45,
+              "code": 322,
+              "total": 367
+            },
+            "C": {
+              "prose": 108,
+              "code": 25,
+              "total": 133
+            },
+            "D": {
+              "prose": 45,
+              "code": 25,
+              "total": 70
+            }
+          },
+          "mote_code_saving": 92.2,
+          "tarse_prose_saving": 58.3,
+          "whole_output": {
+            "B_vs_A": 14.7,
+            "C_vs_A": 69.1,
+            "D_vs_A": 83.7,
+            "D_vs_B": 80.9,
+            "D_vs_C": 47.4
+          }
+        },
+        "openai/o200k_base": {
+          "tokens": {
+            "A": {
+              "prose": 156,
+              "code": 661,
+              "total": 817
+            },
+            "B": {
+              "prose": 73,
+              "code": 661,
+              "total": 734
+            },
+            "C": {
+              "prose": 156,
+              "code": 167,
+              "total": 323
+            },
+            "D": {
+              "prose": 73,
+              "code": 167,
+              "total": 240
+            }
+          },
+          "mote_code_saving": 74.7,
+          "tarse_prose_saving": 53.2,
+          "whole_output": {
+            "B_vs_A": 10.2,
+            "C_vs_A": 60.5,
+            "D_vs_A": 70.6,
+            "D_vs_B": 67.3,
+            "D_vs_C": 25.7
+          }
+        },
+        "meta/llama-3": {
+          "tokens": {
+            "A": {
+              "prose": 155,
+              "code": 648,
+              "total": 803
+            },
+            "B": {
+              "prose": 74,
+              "code": 648,
+              "total": 722
+            },
+            "C": {
+              "prose": 155,
+              "code": 164,
+              "total": 319
+            },
+            "D": {
+              "prose": 74,
+              "code": 164,
+              "total": 238
+            }
+          },
+          "mote_code_saving": 74.7,
+          "tarse_prose_saving": 52.3,
+          "whole_output": {
+            "B_vs_A": 10.1,
+            "C_vs_A": 60.3,
+            "D_vs_A": 70.4,
+            "D_vs_B": 67,
+            "D_vs_C": 25.4
+          }
+        },
+        "deepseek/v3": {
+          "tokens": {
+            "A": {
+              "prose": 162,
+              "code": 687,
+              "total": 849
+            },
+            "B": {
+              "prose": 80,
+              "code": 687,
+              "total": 767
+            },
+            "C": {
+              "prose": 162,
+              "code": 195,
+              "total": 357
+            },
+            "D": {
+              "prose": 80,
+              "code": 195,
+              "total": 275
+            }
+          },
+          "mote_code_saving": 71.6,
+          "tarse_prose_saving": 50.6,
+          "whole_output": {
+            "B_vs_A": 9.7,
+            "C_vs_A": 58,
+            "D_vs_A": 67.6,
+            "D_vs_B": 64.1,
+            "D_vs_C": 23
+          }
+        }
+      },
+      "measures": {
+        "A": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 178,
+              "code": 676,
+              "total": 854
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 169,
+              "code": 642,
+              "total": 811
+            },
+            "whitespace-words": {
+              "prose": 108,
+              "code": 322,
+              "total": 430
+            },
+            "openai/o200k_base": {
+              "prose": 156,
+              "code": 661,
+              "total": 817
+            },
+            "meta/llama-3": {
+              "prose": 155,
+              "code": 648,
+              "total": 803
+            },
+            "deepseek/v3": {
+              "prose": 162,
+              "code": 687,
+              "total": 849
+            }
+          }
+        },
+        "B": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 80,
+              "code": 676,
+              "total": 756
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 76,
+              "code": 642,
+              "total": 718
+            },
+            "whitespace-words": {
+              "prose": 45,
+              "code": 322,
+              "total": 367
+            },
+            "openai/o200k_base": {
+              "prose": 73,
+              "code": 661,
+              "total": 734
+            },
+            "meta/llama-3": {
+              "prose": 74,
+              "code": 648,
+              "total": 722
+            },
+            "deepseek/v3": {
+              "prose": 80,
+              "code": 687,
+              "total": 767
+            }
+          }
+        },
+        "C": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 178,
+              "code": 157,
+              "total": 335
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 169,
+              "code": 149,
+              "total": 318
+            },
+            "whitespace-words": {
+              "prose": 108,
+              "code": 25,
+              "total": 133
+            },
+            "openai/o200k_base": {
+              "prose": 156,
+              "code": 167,
+              "total": 323
+            },
+            "meta/llama-3": {
+              "prose": 155,
+              "code": 164,
+              "total": 319
+            },
+            "deepseek/v3": {
+              "prose": 162,
+              "code": 195,
+              "total": 357
+            }
+          }
+        },
+        "D": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 80,
+              "code": 157,
+              "total": 237
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 76,
+              "code": 149,
+              "total": 225
+            },
+            "whitespace-words": {
+              "prose": 45,
+              "code": 25,
+              "total": 70
+            },
+            "openai/o200k_base": {
+              "prose": 73,
+              "code": 167,
+              "total": 240
+            },
+            "meta/llama-3": {
+              "prose": 74,
+              "code": 164,
+              "total": 238
+            },
+            "deepseek/v3": {
+              "prose": 80,
+              "code": 195,
+              "total": 275
+            }
+          }
+        }
+      }
+    },
+    {
+      "task": "02-api-route",
+      "status": {
+        "mote": "Pass",
+        "ts": "Pass",
+        "tests": "Pass",
+        "mutation": "Pass"
+      },
+      "sizes": {
+        "runtime_shared_tokens": 1273,
+        "mote_source_tokens": 126,
+        "generated_ts_tokens": 379,
+        "ts_source_tokens": 481,
+        "mote_vs_ts_source_saving": 73.8,
+        "cold_start": {
+          "mote": 1399,
+          "ts": 481,
+          "saving": -190.9
+        },
+        "amortized": [
+          {
+            "N": 1,
+            "mote": 1399,
+            "ts": 481,
+            "saving": -190.9
+          },
+          {
+            "N": 5,
+            "mote": 1903,
+            "ts": 2405,
+            "saving": 20.9
+          },
+          {
+            "N": 10,
+            "mote": 2533,
+            "ts": 4810,
+            "saving": 47.3
+          }
+        ],
+        "break_even_modules": 4,
+        "dependency_view": {
+          "mote": 138,
+          "ts": 481,
+          "saving": 71.3
+        }
+      },
+      "adapters": {
+        "chars-3.8 (code-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 151,
+              "code": 463,
+              "total": 614
+            },
+            "B": {
+              "prose": 87,
+              "code": 463,
+              "total": 550
+            },
+            "C": {
+              "prose": 151,
+              "code": 110,
+              "total": 261
+            },
+            "D": {
+              "prose": 87,
+              "code": 110,
+              "total": 197
+            }
+          },
+          "mote_code_saving": 76.2,
+          "tarse_prose_saving": 42.4,
+          "whole_output": {
+            "B_vs_A": 10.4,
+            "C_vs_A": 57.5,
+            "D_vs_A": 67.9,
+            "D_vs_B": 64.2,
+            "D_vs_C": 24.5
+          }
+        },
+        "chars-4.0 (prose-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 144,
+              "code": 440,
+              "total": 584
+            },
+            "B": {
+              "prose": 82,
+              "code": 440,
+              "total": 522
+            },
+            "C": {
+              "prose": 144,
+              "code": 104,
+              "total": 248
+            },
+            "D": {
+              "prose": 82,
+              "code": 104,
+              "total": 186
+            }
+          },
+          "mote_code_saving": 76.4,
+          "tarse_prose_saving": 43.1,
+          "whole_output": {
+            "B_vs_A": 10.6,
+            "C_vs_A": 57.5,
+            "D_vs_A": 68.2,
+            "D_vs_B": 64.4,
+            "D_vs_C": 25
+          }
+        },
+        "whitespace-words": {
+          "tokens": {
+            "A": {
+              "prose": 97,
+              "code": 249,
+              "total": 346
+            },
+            "B": {
+              "prose": 50,
+              "code": 249,
+              "total": 299
+            },
+            "C": {
+              "prose": 97,
+              "code": 15,
+              "total": 112
+            },
+            "D": {
+              "prose": 50,
+              "code": 15,
+              "total": 65
+            }
+          },
+          "mote_code_saving": 94,
+          "tarse_prose_saving": 48.5,
+          "whole_output": {
+            "B_vs_A": 13.6,
+            "C_vs_A": 67.6,
+            "D_vs_A": 81.2,
+            "D_vs_B": 78.3,
+            "D_vs_C": 42
+          }
+        },
+        "openai/o200k_base": {
+          "tokens": {
+            "A": {
+              "prose": 127,
+              "code": 470,
+              "total": 597
+            },
+            "B": {
+              "prose": 88,
+              "code": 470,
+              "total": 558
+            },
+            "C": {
+              "prose": 127,
+              "code": 126,
+              "total": 253
+            },
+            "D": {
+              "prose": 88,
+              "code": 126,
+              "total": 214
+            }
+          },
+          "mote_code_saving": 73.2,
+          "tarse_prose_saving": 30.7,
+          "whole_output": {
+            "B_vs_A": 6.5,
+            "C_vs_A": 57.6,
+            "D_vs_A": 64.2,
+            "D_vs_B": 61.6,
+            "D_vs_C": 15.4
+          }
+        },
+        "meta/llama-3": {
+          "tokens": {
+            "A": {
+              "prose": 128,
+              "code": 454,
+              "total": 582
+            },
+            "B": {
+              "prose": 86,
+              "code": 454,
+              "total": 540
+            },
+            "C": {
+              "prose": 128,
+              "code": 123,
+              "total": 251
+            },
+            "D": {
+              "prose": 86,
+              "code": 123,
+              "total": 209
+            }
+          },
+          "mote_code_saving": 72.9,
+          "tarse_prose_saving": 32.8,
+          "whole_output": {
+            "B_vs_A": 7.2,
+            "C_vs_A": 56.9,
+            "D_vs_A": 64.1,
+            "D_vs_B": 61.3,
+            "D_vs_C": 16.7
+          }
+        },
+        "deepseek/v3": {
+          "tokens": {
+            "A": {
+              "prose": 131,
+              "code": 470,
+              "total": 601
+            },
+            "B": {
+              "prose": 91,
+              "code": 470,
+              "total": 561
+            },
+            "C": {
+              "prose": 131,
+              "code": 144,
+              "total": 275
+            },
+            "D": {
+              "prose": 91,
+              "code": 144,
+              "total": 235
+            }
+          },
+          "mote_code_saving": 69.4,
+          "tarse_prose_saving": 30.5,
+          "whole_output": {
+            "B_vs_A": 6.7,
+            "C_vs_A": 54.2,
+            "D_vs_A": 60.9,
+            "D_vs_B": 58.1,
+            "D_vs_C": 14.5
+          }
+        }
+      },
+      "measures": {
+        "A": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 151,
+              "code": 463,
+              "total": 614
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 144,
+              "code": 440,
+              "total": 584
+            },
+            "whitespace-words": {
+              "prose": 97,
+              "code": 249,
+              "total": 346
+            },
+            "openai/o200k_base": {
+              "prose": 127,
+              "code": 470,
+              "total": 597
+            },
+            "meta/llama-3": {
+              "prose": 128,
+              "code": 454,
+              "total": 582
+            },
+            "deepseek/v3": {
+              "prose": 131,
+              "code": 470,
+              "total": 601
+            }
+          }
+        },
+        "B": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 87,
+              "code": 463,
+              "total": 550
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 82,
+              "code": 440,
+              "total": 522
+            },
+            "whitespace-words": {
+              "prose": 50,
+              "code": 249,
+              "total": 299
+            },
+            "openai/o200k_base": {
+              "prose": 88,
+              "code": 470,
+              "total": 558
+            },
+            "meta/llama-3": {
+              "prose": 86,
+              "code": 454,
+              "total": 540
+            },
+            "deepseek/v3": {
+              "prose": 91,
+              "code": 470,
+              "total": 561
+            }
+          }
+        },
+        "C": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 151,
+              "code": 110,
+              "total": 261
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 144,
+              "code": 104,
+              "total": 248
+            },
+            "whitespace-words": {
+              "prose": 97,
+              "code": 15,
+              "total": 112
+            },
+            "openai/o200k_base": {
+              "prose": 127,
+              "code": 126,
+              "total": 253
+            },
+            "meta/llama-3": {
+              "prose": 128,
+              "code": 123,
+              "total": 251
+            },
+            "deepseek/v3": {
+              "prose": 131,
+              "code": 144,
+              "total": 275
+            }
+          }
+        },
+        "D": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 87,
+              "code": 110,
+              "total": 197
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 82,
+              "code": 104,
+              "total": 186
+            },
+            "whitespace-words": {
+              "prose": 50,
+              "code": 15,
+              "total": 65
+            },
+            "openai/o200k_base": {
+              "prose": 88,
+              "code": 126,
+              "total": 214
+            },
+            "meta/llama-3": {
+              "prose": 86,
+              "code": 123,
+              "total": 209
+            },
+            "deepseek/v3": {
+              "prose": 91,
+              "code": 144,
+              "total": 235
+            }
+          }
+        }
+      }
+    },
+    {
+      "task": "03-csv-importer",
+      "status": {
+        "mote": "Pass",
+        "ts": "Pass",
+        "tests": "Pass",
+        "mutation": "Pass"
+      },
+      "sizes": {
+        "runtime_shared_tokens": 1273,
+        "mote_source_tokens": 57,
+        "generated_ts_tokens": 187,
+        "ts_source_tokens": 347,
+        "mote_vs_ts_source_saving": 83.6,
+        "cold_start": {
+          "mote": 1330,
+          "ts": 347,
+          "saving": -283.3
+        },
+        "amortized": [
+          {
+            "N": 1,
+            "mote": 1330,
+            "ts": 347,
+            "saving": -283.3
+          },
+          {
+            "N": 5,
+            "mote": 1558,
+            "ts": 1735,
+            "saving": 10.2
+          },
+          {
+            "N": 10,
+            "mote": 1843,
+            "ts": 3470,
+            "saving": 46.9
+          }
+        ],
+        "break_even_modules": 5,
+        "dependency_view": {
+          "mote": 69,
+          "ts": 347,
+          "saving": 80.1
+        }
+      },
+      "adapters": {
+        "chars-3.8 (code-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 106,
+              "code": 284,
+              "total": 390
+            },
+            "B": {
+              "prose": 83,
+              "code": 284,
+              "total": 367
+            },
+            "C": {
+              "prose": 106,
+              "code": 46,
+              "total": 152
+            },
+            "D": {
+              "prose": 83,
+              "code": 46,
+              "total": 129
+            }
+          },
+          "mote_code_saving": 83.8,
+          "tarse_prose_saving": 21.7,
+          "whole_output": {
+            "B_vs_A": 5.9,
+            "C_vs_A": 61,
+            "D_vs_A": 66.9,
+            "D_vs_B": 64.9,
+            "D_vs_C": 15.1
+          }
+        },
+        "chars-4.0 (prose-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 101,
+              "code": 270,
+              "total": 371
+            },
+            "B": {
+              "prose": 79,
+              "code": 270,
+              "total": 349
+            },
+            "C": {
+              "prose": 101,
+              "code": 44,
+              "total": 145
+            },
+            "D": {
+              "prose": 79,
+              "code": 44,
+              "total": 123
+            }
+          },
+          "mote_code_saving": 83.7,
+          "tarse_prose_saving": 21.8,
+          "whole_output": {
+            "B_vs_A": 5.9,
+            "C_vs_A": 60.9,
+            "D_vs_A": 66.8,
+            "D_vs_B": 64.8,
+            "D_vs_C": 15.2
+          }
+        },
+        "whitespace-words": {
+          "tokens": {
+            "A": {
+              "prose": 69,
+              "code": 179,
+              "total": 248
+            },
+            "B": {
+              "prose": 42,
+              "code": 179,
+              "total": 221
+            },
+            "C": {
+              "prose": 69,
+              "code": 8,
+              "total": 77
+            },
+            "D": {
+              "prose": 42,
+              "code": 8,
+              "total": 50
+            }
+          },
+          "mote_code_saving": 95.5,
+          "tarse_prose_saving": 39.1,
+          "whole_output": {
+            "B_vs_A": 10.9,
+            "C_vs_A": 69,
+            "D_vs_A": 79.8,
+            "D_vs_B": 77.4,
+            "D_vs_C": 35.1
+          }
+        },
+        "openai/o200k_base": {
+          "tokens": {
+            "A": {
+              "prose": 102,
+              "code": 336,
+              "total": 438
+            },
+            "B": {
+              "prose": 91,
+              "code": 336,
+              "total": 427
+            },
+            "C": {
+              "prose": 102,
+              "code": 57,
+              "total": 159
+            },
+            "D": {
+              "prose": 91,
+              "code": 57,
+              "total": 148
+            }
+          },
+          "mote_code_saving": 83,
+          "tarse_prose_saving": 10.8,
+          "whole_output": {
+            "B_vs_A": 2.5,
+            "C_vs_A": 63.7,
+            "D_vs_A": 66.2,
+            "D_vs_B": 65.3,
+            "D_vs_C": 6.9
+          }
+        },
+        "meta/llama-3": {
+          "tokens": {
+            "A": {
+              "prose": 102,
+              "code": 335,
+              "total": 437
+            },
+            "B": {
+              "prose": 88,
+              "code": 335,
+              "total": 423
+            },
+            "C": {
+              "prose": 102,
+              "code": 59,
+              "total": 161
+            },
+            "D": {
+              "prose": 88,
+              "code": 59,
+              "total": 147
+            }
+          },
+          "mote_code_saving": 82.4,
+          "tarse_prose_saving": 13.7,
+          "whole_output": {
+            "B_vs_A": 3.2,
+            "C_vs_A": 63.2,
+            "D_vs_A": 66.4,
+            "D_vs_B": 65.2,
+            "D_vs_C": 8.7
+          }
+        },
+        "deepseek/v3": {
+          "tokens": {
+            "A": {
+              "prose": 107,
+              "code": 337,
+              "total": 444
+            },
+            "B": {
+              "prose": 99,
+              "code": 337,
+              "total": 436
+            },
+            "C": {
+              "prose": 107,
+              "code": 67,
+              "total": 174
+            },
+            "D": {
+              "prose": 99,
+              "code": 67,
+              "total": 166
+            }
+          },
+          "mote_code_saving": 80.1,
+          "tarse_prose_saving": 7.5,
+          "whole_output": {
+            "B_vs_A": 1.8,
+            "C_vs_A": 60.8,
+            "D_vs_A": 62.6,
+            "D_vs_B": 61.9,
+            "D_vs_C": 4.6
+          }
+        }
+      },
+      "measures": {
+        "A": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 106,
+              "code": 284,
+              "total": 390
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 101,
+              "code": 270,
+              "total": 371
+            },
+            "whitespace-words": {
+              "prose": 69,
+              "code": 179,
+              "total": 248
+            },
+            "openai/o200k_base": {
+              "prose": 102,
+              "code": 336,
+              "total": 438
+            },
+            "meta/llama-3": {
+              "prose": 102,
+              "code": 335,
+              "total": 437
+            },
+            "deepseek/v3": {
+              "prose": 107,
+              "code": 337,
+              "total": 444
+            }
+          }
+        },
+        "B": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 83,
+              "code": 284,
+              "total": 367
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 79,
+              "code": 270,
+              "total": 349
+            },
+            "whitespace-words": {
+              "prose": 42,
+              "code": 179,
+              "total": 221
+            },
+            "openai/o200k_base": {
+              "prose": 91,
+              "code": 336,
+              "total": 427
+            },
+            "meta/llama-3": {
+              "prose": 88,
+              "code": 335,
+              "total": 423
+            },
+            "deepseek/v3": {
+              "prose": 99,
+              "code": 337,
+              "total": 436
+            }
+          }
+        },
+        "C": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 106,
+              "code": 46,
+              "total": 152
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 101,
+              "code": 44,
+              "total": 145
+            },
+            "whitespace-words": {
+              "prose": 69,
+              "code": 8,
+              "total": 77
+            },
+            "openai/o200k_base": {
+              "prose": 102,
+              "code": 57,
+              "total": 159
+            },
+            "meta/llama-3": {
+              "prose": 102,
+              "code": 59,
+              "total": 161
+            },
+            "deepseek/v3": {
+              "prose": 107,
+              "code": 67,
+              "total": 174
+            }
+          }
+        },
+        "D": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 83,
+              "code": 46,
+              "total": 129
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 79,
+              "code": 44,
+              "total": 123
+            },
+            "whitespace-words": {
+              "prose": 42,
+              "code": 8,
+              "total": 50
+            },
+            "openai/o200k_base": {
+              "prose": 91,
+              "code": 57,
+              "total": 148
+            },
+            "meta/llama-3": {
+              "prose": 88,
+              "code": 59,
+              "total": 147
+            },
+            "deepseek/v3": {
+              "prose": 99,
+              "code": 67,
+              "total": 166
+            }
+          }
+        }
+      }
+    },
+    {
+      "task": "04-database-mapper",
+      "status": {
+        "mote": "Pass",
+        "ts": "Pass",
+        "tests": "Pass",
+        "mutation": "Pass"
+      },
+      "sizes": {
+        "runtime_shared_tokens": 1273,
+        "mote_source_tokens": 110,
+        "generated_ts_tokens": 429,
+        "ts_source_tokens": 471,
+        "mote_vs_ts_source_saving": 76.6,
+        "cold_start": {
+          "mote": 1383,
+          "ts": 471,
+          "saving": -193.6
+        },
+        "amortized": [
+          {
+            "N": 1,
+            "mote": 1383,
+            "ts": 471,
+            "saving": -193.6
+          },
+          {
+            "N": 5,
+            "mote": 1823,
+            "ts": 2355,
+            "saving": 22.6
+          },
+          {
+            "N": 10,
+            "mote": 2373,
+            "ts": 4710,
+            "saving": 49.6
+          }
+        ],
+        "break_even_modules": 4,
+        "dependency_view": {
+          "mote": 122,
+          "ts": 471,
+          "saving": 74.1
+        }
+      },
+      "adapters": {
+        "chars-3.8 (code-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 101,
+              "code": 443,
+              "total": 544
+            },
+            "B": {
+              "prose": 74,
+              "code": 443,
+              "total": 517
+            },
+            "C": {
+              "prose": 101,
+              "code": 94,
+              "total": 195
+            },
+            "D": {
+              "prose": 71,
+              "code": 94,
+              "total": 165
+            }
+          },
+          "mote_code_saving": 78.8,
+          "tarse_prose_saving": 26.7,
+          "whole_output": {
+            "B_vs_A": 5,
+            "C_vs_A": 64.2,
+            "D_vs_A": 69.7,
+            "D_vs_B": 68.1,
+            "D_vs_C": 15.4
+          }
+        },
+        "chars-4.0 (prose-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 96,
+              "code": 421,
+              "total": 517
+            },
+            "B": {
+              "prose": 71,
+              "code": 421,
+              "total": 492
+            },
+            "C": {
+              "prose": 96,
+              "code": 90,
+              "total": 186
+            },
+            "D": {
+              "prose": 68,
+              "code": 90,
+              "total": 158
+            }
+          },
+          "mote_code_saving": 78.6,
+          "tarse_prose_saving": 26,
+          "whole_output": {
+            "B_vs_A": 4.8,
+            "C_vs_A": 64,
+            "D_vs_A": 69.4,
+            "D_vs_B": 67.9,
+            "D_vs_C": 15.1
+          }
+        },
+        "whitespace-words": {
+          "tokens": {
+            "A": {
+              "prose": 61,
+              "code": 251,
+              "total": 312
+            },
+            "B": {
+              "prose": 38,
+              "code": 251,
+              "total": 289
+            },
+            "C": {
+              "prose": 61,
+              "code": 17,
+              "total": 78
+            },
+            "D": {
+              "prose": 38,
+              "code": 17,
+              "total": 55
+            }
+          },
+          "mote_code_saving": 93.2,
+          "tarse_prose_saving": 37.7,
+          "whole_output": {
+            "B_vs_A": 7.4,
+            "C_vs_A": 75,
+            "D_vs_A": 82.4,
+            "D_vs_B": 81,
+            "D_vs_C": 29.5
+          }
+        },
+        "openai/o200k_base": {
+          "tokens": {
+            "A": {
+              "prose": 102,
+              "code": 455,
+              "total": 557
+            },
+            "B": {
+              "prose": 81,
+              "code": 455,
+              "total": 536
+            },
+            "C": {
+              "prose": 102,
+              "code": 110,
+              "total": 212
+            },
+            "D": {
+              "prose": 81,
+              "code": 110,
+              "total": 191
+            }
+          },
+          "mote_code_saving": 75.8,
+          "tarse_prose_saving": 20.6,
+          "whole_output": {
+            "B_vs_A": 3.8,
+            "C_vs_A": 61.9,
+            "D_vs_A": 65.7,
+            "D_vs_B": 64.4,
+            "D_vs_C": 9.9
+          }
+        },
+        "meta/llama-3": {
+          "tokens": {
+            "A": {
+              "prose": 102,
+              "code": 447,
+              "total": 549
+            },
+            "B": {
+              "prose": 80,
+              "code": 447,
+              "total": 527
+            },
+            "C": {
+              "prose": 102,
+              "code": 110,
+              "total": 212
+            },
+            "D": {
+              "prose": 80,
+              "code": 110,
+              "total": 190
+            }
+          },
+          "mote_code_saving": 75.4,
+          "tarse_prose_saving": 21.6,
+          "whole_output": {
+            "B_vs_A": 4,
+            "C_vs_A": 61.4,
+            "D_vs_A": 65.4,
+            "D_vs_B": 63.9,
+            "D_vs_C": 10.4
+          }
+        },
+        "deepseek/v3": {
+          "tokens": {
+            "A": {
+              "prose": 107,
+              "code": 459,
+              "total": 566
+            },
+            "B": {
+              "prose": 90,
+              "code": 459,
+              "total": 549
+            },
+            "C": {
+              "prose": 107,
+              "code": 130,
+              "total": 237
+            },
+            "D": {
+              "prose": 90,
+              "code": 130,
+              "total": 220
+            }
+          },
+          "mote_code_saving": 71.7,
+          "tarse_prose_saving": 15.9,
+          "whole_output": {
+            "B_vs_A": 3,
+            "C_vs_A": 58.1,
+            "D_vs_A": 61.1,
+            "D_vs_B": 59.9,
+            "D_vs_C": 7.2
+          }
+        }
+      },
+      "measures": {
+        "A": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 101,
+              "code": 443,
+              "total": 544
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 96,
+              "code": 421,
+              "total": 517
+            },
+            "whitespace-words": {
+              "prose": 61,
+              "code": 251,
+              "total": 312
+            },
+            "openai/o200k_base": {
+              "prose": 102,
+              "code": 455,
+              "total": 557
+            },
+            "meta/llama-3": {
+              "prose": 102,
+              "code": 447,
+              "total": 549
+            },
+            "deepseek/v3": {
+              "prose": 107,
+              "code": 459,
+              "total": 566
+            }
+          }
+        },
+        "B": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 74,
+              "code": 443,
+              "total": 517
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 71,
+              "code": 421,
+              "total": 492
+            },
+            "whitespace-words": {
+              "prose": 38,
+              "code": 251,
+              "total": 289
+            },
+            "openai/o200k_base": {
+              "prose": 81,
+              "code": 455,
+              "total": 536
+            },
+            "meta/llama-3": {
+              "prose": 80,
+              "code": 447,
+              "total": 527
+            },
+            "deepseek/v3": {
+              "prose": 90,
+              "code": 459,
+              "total": 549
+            }
+          }
+        },
+        "C": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 101,
+              "code": 94,
+              "total": 195
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 96,
+              "code": 90,
+              "total": 186
+            },
+            "whitespace-words": {
+              "prose": 61,
+              "code": 17,
+              "total": 78
+            },
+            "openai/o200k_base": {
+              "prose": 102,
+              "code": 110,
+              "total": 212
+            },
+            "meta/llama-3": {
+              "prose": 102,
+              "code": 110,
+              "total": 212
+            },
+            "deepseek/v3": {
+              "prose": 107,
+              "code": 130,
+              "total": 237
+            }
+          }
+        },
+        "D": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 71,
+              "code": 94,
+              "total": 165
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 68,
+              "code": 90,
+              "total": 158
+            },
+            "whitespace-words": {
+              "prose": 38,
+              "code": 17,
+              "total": 55
+            },
+            "openai/o200k_base": {
+              "prose": 81,
+              "code": 110,
+              "total": 191
+            },
+            "meta/llama-3": {
+              "prose": 80,
+              "code": 110,
+              "total": 190
+            },
+            "deepseek/v3": {
+              "prose": 90,
+              "code": 130,
+              "total": 220
+            }
+          }
+        }
+      }
+    },
+    {
+      "task": "05-queue-worker",
+      "status": {
+        "mote": "Pass",
+        "ts": "Pass",
+        "tests": "Pass",
+        "mutation": "Pass"
+      },
+      "sizes": {
+        "runtime_shared_tokens": 1273,
+        "mote_source_tokens": 204,
+        "generated_ts_tokens": 482,
+        "ts_source_tokens": 645,
+        "mote_vs_ts_source_saving": 68.4,
+        "cold_start": {
+          "mote": 1477,
+          "ts": 645,
+          "saving": -129
+        },
+        "amortized": [
+          {
+            "N": 1,
+            "mote": 1477,
+            "ts": 645,
+            "saving": -129
+          },
+          {
+            "N": 5,
+            "mote": 2293,
+            "ts": 3225,
+            "saving": 28.9
+          },
+          {
+            "N": 10,
+            "mote": 3313,
+            "ts": 6450,
+            "saving": 48.6
+          }
+        ],
+        "break_even_modules": 3,
+        "dependency_view": {
+          "mote": 216,
+          "ts": 645,
+          "saving": 66.5
+        }
+      },
+      "adapters": {
+        "chars-3.8 (code-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 131,
+              "code": 596,
+              "total": 727
+            },
+            "B": {
+              "prose": 83,
+              "code": 596,
+              "total": 679
+            },
+            "C": {
+              "prose": 131,
+              "code": 178,
+              "total": 309
+            },
+            "D": {
+              "prose": 83,
+              "code": 178,
+              "total": 261
+            }
+          },
+          "mote_code_saving": 70.1,
+          "tarse_prose_saving": 36.6,
+          "whole_output": {
+            "B_vs_A": 6.6,
+            "C_vs_A": 57.5,
+            "D_vs_A": 64.1,
+            "D_vs_B": 61.6,
+            "D_vs_C": 15.5
+          }
+        },
+        "chars-4.0 (prose-ish)": {
+          "tokens": {
+            "A": {
+              "prose": 124,
+              "code": 567,
+              "total": 691
+            },
+            "B": {
+              "prose": 79,
+              "code": 567,
+              "total": 646
+            },
+            "C": {
+              "prose": 124,
+              "code": 169,
+              "total": 293
+            },
+            "D": {
+              "prose": 79,
+              "code": 169,
+              "total": 248
+            }
+          },
+          "mote_code_saving": 70.2,
+          "tarse_prose_saving": 36.3,
+          "whole_output": {
+            "B_vs_A": 6.5,
+            "C_vs_A": 57.6,
+            "D_vs_A": 64.1,
+            "D_vs_B": 61.6,
+            "D_vs_C": 15.4
+          }
+        },
+        "whitespace-words": {
+          "tokens": {
+            "A": {
+              "prose": 77,
+              "code": 320,
+              "total": 397
+            },
+            "B": {
+              "prose": 42,
+              "code": 320,
+              "total": 362
+            },
+            "C": {
+              "prose": 77,
+              "code": 27,
+              "total": 104
+            },
+            "D": {
+              "prose": 42,
+              "code": 27,
+              "total": 69
+            }
+          },
+          "mote_code_saving": 91.6,
+          "tarse_prose_saving": 45.5,
+          "whole_output": {
+            "B_vs_A": 8.8,
+            "C_vs_A": 73.8,
+            "D_vs_A": 82.6,
+            "D_vs_B": 80.9,
+            "D_vs_C": 33.7
+          }
+        },
+        "openai/o200k_base": {
+          "tokens": {
+            "A": {
+              "prose": 112,
+              "code": 619,
+              "total": 731
+            },
+            "B": {
+              "prose": 83,
+              "code": 619,
+              "total": 702
+            },
+            "C": {
+              "prose": 112,
+              "code": 204,
+              "total": 316
+            },
+            "D": {
+              "prose": 83,
+              "code": 204,
+              "total": 287
+            }
+          },
+          "mote_code_saving": 67,
+          "tarse_prose_saving": 25.9,
+          "whole_output": {
+            "B_vs_A": 4,
+            "C_vs_A": 56.8,
+            "D_vs_A": 60.7,
+            "D_vs_B": 59.1,
+            "D_vs_C": 9.2
+          }
+        },
+        "meta/llama-3": {
+          "tokens": {
+            "A": {
+              "prose": 113,
+              "code": 603,
+              "total": 716
+            },
+            "B": {
+              "prose": 83,
+              "code": 603,
+              "total": 686
+            },
+            "C": {
+              "prose": 113,
+              "code": 204,
+              "total": 317
+            },
+            "D": {
+              "prose": 83,
+              "code": 204,
+              "total": 287
+            }
+          },
+          "mote_code_saving": 66.2,
+          "tarse_prose_saving": 26.5,
+          "whole_output": {
+            "B_vs_A": 4.2,
+            "C_vs_A": 55.7,
+            "D_vs_A": 59.9,
+            "D_vs_B": 58.2,
+            "D_vs_C": 9.5
+          }
+        },
+        "deepseek/v3": {
+          "tokens": {
+            "A": {
+              "prose": 119,
+              "code": 624,
+              "total": 743
+            },
+            "B": {
+              "prose": 91,
+              "code": 624,
+              "total": 715
+            },
+            "C": {
+              "prose": 119,
+              "code": 236,
+              "total": 355
+            },
+            "D": {
+              "prose": 91,
+              "code": 236,
+              "total": 327
+            }
+          },
+          "mote_code_saving": 62.2,
+          "tarse_prose_saving": 23.5,
+          "whole_output": {
+            "B_vs_A": 3.8,
+            "C_vs_A": 52.2,
+            "D_vs_A": 56,
+            "D_vs_B": 54.3,
+            "D_vs_C": 7.9
+          }
+        }
+      },
+      "measures": {
+        "A": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 131,
+              "code": 596,
+              "total": 727
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 124,
+              "code": 567,
+              "total": 691
+            },
+            "whitespace-words": {
+              "prose": 77,
+              "code": 320,
+              "total": 397
+            },
+            "openai/o200k_base": {
+              "prose": 112,
+              "code": 619,
+              "total": 731
+            },
+            "meta/llama-3": {
+              "prose": 113,
+              "code": 603,
+              "total": 716
+            },
+            "deepseek/v3": {
+              "prose": 119,
+              "code": 624,
+              "total": 743
+            }
+          }
+        },
+        "B": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 83,
+              "code": 596,
+              "total": 679
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 79,
+              "code": 567,
+              "total": 646
+            },
+            "whitespace-words": {
+              "prose": 42,
+              "code": 320,
+              "total": 362
+            },
+            "openai/o200k_base": {
+              "prose": 83,
+              "code": 619,
+              "total": 702
+            },
+            "meta/llama-3": {
+              "prose": 83,
+              "code": 603,
+              "total": 686
+            },
+            "deepseek/v3": {
+              "prose": 91,
+              "code": 624,
+              "total": 715
+            }
+          }
+        },
+        "C": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 131,
+              "code": 178,
+              "total": 309
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 124,
+              "code": 169,
+              "total": 293
+            },
+            "whitespace-words": {
+              "prose": 77,
+              "code": 27,
+              "total": 104
+            },
+            "openai/o200k_base": {
+              "prose": 112,
+              "code": 204,
+              "total": 316
+            },
+            "meta/llama-3": {
+              "prose": 113,
+              "code": 204,
+              "total": 317
+            },
+            "deepseek/v3": {
+              "prose": 119,
+              "code": 236,
+              "total": 355
+            }
+          }
+        },
+        "D": {
+          "perAdapter": {
+            "chars-3.8 (code-ish)": {
+              "prose": 83,
+              "code": 178,
+              "total": 261
+            },
+            "chars-4.0 (prose-ish)": {
+              "prose": 79,
+              "code": 169,
+              "total": 248
+            },
+            "whitespace-words": {
+              "prose": 42,
+              "code": 27,
+              "total": 69
+            },
+            "openai/o200k_base": {
+              "prose": 83,
+              "code": 204,
+              "total": 287
+            },
+            "meta/llama-3": {
+              "prose": 83,
+              "code": 204,
+              "total": 287
+            },
+            "deepseek/v3": {
+              "prose": 91,
+              "code": 236,
+              "total": 327
+            }
+          }
+        }
+      }
+    }
+  ]
+}

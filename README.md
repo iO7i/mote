@@ -2,6 +2,8 @@
 
 A typed, token-efficient programming language that compiles to readable TypeScript.
 
+Created by **Hosam Talbi**.
+
 Mote explores how compact syntax can reduce source-code token counts while preserving type checking, runtime validation, and interoperability with Node.js. Its compiler emits inspectable TypeScript or JavaScript, declaration files, and source maps.
 
 **Status: experimental.** Includes a compiler, command-line interface, formatter, examples, and a reproducible benchmark suite.
