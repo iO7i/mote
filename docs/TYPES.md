@@ -45,6 +45,9 @@ complete Hindley–Milner engine. What it does:
   untyped imports as `unknown` in strict mode. Loading declaration files is
   deferred; the honest current behavior is "import members are external/`any`".
 - `+` is numeric only in v0.2 (string concatenation via `+` is not modeled).
+- Generic **functions** are supported by light unification. Generic type aliases
+  are parsed for forward compatibility but rejected with `M310` because the
+  current resolver cannot instantiate them soundly.
 
 ## Assignability
 
@@ -61,7 +64,7 @@ complete Hindley–Milner engine. What it does:
 ## Diagnostics (type layer)
 
 `M101` unknown identifier · `M102` duplicate declaration · `M110` unknown named
-type · `M201` nullable access without handling · `M202` invalid member access ·
+type · `M111` cyclic type alias · `M201` nullable access without handling · `M202` invalid member access ·
 `M301` wrong argument count · `M302` wrong argument type · `M401` invalid return
 type · `M410` arithmetic on non-number · `M420` missing annotation on public API ·
-`M310`/`M501` invalid generic / unwrap use.
+`M310` invalid generic use · `M311` non-reifiable runtime validation type · `M501` invalid unwrap.

@@ -341,7 +341,11 @@ export function parse(src, file = "<input>") {
         if (atOp("}")) break; // trailing comma
         const kt = peek();
         let key, keyIsString = false;
-        if (kt.type === "str") { key = next().value; keyIsString = true; }
+        if (kt.type === "str") {
+          const raw = next().value;
+          try { key = JSON.parse(raw); } catch { key = raw.slice(1, -1); }
+          keyIsString = true;
+        }
         else key = expectName();
         expect("op", ":");
         props.push({ key, keyIsString, value: parseExpr(), line: kt.line, col: kt.col });

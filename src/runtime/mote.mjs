@@ -25,6 +25,12 @@ const err = (path, expected, got) => ({ ok: false, error: { path, expected, got 
 
 // Validate `value` against a schema descriptor. `registry` resolves { k:"ref" }.
 export function validate(value, schema, registry, path = "$") {
+  return validateInner(value, schema, registry, path, new Set(), 0);
+}
+
+function validateInner(value, schema, registry, path, refs, depth) {
+  if (!schema || typeof schema.k !== "string") return err(path, "valid schema", "invalid schema");
+  if (depth > 128) return err(path, "acyclic schema (max depth 128)", "schema depth exceeded");
   switch (schema.k) {
     case "any":
     case "unknown":
@@ -32,36 +38,42 @@ export function validate(value, schema, registry, path = "$") {
     case "str":
       return typeof value === "string" ? ok(value) : err(path, "str", typeName(value));
     case "num":
-      return typeof value === "number" && !Number.isNaN(value)
+      return typeof value === "number" && Number.isFinite(value)
         ? ok(value) : err(path, "num", typeName(value));
     case "bool":
       return typeof value === "boolean" ? ok(value) : err(path, "bool", typeName(value));
     case "nil":
-      return value === null || value === undefined ? ok(value) : err(path, "nil", typeName(value));
+      return value === null ? ok(value) : err(path, "nil", typeName(value));
     case "opt":
-      if (value === null || value === undefined) return ok(value);
-      return validate(value, schema.inner, registry, path);
+      return validateInner(value, schema.inner, registry, path, refs, depth + 1);
     case "ref": {
-      const target = registry[schema.name];
-      if (!target) throw new Error(`unknown schema ref '${schema.name}'`);
-      return validate(value, target, registry, path);
+      const target = registry && typeof registry === "object" ? registry[schema.name] : null;
+      if (!target) return err(path, schema.name, "unknown schema");
+      if (refs.has(schema.name)) return err(path, schema.name, "cyclic schema");
+      refs.add(schema.name);
+      const result = validateInner(value, target, registry, path, refs, depth + 1);
+      refs.delete(schema.name);
+      return result;
     }
     case "array": {
+      if (!schema.element) return err(path, "valid array schema", "invalid schema");
       if (!Array.isArray(value)) return err(path, "array", typeName(value));
       for (let i = 0; i < value.length; i++) {
-        const r = validate(value[i], schema.element, registry, `${path}[${i}]`);
+        const r = validateInner(value[i], schema.element, registry, `${path}[${i}]`, refs, depth + 1);
         if (!r.ok) return r;
       }
       return ok(value);
     }
     case "union": {
+      if (!Array.isArray(schema.options)) return err(path, "valid union schema", "invalid schema");
       for (const opt of schema.options) {
-        const r = validate(value, opt, registry, path);
+        const r = validateInner(value, opt, registry, path, refs, depth + 1);
         if (r.ok) return r;
       }
       return err(path, schema.options.map(describe).join("|"), typeName(value));
     }
     case "object": {
+      if (!Array.isArray(schema.fields)) return err(path, "valid object schema", "invalid schema");
       if (typeName(value) !== "object") return err(path, "object", typeName(value));
       for (const f of schema.fields) {
         const has = Object.prototype.hasOwnProperty.call(value, f.name);
@@ -69,13 +81,13 @@ export function validate(value, schema, registry, path = "$") {
           if (f.optional) continue;
           return err(`${path}.${f.name}`, `${describe(f.schema)} (required)`, "nil");
         }
-        const r = validate(value[f.name], f.schema, registry, `${path}.${f.name}`);
+        const r = validateInner(value[f.name], f.schema, registry, `${path}.${f.name}`, refs, depth + 1);
         if (!r.ok) return r;
       }
       return ok(value);
     }
     default:
-      throw new Error(`unknown schema kind '${schema.k}'`);
+      return err(path, "known schema", `unknown schema kind '${schema.k}'`);
   }
 }
 

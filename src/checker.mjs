@@ -18,6 +18,7 @@ export function check(program, opts = {}) {
   const diags = new Diagnostics(file);
   const typeEnv = new Map();   // type name -> Type (definition body)
   const typeDecls = [];        // ordered [{name, type, node}]
+  const typeParamsByName = new Map();
   const globals = new Map();   // value name -> Type
   const state = { needsRuntime: false };
 
@@ -28,11 +29,19 @@ export function check(program, opts = {}) {
     const type = resolveTypeExpr(s.type, tvars);
     s.typeR = type; // always annotate so the emitter can render, even on error
     if (typeEnv.has(s.name)) { diags.error("M102", `duplicate type '${s.name}'`, s); continue; }
+    if (s.typeParams.length) {
+      // Generic aliases were parsed but not instantiated by the old resolver,
+      // which could silently turn T into an unchecked runtime value. Keep the
+      // grammar stable and reject the unsound construct until it is implemented.
+      diags.error("M310", `generic type alias '${s.name}' is not supported by this compiler`, s);
+    }
     typeEnv.set(s.name, type);
+    typeParamsByName.set(s.name, s.typeParams);
     typeDecls.push({ name: s.name, type, node: s });
   }
   // verify all named references resolve
   for (const { type, node } of typeDecls) checkNamedRefs(type, node);
+  detectAliasCycles();
 
   // 2) seed globals: ambient + imports + function signatures.
   // User declarations may SHADOW ambients; duplicates are only among user names.
@@ -125,6 +134,10 @@ export function check(program, opts = {}) {
         if (!typeEnv.has(type.name) && !PRIMS.has(type.name)) {
           diags.error("M110", `unknown type '${type.name}'`, node);
         }
+        const params = typeParamsByName.get(type.name);
+        if (params && type.args.length !== params.length) {
+          diags.error("M310", `type '${type.name}' expects ${params.length} type argument(s), got ${type.args.length}`, node);
+        }
         type.args?.forEach((a) => checkNamedRefs(a, node, seen));
         return;
       case "opt": checkNamedRefs(type.inner, node, seen); return;
@@ -133,6 +146,46 @@ export function check(program, opts = {}) {
       case "object": type.fields.forEach((f) => checkNamedRefs(f.type, node, seen)); return;
       case "result": checkNamedRefs(type.inner, node, seen); return;
     }
+  }
+
+  function detectAliasCycles() {
+    const reported = new Set();
+    const complete = new Set();
+    for (const name of typeEnv.keys()) visit(name, []);
+
+    function visit(name, trail) {
+      if (complete.has(name)) return;
+      const at = trail.indexOf(name);
+      if (at >= 0) {
+        for (const cycleName of trail.slice(at)) {
+          if (reported.has(cycleName)) continue;
+          reported.add(cycleName);
+          const decl = typeDecls.find((d) => d.name === cycleName);
+          diags.error("M111", `cyclic type alias involving '${cycleName}'`, decl?.node);
+        }
+        return;
+      }
+      const type = typeEnv.get(name);
+      if (!type) return;
+      for (const dep of namedDependencies(type)) visit(dep, [...trail, name]);
+      complete.add(name);
+    }
+  }
+
+  function namedDependencies(type, found = new Set()) {
+    if (!type || typeof type !== "object") return found;
+    switch (type.t) {
+      case "named":
+        if (typeEnv.has(type.name)) found.add(type.name);
+        type.args?.forEach((arg) => namedDependencies(arg, found));
+        break;
+      case "opt": namedDependencies(type.inner, found); break;
+      case "array": namedDependencies(type.element, found); break;
+      case "union": type.options.forEach((option) => namedDependencies(option, found)); break;
+      case "object": type.fields.forEach((field) => namedDependencies(field.type, found)); break;
+      case "result": namedDependencies(type.inner, found); break;
+    }
+    return found;
   }
 
   // ---------------------------------------------------------------- inference
@@ -246,7 +299,7 @@ export function check(program, opts = {}) {
       const b = node.callee.name;
       state.needsRuntime = true;
       const ta = node.typeArgs ?? [];
-      if (ta.length !== 1 || ta[0].kind !== "TName" || PRIMS.has(ta[0].name)) {
+      if (ta.length !== 1 || ta[0].kind !== "TName" || ta[0].args?.length || PRIMS.has(ta[0].name)) {
         diags.error("M310", `${b}<T>() requires exactly one named type argument`, node);
         node.builtin = b; node.typeName = ta[0]?.name ?? "unknown";
         return T.result(ANY);
@@ -254,6 +307,9 @@ export function check(program, opts = {}) {
       node.builtin = b;
       node.typeName = ta[0].name;
       if (!typeEnv.has(ta[0].name)) diags.error("M110", `unknown type '${ta[0].name}'`, node);
+      else if (!isReifiable(typeEnv.get(ta[0].name), new Set([ta[0].name]))) {
+        diags.error("M311", `${b}<${ta[0].name}>() requires a concrete runtime-reifiable type`, node);
+      }
       node.args.forEach((a) => infer(a, scope));
       return T.result(T.named(ta[0].name));
     }
@@ -327,6 +383,26 @@ export function check(program, opts = {}) {
     return r.t === "num" || r.t === "any" || r.t === "unknown";
   }
   function stripOpt(t) { return t.t === "opt" ? t.inner : t; }
+
+  function isReifiable(type, seen) {
+    if (!type || typeof type !== "object") return false;
+    switch (type.t) {
+      case "str": case "num": case "bool": case "nil": return true;
+      case "any": case "unknown": case "never": case "var": case "fn": case "result": return false;
+      case "opt": return isReifiable(type.inner, seen);
+      case "array": return isReifiable(type.element, seen);
+      case "union": return type.options.every((option) => isReifiable(option, seen));
+      case "object": return type.fields.every((field) => isReifiable(field.type, seen));
+      case "named": {
+        if (type.args?.length || !typeEnv.has(type.name) || seen.has(type.name)) return false;
+        seen.add(type.name);
+        const value = isReifiable(typeEnv.get(type.name), seen);
+        seen.delete(type.name);
+        return value;
+      }
+      default: return false;
+    }
+  }
 }
 
 class Scope {

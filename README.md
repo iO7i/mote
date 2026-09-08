@@ -14,7 +14,7 @@ Mote explores how compact syntax can reduce source-code token counts while prese
 - Static checking with stable diagnostic codes and explanations.
 - Runtime schemas derived from types for validating external JSON.
 - TypeScript and JavaScript output, declarations, and coarse source maps.
-- Node/npm imports and compact or readable formatting.
+- Node/npm imports, stable JSON diagnostics, and compact or readable formatting.
 
 ```mote
 type Payment={amount:num,currency:str?}
@@ -40,6 +40,7 @@ git clone https://github.com/iO7i/mote.git
 cd mote
 npm ci
 node bin/mote.mjs check examples/typed-webhook.mt
+node bin/mote.mjs check examples/typed-boundary.mt --json
 node bin/mote.mjs run examples/typed-webhook.mt
 npm test
 ```
@@ -65,6 +66,17 @@ measure <file.mt> --json         Produce a heuristic token estimate
 explain <M-code>                 Explain a compiler diagnostic
 ```
 
+`check` and `compile` accept `--json` for a versioned diagnostic envelope. The programmatic API is available through `mote/api`:
+
+```js
+import { checkSource, compileSource } from "mote/api";
+
+const result = checkSource("type Event={id:str}", { file: "event.mt" });
+console.log(result.envelope);
+```
+
+Compilation and checking parse source only; they do not execute `use` imports. A failed directory compilation validates all inputs before writing output, so it does not leave a partial generated project behind.
+
 ## Benchmarks
 
 ![Median code-token reduction across three tokenizers, measured on five synthetic tasks.](docs/images/tokenizer-savings.svg)
@@ -78,6 +90,7 @@ These are fixture measurements from manual runs, not evidence of lower end-to-en
 ```sh
 node bench/audit.mjs
 node bench/run.mjs
+npm run audit:extended
 ```
 
 See [methodology](docs/BENCHMARKS.md) and the [detailed report](bench/REPORT.md) for baselines and limitations.
@@ -102,6 +115,11 @@ Pipeline: source → lexer → parser → type checker → emitter → TypeScrip
 - [Language specification](docs/SPEC-v0.2.md)
 - [Type system](docs/TYPES.md)
 - [Runtime validation](docs/RUNTIME-VALIDATION.md)
+- [Compiler/API reference](docs/AGENT-REFERENCE.md)
+- [Evaluation protocol](docs/EVALUATION-PROTOCOL.md)
+- [Verification evidence](docs/COMPILER-EVIDENCE.md)
+
+Runtime validation treats `num` as a finite number and `nil` as JSON `null`. Optional record fields may be absent; when present, they must match their declared type (including rejecting an untyped `null`). Extra object properties are accepted to preserve structural interoperability. `mote run` executes code with Node and is intended only for code you trust.
 
 Classes, inheritance, decorators, macros, native compilation, a browser runtime, a full language server, and advanced type-level programming are outside the current implementation.
 

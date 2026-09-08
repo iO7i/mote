@@ -58,6 +58,8 @@ field     := NAME ':' type
 Primitives: `str num bool nil unknown any`. `T?` is optional (a field/value that
 may be absent). `A|B` is a union. `[T]` is an array. `{k:T}` is an object.
 Named references (`Money`, `Event`, `Result<T>`) resolve against `type` decls.
+Generic functions are supported; generic type aliases are parsed but currently
+diagnosed as unsupported (`M310`) rather than being unsafely erased.
 
 ## 5. Expressions & precedence
 
@@ -116,12 +118,12 @@ See `docs/RUNTIME-VALIDATION.md` for the schema and error-path format.
 ## 8. Diagnostics
 
 Every diagnostic has a stable code and a source location. Codes:
-`M001 M101 M102 M110 M201 M202 M203 M301 M302 M310 M401 M410 M420 M501 M901`.
+`M001 M101 M102 M110 M111 M201 M202 M203 M301 M302 M310 M311 M401 M410 M420 M501 M901 M902`.
 Run `mote explain <code>` for details.
 
 ## 9. Emit contract
 
-- `use "m" as x` → `import * as x from "m";`
+- `use "m" as x` → `import * as x from "m";` (checking/compiling never executes it).
 - `type` → a TypeScript `type` alias + a runtime schema entry in `$schemas`.
 - Functions emit readable signatures with resolved annotations.
 - Output passes `tsc --strict` (see `bench` / `dist/tsconfig.json`).
@@ -132,4 +134,5 @@ Run `mote explain <code>` for details.
 
 classes, inheritance, decorators, macros, metaprogramming, reflection,
 ownership/borrowing, native compilation, custom package registry, browser
-runtime, LSP beyond diagnostics scaffolding, advanced type-level programming.
+runtime, LSP beyond diagnostics scaffolding, generic type aliases, advanced
+type-level programming.
