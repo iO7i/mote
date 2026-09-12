@@ -6,14 +6,14 @@ Created by **Hosam Talbi**.
 
 Mote explores how compact syntax can reduce source-code token counts while preserving type checking, runtime validation, and interoperability with Node.js. Its compiler emits inspectable TypeScript or JavaScript, declaration files, and source maps.
 
-**Status: experimental.** Includes a compiler, command-line interface, formatter, examples, and a reproducible benchmark suite.
+**Status: experimental.** Includes a compiler, command-line interface, formatter, examples, a tested LSP server, and a reproducible benchmark/research harness. The local pilot now has 20 accepted paired task definitions; the AI-engineering experiment still has no live-model result.
 
 ## Language features
 
 - Typed declarations, functions, structural records, and optional fields.
 - Static checking with stable diagnostic codes and explanations.
 - Runtime schemas derived from types for validating external JSON.
-- TypeScript and JavaScript output, declarations, and coarse source maps.
+- TypeScript and JavaScript output, declarations, and statement/column source-map anchors.
 - Node/npm imports, stable JSON diagnostics, and compact or readable formatting.
 
 ```mote
@@ -95,6 +95,33 @@ npm run audit:extended
 
 See [methodology](docs/BENCHMARKS.md) and the [detailed report](bench/REPORT.md) for baselines and limitations.
 
+The historical five-task suite is a representation/compiler microbenchmark. The
+separate paired AI-engineering protocol is versioned in
+[docs/AI-ENGINEERING-BENCHMARK.md](docs/AI-ENGINEERING-BENCHMARK.md), with a
+24-entry pilot registry in `bench/corpus/`, of which 20 tasks are accepted by
+the local paired-oracle gate and four remain explicit hard-negative
+specifications. It measures verified work under fixed context, cumulative
+token, time, and cost budgets; it does not turn source-token savings into an
+end-to-end efficiency claim. No live model matrix has been run in this
+checkout.
+
+## Evidence at a glance
+
+| Claim | Evidence | Current status |
+| --- | --- | --- |
+| Compiler parses/type-checks Mote | `npm test`, 122 deterministic tests | verified locally |
+| Seeded compiler properties hold | `tests/property.mjs`, `tests/fuzz.mjs` | 12,000 + 256 cases locally verified |
+| Meaningful compiler mutations are detected | `tests/mutation.mjs` | 4/4 killed, 100% measured score |
+| Historical benchmark mutations are detected | `bench/mutation.mjs` | 12/12 killed, 100% measured score |
+| Accepted paired pilot tasks | `bench/corpus/accepted/run.mjs` | 20/20 references pass; 40/40 mutation controls killed |
+| Generated TypeScript compiles | `tests/cli.mjs` and fixture audit | locally verified when TypeScript is installed |
+| LSP features work against compiler APIs | `tests/lsp.mjs` | locally verified |
+| Node/npm boundary is characterized | `interop/corpus.json`, `interop/fixture-matrix.mjs` | 8/8 offline fixtures pass; third-party probes remain separate |
+| Mote improves AI engineering efficiency | paired live run artifacts | **not established** |
+
+See [compiler evidence](docs/COMPILER-EVIDENCE.md), [LSP support](docs/LSP.md),
+the [candidate sandbox](docs/CANDIDATE-SANDBOX.md), and [release preparation](docs/RELEASE.md) for exact boundaries.
+
 Charts are generated from `bench/results.json`. To regenerate them, install Python with Matplotlib and run `python bench/charts.py`.
 
 ## Repository structure
@@ -106,6 +133,8 @@ Charts are generated from `bench/results.json`. To regenerate them, install Pyth
 | `tests` | Compiler, runtime, formatter, and end-to-end tests |
 | `examples` | Runnable language examples |
 | `bench` | Reference implementations, fixtures, measurements, and audit harness |
+| `lsp` / `editors/vscode` | Compiler-backed language server and prepared VS Code client |
+| `interop` / `eval` | Versioned compatibility matrix, provider adapters, and bounded candidate runner |
 | `docs` | Specification and technical documentation |
 
 Pipeline: source → lexer → parser → type checker → emitter → TypeScript/JavaScript.
@@ -121,6 +150,6 @@ Pipeline: source → lexer → parser → type checker → emitter → TypeScrip
 
 Runtime validation treats `num` as a finite number and `nil` as JSON `null`. Optional record fields may be absent; when present, they must match their declared type (including rejecting an untyped `null`). Extra object properties are accepted to preserve structural interoperability. `mote run` executes code with Node and is intended only for code you trust.
 
-Classes, inheritance, decorators, macros, native compilation, a browser runtime, a full language server, and advanced type-level programming are outside the current implementation.
+Classes, inheritance, decorators, macros, native compilation, a browser runtime, advanced type-level programming, and rich semantic analysis across imported modules are outside the current implementation. The shipped LSP is intentionally limited to the compiler-backed single-document capabilities listed in [LSP.md](docs/LSP.md).
 
 License: MIT.

@@ -1,0 +1,23 @@
+import { createLspServer } from "../lsp/server.mjs";
+
+const server = createLspServer();
+let failed = 0;
+const expect = (name, value) => { if (!value) { failed++; console.error(`FAIL ${name}`); } };
+const init = server.handle({ jsonrpc: "2.0", id: 1, method: "initialize", params: {} });
+expect("initialize advertises hover", init.result.capabilities.hoverProvider === true);
+const uri = "file:///sample.mt";
+const text = "type User={name:str}\npub fn greet(u:User)->str=u.name\nlet value=1\n";
+const diag = server.handle({ jsonrpc: "2.0", method: "textDocument/didOpen", params: { textDocument: { uri, text, version: 1 } } });
+expect("didOpen publishes no diagnostics", diag.params.diagnostics.length === 0);
+const symbols = server.handle({ jsonrpc: "2.0", id: 2, method: "textDocument/documentSymbol", params: { textDocument: { uri } } });
+expect("document symbols include declarations", symbols.result.map((s) => s.name).join(",") === "User,greet,value");
+const hover = server.handle({ jsonrpc: "2.0", id: 3, method: "textDocument/hover", params: { textDocument: { uri }, position: { line: 1, character: 10 } } });
+expect("hover returns a compiler-backed answer", hover.result?.contents?.value.includes("greet"));
+const completion = server.handle({ jsonrpc: "2.0", id: 4, method: "textDocument/completion", params: { textDocument: { uri }, position: { line: 2, character: 4 } } });
+expect("completion includes fn keyword", completion.result.items.some((item) => item.label === "fn"));
+const formatted = server.handle({ jsonrpc: "2.0", id: 5, method: "textDocument/formatting", params: { textDocument: { uri }, options: {} } });
+expect("formatting returns edit", formatted.result.length === 1 && formatted.result[0].newText.includes("type User"));
+const renamed = server.handle({ jsonrpc: "2.0", id: 6, method: "textDocument/rename", params: { textDocument: { uri }, position: { line: 1, character: 10 }, newName: "welcome" } });
+expect("rename returns workspace edit", renamed.result?.changes?.[uri]?.length >= 1);
+console.log(`${failed ? "FAIL" : "PASS"} LSP protocol tests`);
+process.exit(failed ? 1 : 0);

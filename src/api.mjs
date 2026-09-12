@@ -18,7 +18,7 @@ export function compileSource(source, options = {}) {
     diagnostics.error("M902", error instanceof Error ? error.message : "unexpected compiler failure");
     return Object.freeze({
       program: null, code: "", lineMap: [], needsRuntime: false, typeDecls: [],
-      declarations: () => "", sourceMap: () => "",
+      declarations: () => "", sourceMap: () => "", positionMap: () => [],
       diagnostics,
       envelope: diagnosticEnvelope(diagnostics, { file, internal: true }),
     });

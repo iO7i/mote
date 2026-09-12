@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "accounting": "non-empty executable function/entrypoint declarations in the checked-in app sources",
+  "moteCoreDeclarations": 3,
+  "typescriptAdapterDeclarations": 1,
+  "typescriptCliEntrypoints": 1,
+  "typescriptStatementShare": 0.25,
+  "performanceClaim": false
+}

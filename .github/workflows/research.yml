@@ -1,0 +1,28 @@
+name: Extended research checks
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 0"
+jobs:
+  extended-local:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run fuzz:extended
+      - run: npm run mutation:compiler
+      - run: npm run mutation:benchmark
+      - run: npm run benchmark:accept
+      - run: npm run benchmark:protocol
+      - run: npm run interop:audit
+      - run: npm run interop:matrix
+      - run: npm run benchmark:fake
+      - run: node eval/run.mjs
+        env:
+          MOTE_EVAL_MODEL: ""
+      # Live provider runs intentionally require a separately authorized job;
+      # they are never triggered by pull requests or this workflow.

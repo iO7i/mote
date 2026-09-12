@@ -7,9 +7,11 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const run = (command, args, cwd) => spawnSync(command, args, {
-  cwd, encoding: "utf8", shell: process.platform === "win32" && command.endsWith(".cmd"),
+  cwd, encoding: "utf8", timeout: 120_000, windowsHide: true,
+  shell: process.platform === "win32" && command.endsWith(".cmd"),
 });
 const NPM = process.platform === "win32" ? "npm.cmd" : "npm";
+const TSC = join(ROOT, "node_modules", "typescript", "bin", "tsc");
 let failed = 0;
 const expect = (name, value, detail = "") => { if (!value) { failed++; console.error(`FAIL ${name}${detail ? `: ${detail}` : ""}`); } };
 let tarball;
@@ -21,14 +23,20 @@ try {
   tarball = join(ROOT, info.filename);
   expect("package includes public compiler API", packed.status === 0 && info.files.some((f) => f.path === "src/api.mjs"));
   writeFileSync(join(consumer, "package.json"), JSON.stringify({ name: "consumer-check", private: true, type: "module" }));
-  const installed = run(NPM, ["install", "--ignore-scripts", "--no-audit", "--no-fund", tarball], consumer);
-  expect("packed module installs", installed.status === 0, installed.stderr);
+  // Root npm ci has already populated the locked dependency cache in CI. An
+  // offline consumer install makes the proof reproducible and fails quickly
+  // when that cache is unavailable instead of hanging on registry access.
+  const installed = run(NPM, ["install", "--offline", "--package-lock=false", "--ignore-scripts", "--no-audit", "--no-fund", tarball], consumer);
+  expect("packed module installs", installed.status === 0, installed.stderr || installed.error?.message);
   writeFileSync(join(consumer, "index.mjs"), "import { checkSource } from 'mote/api'; const r=checkSource('type Event={id:str}'); if(!r.ok) process.exit(1); console.log(r.envelope.compiler.name)");
   const imported = run(process.execPath, ["index.mjs"], consumer);
   expect("external consumer imports API", imported.status === 0 && imported.stdout.trim() === "mote");
+  writeFileSync(join(consumer, "types.ts"), "import { checkSource } from 'mote/api'; import { validate, type Result } from 'mote/runtime'; const c = checkSource('type Event={id:str}'); const r: Result<unknown> = validate({ id: 'ok' }, { k: 'object', fields: [] }); void c; void r;");
+  const typed = run(process.execPath, [TSC, "--strict", "--noEmit", "--module", "NodeNext", "--moduleResolution", "NodeNext", "types.ts"], consumer);
+  expect("external consumer resolves declarations", typed.status === 0, typed.stdout || typed.stderr || typed.error?.message);
 } finally {
   if (tarball) try { unlinkSync(tarball); } catch { /* cleanup test artifact */ }
-  rmSync(consumer, { recursive: true, force: true });
+  try { rmSync(consumer, { recursive: true, force: true }); } catch (error) { console.error(`WARN consumer cleanup deferred: ${error.message}`); }
 }
 console.log(`${failed ? "FAIL" : "PASS"} external consumer package`);
 process.exit(failed ? 1 : 0);

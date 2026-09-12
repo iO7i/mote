@@ -1,0 +1,22 @@
+{
+  "name": "mote-language",
+  "displayName": "Mote Language",
+  "description": "Language support for the Mote typed language.",
+  "version": "0.1.0",
+  "publisher": "iO7i",
+  "license": "MIT",
+  "engines": { "vscode": ">=1.90.0" },
+  "categories": ["Programming Languages"],
+  "activationEvents": ["onLanguage:mote"],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [{
+      "id": "mote",
+      "aliases": ["Mote", "mote"],
+      "extensions": [".mt"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{ "language": "mote", "scopeName": "source.mote", "path": "./syntaxes/mote.tmLanguage.json" }]
+  },
+  "dependencies": { "vscode-languageclient": "^9.0.1" }
+}

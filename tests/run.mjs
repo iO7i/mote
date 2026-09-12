@@ -304,6 +304,9 @@ group("source map");
   ok("sourcemap sources", map.sources[0] === "a.mt");
   ok("sourcemap has content", typeof map.sourcesContent[0] === "string");
   ok("sourcemap mappings non-empty", map.mappings.length > 0);
+  const positions = r.positionMap();
+  ok("position map preserves source columns", positions.length >= 2 && positions.every((p) => p.source.column >= 0));
+  ok("generated position maps back to Mote", positions[0].source.line === 1 && positions[0].generated.line === 1);
 }
 
 // ============================================================ REPORT

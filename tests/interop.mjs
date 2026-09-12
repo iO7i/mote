@@ -1,0 +1,20 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { compile } from "../src/compile.mjs";
+import { runFixtureMatrix } from "../interop/fixture-matrix.mjs";
+
+let failed = 0;
+const expect = (name, condition) => { if (!condition) { failed++; console.error(`FAIL ${name}`); } };
+const imported = compile('use "node:path" as path\nfn basename(p:str)->str=path.basename(p)', { file: "interop.mt" });
+expect("Node ESM namespace import compiles", !imported.diagnostics.hasErrors && imported.code.includes('import * as path from "node:path";'));
+const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
+expect("public API declaration is packaged", existsSync(join(root, "src", "api.d.ts")));
+expect("runtime declaration is packaged", existsSync(join(root, "src", "runtime", "mote.d.ts")));
+const corpus = JSON.parse(readFileSync(join(root, "interop", "corpus.json"), "utf8"));
+expect("interop corpus is versioned", corpus.schemaVersion === 1 && corpus.cases.length >= 8);
+const fixtures = await runFixtureMatrix();
+expect("offline fixture matrix passes", fixtures.passed === fixtures.total, JSON.stringify(fixtures));
+expect("offline matrix covers scoped and nested packages", fixtures.cases.some((item) => item.id === "scoped-package" && item.status === "PASS") && fixtures.cases.some((item) => item.id === "nested-package" && item.status === "PASS"));
+console.log(`${failed ? "FAIL" : "PASS"} interoperability structural tests cases=${corpus.cases.length}`);
+process.exit(failed ? 1 : 0);

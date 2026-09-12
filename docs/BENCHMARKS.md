@@ -6,6 +6,11 @@ tokenizer, with explicit verification and honesty flags.
 
 ## The four modes
 
+This document describes the retained representation benchmark. The separate
+AI-engineering benchmark is specified in
+[AI-ENGINEERING-BENCHMARK.md](AI-ENGINEERING-BENCHMARK.md) and must not be
+inferred from the percentages below.
+
 For every task:
 
 ```txt

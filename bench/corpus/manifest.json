@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "1.0.0",
+  "corpusVersion": "pilot-0.2.0",
+  "status": "PILOT_ACCEPTED",
+  "frozen": false,
+  "acceptedTaskCount": 20,
+  "targetAcceptedMainTasks": 200,
+  "acceptanceRule": "paired repository + hidden oracle + mutation set + review record",
+  "strata": [
+    "typed-transformation",
+    "data-boundary",
+    "api-handler",
+    "parser-serializer",
+    "stateful-module",
+    "npm-node-interoperability",
+    "bug-repair",
+    "feature-addition",
+    "refactoring",
+    "multi-file-maintenance",
+    "long-context",
+    "hard-negative"
+  ],
+  "tasks": [
+    {
+      "id": "P01",
+      "title": "Normalize paginated records",
+      "stratum": "typed-transformation",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P01/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P02",
+      "title": "Merge sparse configuration",
+      "stratum": "typed-transformation",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P02/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P03",
+      "title": "Summarize nullable metrics",
+      "stratum": "typed-transformation",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P03/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P04",
+      "title": "Parse versioned JSON envelope",
+      "stratum": "data-boundary",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P04/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P05",
+      "title": "Validate webhook payload",
+      "stratum": "data-boundary",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P05/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P06",
+      "title": "Serialize import error parts",
+      "stratum": "parser-serializer",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P06/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P07",
+      "title": "Route typed request",
+      "stratum": "api-handler",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P07/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P08",
+      "title": "Add authenticated health endpoint",
+      "stratum": "api-handler",
+      "kind": "feature-addition",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P08/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P09",
+      "title": "Decode line-oriented events",
+      "stratum": "parser-serializer",
+      "kind": "new-module",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P09/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P10",
+      "title": "Round-trip configuration format",
+      "stratum": "parser-serializer",
+      "kind": "new-module",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P10/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P11",
+      "title": "Track bounded job state",
+      "stratum": "stateful-module",
+      "kind": "new-module",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P11/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P12",
+      "title": "Repair stale cache transition",
+      "stratum": "stateful-module",
+      "kind": "bug-repair",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P12/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P13",
+      "title": "Read a Node filesystem fixture",
+      "stratum": "npm-node-interoperability",
+      "kind": "integration",
+      "repoScale": "small",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P13/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P14",
+      "title": "Call a typed package adapter",
+      "stratum": "npm-node-interoperability",
+      "kind": "integration",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P14/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P15",
+      "title": "Repair a boundary regression",
+      "stratum": "bug-repair",
+      "kind": "bug-repair",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P15/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P16",
+      "title": "Add a compatible optional field",
+      "stratum": "feature-addition",
+      "kind": "feature-addition",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P16/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P17",
+      "title": "Refactor duplicated validation",
+      "stratum": "refactoring",
+      "kind": "refactoring",
+      "repoScale": "medium",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P17/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P18",
+      "title": "Split a multi-file service",
+      "stratum": "multi-file-maintenance",
+      "kind": "refactoring",
+      "repoScale": "large",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P18/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P19",
+      "title": "Maintain an unfamiliar repository",
+      "stratum": "long-context",
+      "kind": "bug-repair",
+      "repoScale": "large",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P19/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P20",
+      "title": "Implement a cross-module migration",
+      "stratum": "long-context",
+      "kind": "feature-addition",
+      "repoScale": "large",
+      "hardNegative": false,
+      "taskPath": "bench/corpus/accepted/P20/task.json",
+      "acceptanceStatus": "ACCEPTED"
+    },
+    {
+      "id": "P21",
+      "title": "Format-preserving text change",
+      "stratum": "hard-negative",
+      "kind": "refactoring",
+      "repoScale": "medium",
+      "hardNegative": true
+    },
+    {
+      "id": "P22",
+      "title": "Generated-code compatibility repair",
+      "stratum": "hard-negative",
+      "kind": "bug-repair",
+      "repoScale": "medium",
+      "hardNegative": true
+    },
+    {
+      "id": "P23",
+      "title": "Tool-heavy package upgrade",
+      "stratum": "hard-negative",
+      "kind": "integration",
+      "repoScale": "large",
+      "hardNegative": true
+    },
+    {
+      "id": "P24",
+      "title": "Large irrelevant-context maintenance",
+      "stratum": "hard-negative",
+      "kind": "bug-repair",
+      "repoScale": "large",
+      "hardNegative": true
+    }
+  ]
+}

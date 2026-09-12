@@ -11,4 +11,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: node tests/cli.mjs
+      - run: node tests/consumer.mjs
       - run: node bench/audit.mjs
+      - run: node bench/research.mjs audit-corpus
+      - run: node interop/audit.mjs
+      - run: npm run interop:matrix
+      - run: npm run release:check
+      - run: node eval/run.mjs

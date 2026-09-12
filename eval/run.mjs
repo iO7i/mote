@@ -17,10 +17,10 @@ for (const item of fixture.cases) {
 
 const liveRequested = process.argv.includes("--live");
 const model = process.env.MOTE_EVAL_MODEL;
-const isolated = process.env.MOTE_EVAL_ISOLATION === "authorized";
+const isolated = process.env.MOTE_EVAL_ISOLATION === "docker";
 const live = liveRequested && model && isolated
-  ? { status: "NOT RUN", reason: "no configured model adapter is shipped in this repository" }
-  : { status: "NOT RUN", reason: "requires --live, MOTE_EVAL_MODEL, and MOTE_EVAL_ISOLATION=authorized" };
+  ? { status: "NOT RUN", reason: "replay command never invokes providers; use an authorized eval/live.mjs runner and retain its raw manifest" }
+  : { status: "NOT RUN", reason: "requires a separate --live runner, MOTE_EVAL_MODEL, and MOTE_EVAL_ISOLATION=docker" };
 const report = { schemaVersion: 1, replay: { status: failed ? "FAILED" : "PASSED", seed: fixture.seed, cases: fixture.cases.length }, live };
 console.log(JSON.stringify(report, null, 2));
 process.exit(failed ? 1 : 0);

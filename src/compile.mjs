@@ -3,7 +3,7 @@
 
 import { parse } from "./parser.mjs";
 import { check } from "./checker.mjs";
-import { emit, emitDeclarations, buildSourceMap } from "./emitter.mjs";
+import { emit, emitDeclarations, buildSourceMap, buildPositionMap } from "./emitter.mjs";
 import { Diagnostics, controlledDiagnostic } from "./diagnostics.mjs";
 
 export function compile(src, opts = {}) {
@@ -28,6 +28,7 @@ export function compile(src, opts = {}) {
       typeDecls: checked.typeDecls,
       declarations: () => "",
       sourceMap: () => "",
+      positionMap: () => [],
     };
   }
 
@@ -49,6 +50,7 @@ export function compile(src, opts = {}) {
     typeDecls: checked.typeDecls,
     declarations: () => emitDeclarations(program),
     sourceMap: (generatedFile) => buildSourceMap(lineMap, file, src, generatedFile),
+    positionMap: () => buildPositionMap(lineMap),
   };
 }
 
@@ -62,5 +64,6 @@ function emptyResult(diagnostics) {
     typeDecls: [],
     declarations: () => "",
     sourceMap: () => "",
+    positionMap: () => [],
   };
 }

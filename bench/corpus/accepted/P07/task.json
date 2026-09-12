@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "id": "P07",
+  "title": "Route typed request",
+  "taskSetHash": "7e20309aa06063d9330ec507ba2c1b26036328a1078802ace6b5abdb197f0247",
+  "corpusVersion": "pilot-0.2.0",
+  "stratum": "api-handler",
+  "kind": "new-module",
+  "repoScale": "small",
+  "hardNegative": false,
+  "prompt": "Implement solve(input) for route typed request. Preserve the public solve API and handle every boundary case described by the visible types.",
+  "visibleFiles": {
+    "mote": {
+      "solution.mt": "pub fn solve(input:{authenticated:bool,value:num}) = 0"
+    },
+    "typescript": {
+      "solution.ts": "export function solve(input: {authenticated:boolean,value:number}) { return 0; }"
+    }
+  },
+  "phases": {
+    "mote": [
+      {
+        "name": "parse",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "parse",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "typecheck",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "generated-typescript",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "generated-typescript",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "public-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "public-tests",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "hidden-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "hidden-tests",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "boundary-validation",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "boundary-validation",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "mutation-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "mutation-tests",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "api-existence",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "api-existence",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "property-invariants",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "property-invariants",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "regression-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "regression-tests",
+          "--language",
+          "mote"
+        ],
+        "budget": 1
+      }
+    ],
+    "typescript": [
+      {
+        "name": "parse",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "parse",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "typecheck",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "generated-typescript",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "generated-typescript",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "public-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "public-tests",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "hidden-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "hidden-tests",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "boundary-validation",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "boundary-validation",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "mutation-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "mutation-tests",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "api-existence",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "api-existence",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "property-invariants",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "property-invariants",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      },
+      {
+        "name": "regression-tests",
+        "command": [
+          "node",
+          ".benchmark/check.mjs",
+          "--phase",
+          "regression-tests",
+          "--language",
+          "typescript"
+        ],
+        "budget": 1
+      }
+    ]
+  },
+  "budgets": {
+    "phaseWorkUnits": 1,
+    "maxRepairRounds": 12
+  },
+  "verifiedWorkUnits": 1,
+  "repository": {
+    "seed": "p07-seed-2026-09-12",
+    "commit": "fixture-reference-v1",
+    "dependencyLockfileHash": "fixture-lock-v1"
+  },
+  "oracle": {
+    "module": "bench/corpus/oracles.mjs",
+    "cases": 3,
+    "independent": true
+  },
+  "mutations": [
+    {
+      "name": "wrong-status",
+      "expected": "at-least-one-hidden-case-fails"
+    }
+  ],
+  "privateFixture": {
+    "module": "bench/corpus/accepted/registry.mjs",
+    "fixtureId": "P07"
+  },
+  "review": {
+    "decision": "accepted",
+    "reviewer": "local-independent-review",
+    "reviewedAt": "2026-09-12",
+    "notes": "Paired reference arms pass the independent oracle and the mutation control is killed in both languages."
+  }
+}

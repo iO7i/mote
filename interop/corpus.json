@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "corpusVersion": "node-npm-0.1.0",
+  "policy": "pin versions and report capability boundaries; never claim universal npm compatibility",
+  "cases": [
+    {"id":"node-esm-named","shape":"ESM named export","specifier":"node:path","version":"Node 22.12.0","status":"PASS","evidence":"use/import namespace is emitted and checkable"},
+    {"id":"node-esm-default","shape":"ESM/default-like namespace","specifier":"node:fs","version":"Node 22.12.0","status":"PARTIAL","evidence":"namespace import is supported; default-export syntax is not a distinct Mote form"},
+    {"id":"node-cjs","shape":"CommonJS interop","specifier":"node:assert","version":"Node 22.12.0","status":"PARTIAL","evidence":"delegated to Node namespace interop; no Mote-specific CJS type model"},
+    {"id":"node-async","shape":"async API","specifier":"node:fs/promises","version":"Node 22.12.0","status":"PASS","evidence":"async fn and await are in the parser/emitter"},
+    {"id":"scoped-package","shape":"scoped npm package","specifier":"@fixtures/typed","version":"offline-0.1.0","status":"PASS","evidence":"offline fixture matrix resolves a scoped package and its declarations"},
+    {"id":"declarations","shape":"package TypeScript declarations","specifier":"mote/api","version":"0.1.0","status":"PASS","evidence":"src/api.d.ts is exported and package-consumer test checks it"},
+    {"id":"nested-object","shape":"nested object API","specifier":"node:process","version":"Node 22.12.0","status":"PASS","evidence":"namespace member access is supported as external/any"},
+    {"id":"external-json","shape":"external JSON/data boundary","specifier":"fixtures-json/data.json","version":"offline-0.1.0","status":"PASS","evidence":"offline fixture matrix imports JSON with an explicit Node type assertion; arbitrary third-party data remains out of scope"}
+  ]
+}

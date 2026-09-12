@@ -31,23 +31,23 @@ export function emit(program, ctx = {}) {
   const emitTypes = ctx.emitTypes !== false;
   TYPES = emitTypes;
   const runtimeImport = ctx.runtimeImport ?? "./mote-runtime.js";
-  const chunks = [];   // { text, srcLine }
-  const push = (text, srcLine) => chunks.push({ text, srcLine });
+  const chunks = [];   // { text, srcLine, srcCol }
+  const push = (text, srcLine, srcCol = 0) => chunks.push({ text, srcLine, srcCol });
 
-  if (ctx.needsRuntime) push(`import * as $mote from ${JSON.stringify(runtimeImport)};`, 1);
+  if (ctx.needsRuntime) push(`import * as $mote from ${JSON.stringify(runtimeImport)};`, 1, 0);
 
-  for (const s of program.body) if (s.kind === "Use") push(emitUse(s, ctx), s.line);
+  for (const s of program.body) if (s.kind === "Use") push(emitUse(s, ctx), s.line, s.col);
 
   if (emitTypes) {
-    for (const s of program.body) if (s.kind === "TypeDecl") push(emitTypeDecl(s), s.line);
+    for (const s of program.body) if (s.kind === "TypeDecl") push(emitTypeDecl(s), s.line, s.col);
   }
 
-  if (ctx.needsRuntime && ctx.typeDecls?.length) push(emitSchemas(ctx.typeDecls, emitTypes), 1);
+  if (ctx.needsRuntime && ctx.typeDecls?.length) push(emitSchemas(ctx.typeDecls, emitTypes), ctx.typeDecls[0].line ?? 1, ctx.typeDecls[0].col ?? 0);
 
   for (const s of program.body) {
-    if (s.kind === "Fn") push(emitFn(s, emitTypes), s.line);
-    else if (s.kind === "Let") push(emitLet(s, emitTypes), s.line);
-    else if (s.kind === "ExprStmt") push(`${emitExpr(s.expr, 0)};`, s.line);
+    if (s.kind === "Fn") push(emitFn(s, emitTypes), s.line, s.col);
+    else if (s.kind === "Let") push(emitLet(s, emitTypes), s.line, s.col);
+    else if (s.kind === "ExprStmt") push(`${emitExpr(s.expr, 0)};`, s.line, s.col);
   }
 
   const { code, lineMap } = assemble(chunks);
@@ -56,12 +56,13 @@ export function emit(program, ctx = {}) {
 
 function assemble(chunks) {
   const lines = [];
-  const lineMap = []; // [{ genLine (1-based), srcLine }]
+  const lineMap = []; // [{ genLine, genCol, srcLine, srcCol }]
   chunks.forEach((c, i) => {
     if (i > 0) lines.push("");
     for (const ln of c.text.split("\n")) {
       lines.push(ln);
-      lineMap.push({ genLine: lines.length, srcLine: c.srcLine ?? 1 });
+      const genCol = ln.length - ln.trimStart().length;
+      lineMap.push({ genLine: lines.length, genCol, srcLine: c.srcLine ?? 1, srcCol: c.srcCol ?? 0 });
     }
   });
   return { code: lines.join("\n") + "\n", lineMap };
@@ -81,7 +82,7 @@ function emitUse(s, ctx) {
 function emitTypeDecl(s) {
   if (!s.typeR) return `// type ${s.name} (unresolved)`;
   const tp = s.typeParams?.length ? `<${s.typeParams.join(", ")}>` : "";
-  return `type ${s.name}${tp} = ${tsType(s.typeR)};`;
+  return `export type ${s.name}${tp} = ${tsType(s.typeR)};`;
 }
 
 function emitSchemas(typeDecls, emitTypes) {
@@ -221,14 +222,16 @@ export function emitDeclarations(program) {
   return lines.join("\n") + "\n";
 }
 
-// --- coarse source map (Mote -> emitted TS), line granularity ------------
+// --- source map (Mote -> emitted TS), statement/column anchors ------------
 
 export function buildSourceMap(lineMap, sourceFile, sourceContent, generatedFile) {
   const vlq = makeVlq();
   let prevSrcLine = 0;
+  let prevSrcCol = 0;
   const segments = lineMap.map((m) => {
-    const seg = vlq([0, 0, m.srcLine - 1 - prevSrcLine, 0]);
+    const seg = vlq([m.genCol ?? 0, 0, m.srcLine - 1 - prevSrcLine, (m.srcCol ?? 0) - prevSrcCol]);
     prevSrcLine = m.srcLine - 1;
+    prevSrcCol = m.srcCol ?? 0;
     return seg;
   });
   return JSON.stringify({
@@ -239,6 +242,27 @@ export function buildSourceMap(lineMap, sourceFile, sourceContent, generatedFile
     names: [],
     mappings: segments.join(";"),
   });
+}
+
+// Position anchors are intentionally statement/line granular. Unlike the old
+// line-only map, they preserve the originating Mote column and the first
+// generated token column, which is sufficient for editor navigation without
+// claiming a fabricated token-by-token mapping.
+export function buildPositionMap(lineMap) {
+  return lineMap.map((mapping) => ({
+    generated: { line: mapping.genLine, column: mapping.genCol ?? 0 },
+    source: { line: mapping.srcLine, column: mapping.srcCol ?? 0 },
+  }));
+}
+
+export function mapGeneratedPosition(positionMap, generated) {
+  const candidates = positionMap.filter((anchor) => anchor.generated.line < generated.line || (anchor.generated.line === generated.line && anchor.generated.column <= generated.column));
+  return candidates.at(-1)?.source ?? null;
+}
+
+export function mapSourcePosition(positionMap, source) {
+  const candidates = positionMap.filter((anchor) => anchor.source.line < source.line || (anchor.source.line === source.line && anchor.source.column <= source.column));
+  return candidates.at(-1)?.generated ?? null;
 }
 
 function makeVlq() {

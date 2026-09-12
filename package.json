@@ -1,30 +1,50 @@
 {
   "name": "mote",
   "version": "0.1.0",
-  "description": "Mote v0.2 — typed, token-aware language that compiles to readable TypeScript.",
+  "description": "Mote — a typed, token-aware language that compiles to readable TypeScript.",
   "type": "module",
   "bin": {
-    "mote": "bin/mote.mjs"
+    "mote": "bin/mote.mjs",
+    "mote-lsp": "bin/mote-lsp.mjs"
   },
   "exports": {
-    "./api": "./src/api.mjs",
-    "./runtime": "./src/runtime/mote.mjs"
+    "./api": {
+      "types": "./src/api.d.ts",
+      "import": "./src/api.mjs"
+    },
+    "./runtime": {
+      "types": "./src/runtime/mote.d.ts",
+      "import": "./src/runtime/mote.mjs"
+    }
   },
-  "files": ["bin", "src", "docs", "examples", "README.md", "LICENSE"],
+  "files": ["bin", "src", "docs", "examples", "lsp", "README.md", "LICENSE"],
+  "engines": { "node": ">=22" },
   "scripts": {
-    "test": "node tests/run.mjs && node tests/trust.mjs && node tests/property.mjs --cases 512",
+    "test": "node tests/run.mjs && node tests/trust.mjs && node tests/property.mjs --cases 512 && node tests/fuzz.mjs --cases 256 && node tests/minimize.test.mjs && node tests/differential.mjs --cases 128 && node tests/lsp.mjs && node tests/interop.mjs && node tests/research.mjs && node tests/fake-provider.mjs && node tests/ledger-app.mjs",
     "bench": "node bench/run.mjs",
     "audit": "node bench/audit.mjs",
     "audit:extended": "node tests/property.mjs --cases 12000 && node bench/audit.mjs",
+    "fuzz:extended": "node tests/fuzz.mjs --cases 12000",
+    "differential:extended": "node tests/differential.mjs --cases 2048",
+    "mutation:compiler": "node tests/mutation.mjs",
+    "mutation:benchmark": "node bench/mutation.mjs",
+    "interop:audit": "node interop/audit.mjs",
+    "interop:matrix": "node interop/fixture-matrix.mjs",
+    "candidate": "node eval/run-candidate.mjs",
+    "benchmark:protocol": "node bench/research.mjs audit-corpus",
+    "benchmark:accept": "node bench/corpus/accepted/run.mjs --summary",
+    "benchmark:fake": "node tests/fake-provider.mjs",
+    "benchmark:analyze": "node bench/analyze.mjs",
+    "benchmark:report": "node bench/report.mjs",
+    "vscode:check": "node editors/vscode/build.mjs",
+    "release:check": "node tests/release.mjs",
     "eval": "node eval/run.mjs",
-    "verify": "npm test && node tests/cli.mjs && node tests/consumer.mjs && npm run audit && npm run eval"
+    "verify": "npm test && node tests/cli.mjs && node tests/consumer.mjs && npm run audit && npm run benchmark:accept && npm run interop:matrix && npm run release:check && npm run eval"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.20.0",
-    "typescript": "^5.6.3"
-  },
-  "dependencies": {
+    "typescript": "^5.6.3",
     "@lenml/tokenizer-deepseek_v3": "^3.7.2",
     "@lenml/tokenizer-llama3": "^3.7.2",
     "gpt-tokenizer": "^3.4.0"
