@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "campaign": "compiler-mutation",
-  "sourceRevision": "0220e5a35f3d71b66ce553e259a29dce7164b69e",
+  "sourceRevision": "45051d28139901acc2ed6927966e5257430a3909",
   "generated": 60,
   "valid": 60,
   "counts": {
@@ -87,7 +87,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                   ^\r\n\r\nError: lexer-source-limit: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M001-lNhGsS/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M001-lNhGsS/mutation-oracle.mjs:24:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                   ^\r\n\r\nError: lexer-source-limit: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M001-DvgSTd/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M001-DvgSTd/mutation-oracle.mjs:24:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M002",
@@ -109,7 +109,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "wx/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M003-7v0iwx/src/lexer.mjs:117:11)\r\n    at file:///D:/Temp/mote-mutant-M003-7v0iwx/mutation-oracle.mjs:23:30\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 8, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "Kl/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M003-rAykKl/src/lexer.mjs:117:11)\r\n    at file:///D:/Temp/mote-mutant-M003-rAykKl/mutation-oracle.mjs:23:30\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 8, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M004",
@@ -120,7 +120,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "Th/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M004-ZGrfTh/src/lexer.mjs:117:11)\r\n    at file:///D:/Temp/mote-mutant-M004-ZGrfTh/mutation-oracle.mjs:21:24\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 9, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "co/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M004-Gyzlco/src/lexer.mjs:117:11)\r\n    at file:///D:/Temp/mote-mutant-M004-Gyzlco/mutation-oracle.mjs:21:24\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 9, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M005",
@@ -131,7 +131,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                       ^\r\n\r\nError: lexer-keywords: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M005-CzbYgK/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M005-CzbYgK/mutation-oracle.mjs:19:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                       ^\r\n\r\nError: lexer-keywords: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M005-aXEh8F/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M005-aXEh8F/mutation-oracle.mjs:19:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M006",
@@ -142,7 +142,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "yw/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M006-k40qyw/src/lexer.mjs:117:11)\r\n    at file:///D:/Temp/mote-mutant-M006-k40qyw/mutation-oracle.mjs:19:25\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 9, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "4Q/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M006-Ktw04Q/src/lexer.mjs:117:11)\r\n    at file:///D:/Temp/mote-mutant-M006-Ktw04Q/mutation-oracle.mjs:19:25\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 9, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M007",
@@ -153,7 +153,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                        ^\r\n\r\nError: lexer-comment: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M007-gi2WW9/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M007-gi2WW9/mutation-oracle.mjs:21:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                        ^\r\n\r\nError: lexer-comment: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M007-I9LNoH/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M007-I9LNoH/mutation-oracle.mjs:21:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M008",
@@ -164,7 +164,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "ZY/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M008-aaEoZY/src/lexer.mjs:67:25)\r\n    at file:///D:/Temp/mote-mutant-M008-aaEoZY/mutation-oracle.mjs:22:23\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 12, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "Dx/src/lexer.mjs:22:13)\r\n    at lex (file:///D:/Temp/mote-mutant-M008-LstZDx/src/lexer.mjs:67:25)\r\n    at file:///D:/Temp/mote-mutant-M008-LstZDx/mutation-oracle.mjs:22:23\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {\r\n  mote: { phase: 'lex', line: 1, col: 12, file: '<input>' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M009",
@@ -175,7 +175,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": " as fs\").program.body[0].kind, \"Use\");\r\n                                                            ^\r\n\r\nTypeError: Cannot read properties of null (reading 'body')\r\n    at file:///D:/Temp/mote-mutant-M009-YKsRhD/mutation-oracle.mjs:31:61\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": " as fs\").program.body[0].kind, \"Use\");\r\n                                                            ^\r\n\r\nTypeError: Cannot read properties of null (reading 'body')\r\n    at file:///D:/Temp/mote-mutant-M009-BiTu7e/mutation-oracle.mjs:31:61\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M010",
@@ -186,7 +186,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "eTernaryOrTry (file:///D:/Temp/mote-mutant-M010-z1nR19/src/parser.mjs:222:18)\r\n    at parseExpr (file:///D:/Temp/mote-mutant-M010-z1nR19/src/parser.mjs:219:33)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M010-z1nR19/src/parser.mjs:84:38)\r\n    at parse (file:///D:/Temp/mote-mutant-M010-z1nR19/src/parser.mjs:70:40)\r\n    at file:///D:/Temp/mote-mutant-M010-z1nR19/mutation-oracle.mjs:28:13 {\r\n  mote: { phase: 'parse', line: 1, col: 1, file: 'oracle.mt', code: 'M001' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "eTernaryOrTry (file:///D:/Temp/mote-mutant-M010-2yswr5/src/parser.mjs:222:18)\r\n    at parseExpr (file:///D:/Temp/mote-mutant-M010-2yswr5/src/parser.mjs:219:33)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M010-2yswr5/src/parser.mjs:84:38)\r\n    at parse (file:///D:/Temp/mote-mutant-M010-2yswr5/src/parser.mjs:70:40)\r\n    at file:///D:/Temp/mote-mutant-M010-2yswr5/mutation-oracle.mjs:28:13 {\r\n  mote: { phase: 'parse', line: 1, col: 1, file: 'oracle.mt', code: 'M001' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M011",
@@ -197,7 +197,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "t\", compile(\"let x=1\").program.body[0].kind, \"Let\");\r\n                                              ^\r\n\r\nTypeError: Cannot read properties of null (reading 'body')\r\n    at file:///D:/Temp/mote-mutant-M011-tAkOY6/mutation-oracle.mjs:32:47\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "t\", compile(\"let x=1\").program.body[0].kind, \"Let\");\r\n                                              ^\r\n\r\nTypeError: Cannot read properties of null (reading 'body')\r\n    at file:///D:/Temp/mote-mutant-M011-fQwlWC/mutation-oracle.mjs:32:47\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M012",
@@ -208,7 +208,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                           ^\r\n\r\nError: parser-pub: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M012-AndPN6/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M012-AndPN6/mutation-oracle.mjs:33:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                           ^\r\n\r\nError: parser-pub: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M012-ZFoNx7/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M012-ZFoNx7/mutation-oracle.mjs:33:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M013",
@@ -219,7 +219,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                 ^\r\n\r\nError: parser-associativity: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M013-Hu0AqS/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M013-Hu0AqS/mutation-oracle.mjs:30:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                 ^\r\n\r\nError: parser-associativity: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M013-9U3rj3/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M013-9U3rj3/mutation-oracle.mjs:30:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M014",
@@ -230,7 +230,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "TernaryOrTry (file:///D:/Temp/mote-mutant-M014-Y0ZKxM/src/parser.mjs:222:18)\r\n    at parseExpr (file:///D:/Temp/mote-mutant-M014-Y0ZKxM/src/parser.mjs:219:33)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M014-Y0ZKxM/src/parser.mjs:84:38)\r\n    at parse (file:///D:/Temp/mote-mutant-M014-Y0ZKxM/src/parser.mjs:70:40)\r\n    at file:///D:/Temp/mote-mutant-M014-Y0ZKxM/mutation-oracle.mjs:28:13 {\r\n  mote: { phase: 'parse', line: 3, col: 25, file: 'oracle.mt', code: 'M001' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "TernaryOrTry (file:///D:/Temp/mote-mutant-M014-GCOAQh/src/parser.mjs:222:18)\r\n    at parseExpr (file:///D:/Temp/mote-mutant-M014-GCOAQh/src/parser.mjs:219:33)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M014-GCOAQh/src/parser.mjs:84:38)\r\n    at parse (file:///D:/Temp/mote-mutant-M014-GCOAQh/src/parser.mjs:70:40)\r\n    at file:///D:/Temp/mote-mutant-M014-GCOAQh/mutation-oracle.mjs:28:13 {\r\n  mote: { phase: 'parse', line: 3, col: 25, file: 'oracle.mt', code: 'M001' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M015",
@@ -241,7 +241,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": " (file:///D:/Temp/mote-mutant-M015-PhR1Dx/src/parser.mjs:157:13)\r\n    at parseType (file:///D:/Temp/mote-mutant-M015-PhR1Dx/src/parser.mjs:154:33)\r\n    at parseTypeDecl (file:///D:/Temp/mote-mutant-M015-PhR1Dx/src/parser.mjs:100:18)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M015-PhR1Dx/src/parser.mjs:77:28)\r\n    at parse (file:///D:/Temp/mote-mutant-M015-PhR1Dx/src/parser.mjs:70:40) {\r\n  mote: { phase: 'parse', line: 1, col: 31, file: 'oracle.mt', code: 'M001' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": " (file:///D:/Temp/mote-mutant-M015-NJxuCY/src/parser.mjs:157:13)\r\n    at parseType (file:///D:/Temp/mote-mutant-M015-NJxuCY/src/parser.mjs:154:33)\r\n    at parseTypeDecl (file:///D:/Temp/mote-mutant-M015-NJxuCY/src/parser.mjs:100:18)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M015-NJxuCY/src/parser.mjs:77:28)\r\n    at parse (file:///D:/Temp/mote-mutant-M015-NJxuCY/src/parser.mjs:70:40) {\r\n  mote: { phase: 'parse', line: 1, col: 31, file: 'oracle.mt', code: 'M001' }\r\n}\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M016",
@@ -252,7 +252,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                         ^\r\n\r\nError: parser-nested-optional-array: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M016-R2bbpu/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M016-R2bbpu/mutation-oracle.mjs:35:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                         ^\r\n\r\nError: parser-nested-optional-array: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M016-I3dRCY/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M016-I3dRCY/mutation-oracle.mjs:35:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M017",
@@ -263,7 +263,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "57:13)\r\n    at parseType (file:///D:/Temp/mote-mutant-M017-KhCplN/src/parser.mjs:154:33)\r\n    at parseTypeDecl (file:///D:/Temp/mote-mutant-M017-KhCplN/src/parser.mjs:100:18)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M017-KhCplN/src/parser.mjs:77:28)\r\n    at parse (file:///D:/Temp/mote-mutant-M017-KhCplN/src/parser.mjs:70:40)\r\n    at file:///D:/Temp/mote-mutant-M017-KhCplN/mutation-oracle.mjs:28:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "57:13)\r\n    at parseType (file:///D:/Temp/mote-mutant-M017-l8LJrq/src/parser.mjs:154:33)\r\n    at parseTypeDecl (file:///D:/Temp/mote-mutant-M017-l8LJrq/src/parser.mjs:100:18)\r\n    at parseTopLevel (file:///D:/Temp/mote-mutant-M017-l8LJrq/src/parser.mjs:77:28)\r\n    at parse (file:///D:/Temp/mote-mutant-M017-l8LJrq/src/parser.mjs:70:40)\r\n    at file:///D:/Temp/mote-mutant-M017-l8LJrq/mutation-oracle.mjs:28:13\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M018",
@@ -274,7 +274,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                      ^\r\n\r\nError: parser-nil-type: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M018-g64xyg/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M018-g64xyg/mutation-oracle.mjs:37:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                      ^\r\n\r\nError: parser-nil-type: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M018-7bCFkI/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M018-7bCFkI/mutation-oracle.mjs:37:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M019",
@@ -285,7 +285,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                    ^\r\n\r\nError: parser-string-key: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M019-hCwonf/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M019-hCwonf/mutation-oracle.mjs:38:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                    ^\r\n\r\nError: parser-string-key: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M019-4aSgeU/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M019-4aSgeU/mutation-oracle.mjs:38:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M020",
@@ -296,7 +296,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                    ^\r\n\r\nError: parser-union-type: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M020-wLnUg9/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M020-wLnUg9/mutation-oracle.mjs:39:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                    ^\r\n\r\nError: parser-union-type: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M020-VAb2cJ/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M020-VAb2cJ/mutation-oracle.mjs:39:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M021",
@@ -307,7 +307,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                              ^\r\n\r\nError: parser-array-expression: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M021-lTCBVV/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M021-lTCBVV/mutation-oracle.mjs:40:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                              ^\r\n\r\nError: parser-array-expression: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M021-vvMKcg/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M021-vvMKcg/mutation-oracle.mjs:40:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M022",
@@ -318,7 +318,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                              ^\r\n\r\nError: checker-optional-access: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M022-G3Em8t/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M022-G3Em8t/mutation-oracle.mjs:44:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                              ^\r\n\r\nError: checker-optional-access: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M022-BnxXGI/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M022-BnxXGI/mutation-oracle.mjs:44:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M023",
@@ -362,7 +362,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M026-TXFCZG/mutation-oracle.mjs:45:109\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M026-mWuhL9/mutation-oracle.mjs:45:109\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M027",
@@ -373,7 +373,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M027-ASObm1/mutation-oracle.mjs:46:117\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M027-OxNobF/mutation-oracle.mjs:46:117\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M028",
@@ -384,7 +384,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M028-tS3qdU/mutation-oracle.mjs:47:118\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M028-MwHRzQ/mutation-oracle.mjs:47:118\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M029",
@@ -406,7 +406,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                               ^\r\n\r\nError: checker-any-assignable: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M030-6JpYtb/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M030-6JpYtb/mutation-oracle.mjs:48:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                               ^\r\n\r\nError: checker-any-assignable: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M030-cLWimB/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M030-cLWimB/mutation-oracle.mjs:48:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M031",
@@ -417,7 +417,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                 ^\r\n\r\nError: types-unknown-target: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M031-IeMUPs/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M031-IeMUPs/mutation-oracle.mjs:78:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                 ^\r\n\r\nError: types-unknown-target: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M031-e5bkzy/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M031-e5bkzy/mutation-oracle.mjs:78:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M032",
@@ -428,7 +428,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                          ^\r\n\r\nError: types-never: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M032-gA7nmJ/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M032-gA7nmJ/mutation-oracle.mjs:80:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                          ^\r\n\r\nError: types-never: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M032-rtdFhK/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M032-rtdFhK/mutation-oracle.mjs:80:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M033",
@@ -439,7 +439,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                   ^\r\n\r\nError: types-nil-optional: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M033-RjxOjr/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M033-RjxOjr/mutation-oracle.mjs:81:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                   ^\r\n\r\nError: types-nil-optional: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M033-BsSZ8e/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M033-BsSZ8e/mutation-oracle.mjs:81:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M034",
@@ -461,7 +461,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                   ^\r\n\r\nError: types-union-target: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M035-uiDLDR/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M035-uiDLDR/mutation-oracle.mjs:82:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                   ^\r\n\r\nError: types-union-target: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M035-A3Z3S7/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M035-A3Z3S7/mutation-oracle.mjs:82:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M036",
@@ -472,7 +472,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                              ^\r\n\r\nError: emitter-strict-equality: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M036-wvnCMV/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M036-wvnCMV/mutation-oracle.mjs:54:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                              ^\r\n\r\nError: emitter-strict-equality: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M036-ozfbAM/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M036-ozfbAM/mutation-oracle.mjs:54:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M037",
@@ -527,7 +527,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                        ^\r\n\r\nError: emitter-types: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M041-v5XN6s/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M041-v5XN6s/mutation-oracle.mjs:53:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                        ^\r\n\r\nError: emitter-types: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M041-9DEqda/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M041-9DEqda/mutation-oracle.mjs:53:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M042",
@@ -604,7 +604,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "efined\r\n    at emit (file:///D:/Temp/mote-mutant-M048-XOyNB0/src/emitter.mjs:54:18)\r\n    at compile (file:///D:/Temp/mote-mutant-M048-XOyNB0/src/compile.mjs:42:29)\r\n    at file:///D:/Temp/mote-mutant-M048-XOyNB0/mutation-oracle.mjs:30:31\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "efined\r\n    at emit (file:///D:/Temp/mote-mutant-M048-4UPKwG/src/emitter.mjs:54:18)\r\n    at compile (file:///D:/Temp/mote-mutant-M048-4UPKwG/src/compile.mjs:42:29)\r\n    at file:///D:/Temp/mote-mutant-M048-4UPKwG/mutation-oracle.mjs:30:31\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M049",
@@ -615,7 +615,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                ^\r\n\r\nError: diagnostic-controlled: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M049-RkED0a/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M049-RkED0a/mutation-oracle.mjs:76:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                ^\r\n\r\nError: diagnostic-controlled: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M049-HtMA6s/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M049-HtMA6s/mutation-oracle.mjs:76:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M050",
@@ -626,7 +626,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M050-pzXBFU/mutation-oracle.mjs:43:104\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                                                                              ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'code')\r\n    at file:///D:/Temp/mote-mutant-M050-eLGUL9/mutation-oracle.mjs:43:104\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M051",
@@ -648,7 +648,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                       ^\r\n\r\nError: types-optional: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M052-GJXX1e/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M052-GJXX1e/mutation-oracle.mjs:77:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                       ^\r\n\r\nError: types-optional: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M052-G3gFeF/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M052-G3gFeF/mutation-oracle.mjs:77:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M053",
@@ -681,7 +681,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                         ^\r\n\r\nError: runtime-good: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M055-LrpTjN/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M055-LrpTjN/mutation-oracle.mjs:65:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                         ^\r\n\r\nError: runtime-good: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M055-rvETUj/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M055-rvETUj/mutation-oracle.mjs:65:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M056",
@@ -703,7 +703,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                       ^\r\n\r\nError: runtime-unwrap: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M057-S9HlGQ/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M057-S9HlGQ/mutation-oracle.mjs:73:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                       ^\r\n\r\nError: runtime-unwrap: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M057-SDX6Fx/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M057-SDX6Fx/mutation-oracle.mjs:73:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M058",
@@ -714,7 +714,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "                                      ^\r\n\r\nError: runtime-unknown: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M058-cCWmRp/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M058-cCWmRp/mutation-oracle.mjs:69:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "                                      ^\r\n\r\nError: runtime-unknown: oracle mismatch\r\n    at equal (file:///D:/Temp/mote-mutant-M058-Rcltfh/mutation-oracle.mjs:15:66)\r\n    at file:///D:/Temp/mote-mutant-M058-Rcltfh/mutation-oracle.mjs:69:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M059",
@@ -725,7 +725,7 @@
       "generated": true,
       "outcome": "KILLED",
       "valid": true,
-      "reason": "ay\");\r\n                                                                                         ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'got')\r\n    at file:///D:/Temp/mote-mutant-M059-kZTsU1/mutation-oracle.mjs:70:90\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
+      "reason": "ay\");\r\n                                                                                         ^\r\n\r\nTypeError: Cannot read properties of undefined (reading 'got')\r\n    at file:///D:/Temp/mote-mutant-M059-AGNOTJ/mutation-oracle.mjs:70:90\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)\r\n\r\nNode.js v22.12.0\r\n"
     },
     {
       "id": "M060",

@@ -38,7 +38,7 @@ recorded as:
 The archived JSON artifacts above were generated from the same committed
 source revision. The milestone branch is `feat/research-platform`; the
 source revision stamped into the artifacts is the full SHA for commit
-`0220e5a35f3d71b66ce553e259a29dce7164b69e` before the final evidence archive
+`45051d28139901acc2ed6927966e5257430a3909` before this final artifact refresh
 commit.
 
 Representative commands:
