@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "report": "pilot-corpus-review",
+  "sourceRevision": "0220e5a35f3d71b66ce553e259a29dce7164b69e",
   "corpusVersion": "pilot-0.2.0",
   "taskSetHash": "7e20309aa06063d9330ec507ba2c1b26036328a1078802ace6b5abdb197f0247",
   "reviewedAt": "2026-09-12",

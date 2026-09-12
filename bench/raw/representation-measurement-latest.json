@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "experiment": "representation-stress",
+  "sourceRevision": "0220e5a35f3d71b66ce553e259a29dce7164b69e",
   "status": "DESIGN_MEASUREMENT_NO_AGENT_RUN",
   "generatedAt": "2026-09-12",
   "rows": [

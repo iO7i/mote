@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "campaign": "accepted-pilot-fake-agent",
+  "sourceRevision": "0220e5a35f3d71b66ce553e259a29dce7164b69e",
   "status": "PASS",
   "executionClass": "SIMULATION_ONLY",
   "liveModelRuns": "BLOCKED PENDING AUTHORIZATION",

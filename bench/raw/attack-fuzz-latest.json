@@ -60,6 +60,6 @@
   "failures": [],
   "reproducibility": {
     "command": "node tests/attack-fuzz.mjs --cases 512 --seed 2809262093",
-    "sourceRevision": "working-tree"
+    "sourceRevision": "0220e5a35f3d71b66ce553e259a29dce7164b69e"
   }
 }
