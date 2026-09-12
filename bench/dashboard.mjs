@@ -4,6 +4,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gitSha } from "./protocol.mjs";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const raw = (name, fallback = {}) => { const file = join(root, "bench", "raw", name); return existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : fallback; };
@@ -16,6 +17,7 @@ const representation = raw("representation-measurement-latest.json");
 const liveRecords = loadOptionalLiveRecords();
 const data = {
   generatedAt: "2026-09-12",
+  sourceRevision: gitSha(root),
   evidenceBoundary: liveRecords.length ? "LIVE_DATA_PRESENT" : "NO_LIVE_MODEL_DATA",
   liveRecordCount: liveRecords.length,
   mutation: { generated: mutation.generated ?? 0, valid: mutation.valid ?? 0, killed: mutation.counts?.KILLED ?? 0, equivalent: mutation.counts?.EQUIVALENT ?? 0, survivors: mutation.counts?.SURVIVED ?? 0, invalid: mutation.counts?.INVALID_MUTANT ?? 0, score: mutation.mutationScore ?? null },

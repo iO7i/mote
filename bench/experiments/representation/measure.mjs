@@ -4,7 +4,7 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { estimateTokens } from "../../../src/measure.mjs";
 import { compile } from "../../../src/compile.mjs";
-import { hashTree } from "../../protocol.mjs";
+import { gitSha, hashTree } from "../../protocol.mjs";
 
 const root = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
 const base = join(root, "bench", "experiments", "representation", "fixtures");
@@ -26,7 +26,7 @@ for (const scale of ["small", "medium", "large", "very-large"]) {
     rows.push({ scale, language, moduleCount: files.length, totalSourceTokens: totalTokens, relevantContextTokens: relevantTokens, relevantContextRatio: totalTokens ? relevantTokens / totalTokens : null, editSurfaceFiles: relevance.relevantFiles.length, semanticCaseCount: relevance.semanticCasesPerTask * tasksForScale(scale), compilerFeedbackDensity: (relevance.compilerFeedbackOpportunities / Math.max(1, totalTokens)), generatedTokens, adapterTokens: 0, repositoryHash: hashTree(dir, { exclude: [".git", "node_modules", "fixture-hash.txt"] }), status: "DESIGN_MEASUREMENT" });
   }
 }
-const report = { schemaVersion: 1, experiment: "representation-stress", status: "DESIGN_MEASUREMENT_NO_AGENT_RUN", generatedAt: "2026-09-12", rows, exclusions: ["No model, provider, or agent was run.", "Semantic cases are task-contract accounting, not success observations."] };
+const report = { schemaVersion: 1, experiment: "representation-stress", sourceRevision: gitSha(root), status: "DESIGN_MEASUREMENT_NO_AGENT_RUN", generatedAt: "2026-09-12", rows, exclusions: ["No model, provider, or agent was run.", "Semantic cases are task-contract accounting, not success observations."] };
 const outDir = join(root, "bench", "raw");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "representation-measurement-latest.json"), JSON.stringify(report, null, 2) + "\n");

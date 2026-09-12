@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { formatMote } from "../../src/formatter.mjs";
 import { parse } from "../../src/parser.mjs";
 import { estimateTokens } from "../../src/measure.mjs";
-import { hashJson, sha256 } from "../protocol.mjs";
+import { gitSha, hashJson, sha256 } from "../protocol.mjs";
 import { FIXTURE_BY_ID } from "../corpus/accepted/registry.mjs";
 import { loadAcceptedTasks } from "../corpus/accepted/validate.mjs";
 
@@ -31,7 +31,7 @@ for (const { task } of loaded.tasks) {
     },
   });
 }
-const report = { schemaVersion: 1, experiment: "representation-ablations", status: "DESIGN_ONLY_NO_AGENT_RUN", taskSetHash: hashJson(taskSet), soundnessRule: "Only syntax-preserving formatter projections and prompt additions are materialized; type-light is explicitly not applicable.", tasks, exclusions: ["No ablation result is a model observation.", "Documentation-heavy changes prompt tokens and must be cost-accounted."] };
+const report = { schemaVersion: 1, experiment: "representation-ablations", sourceRevision: gitSha(root), status: "DESIGN_ONLY_NO_AGENT_RUN", taskSetHash: hashJson(taskSet), soundnessRule: "Only syntax-preserving formatter projections and prompt additions are materialized; type-light is explicitly not applicable.", tasks, exclusions: ["No ablation result is a model observation.", "Documentation-heavy changes prompt tokens and must be cost-accounted."] };
 mkdirSync(join(root, "bench", "raw"), { recursive: true });
 writeFileSync(join(root, "bench", "raw", "ablation-design-latest.json"), JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify({ status: report.status, tasks: tasks.length, variants: Object.keys(tasks[0]?.variants ?? {}) }, null, 2));

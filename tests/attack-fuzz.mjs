@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import { compile } from "../src/compile.mjs";
 import { parse } from "../src/parser.mjs";
 import { formatMote } from "../src/formatter.mjs";
+import { gitSha } from "../bench/protocol.mjs";
 import { minimizeCompilerFailure } from "./minimize.mjs";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -82,7 +83,7 @@ const report = {
   bounds: { maxSourceChars: 1_000_000, maxTokens: 100_000, generatorMaxStringChars: 4096, generatorMaxDepth: 48 },
   stats,
   failures,
-  reproducibility: { command: `node tests/attack-fuzz.mjs --cases ${cases} --seed ${seed}`, sourceRevision: process.env.MOTE_SOURCE_REVISION ?? "working-tree" },
+  reproducibility: { command: `node tests/attack-fuzz.mjs --cases ${cases} --seed ${seed}`, sourceRevision: gitSha(root) },
 };
 mkdirSync(join(root, "bench", "raw"), { recursive: true });
 writeFileSync(join(root, "bench", "raw", "attack-fuzz-latest.json"), JSON.stringify(report, null, 2) + "\n");

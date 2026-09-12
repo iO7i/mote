@@ -31,6 +31,7 @@ const pathProbe = await runPathProbe();
 const report = {
   schemaVersion: 1,
   campaign: "accepted-pilot-fake-agent",
+  sourceRevision: gitSha(root),
   status: results.every((result) => result.success) && providerFailure.status === "PROVIDER_ERROR" && pathProbe.blocked === true ? "PASS" : "FAIL",
   executionClass: "SIMULATION_ONLY",
   liveModelRuns: "BLOCKED PENDING AUTHORIZATION",

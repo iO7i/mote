@@ -6,7 +6,7 @@ import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { estimateTokens } from "../../src/measure.mjs";
-import { hashJson } from "../protocol.mjs";
+import { gitSha, hashJson } from "../protocol.mjs";
 import { FIXTURE_BY_ID } from "./accepted/registry.mjs";
 import { loadAcceptedTasks } from "./accepted/validate.mjs";
 
@@ -19,6 +19,7 @@ const tasks = loaded.tasks.map(({ task, fixture }) => reviewTask(task, fixture))
 const report = {
   schemaVersion: 1,
   report: "pilot-corpus-review",
+  sourceRevision: gitSha(root),
   corpusVersion: manifest.corpusVersion,
   taskSetHash: hashJson(manifest),
   reviewedAt: "2026-09-12",
