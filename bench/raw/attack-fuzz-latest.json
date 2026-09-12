@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "campaign": "compiler-attack-fuzz",
+  "status": "PASS",
+  "seed": 2809262093,
+  "cases": 512,
+  "bounds": {
+    "maxSourceChars": 1000000,
+    "maxTokens": 100000,
+    "generatorMaxStringChars": 4096,
+    "generatorMaxDepth": 48
+  },
+  "stats": {
+    "total": 512,
+    "contained": 0,
+    "clean": 366,
+    "malformed": 146,
+    "crashes": 0,
+    "metamorphicChecks": 732,
+    "metamorphicFailures": 0,
+    "byShape": {
+      "grammar": 74,
+      "records": 73,
+      "optional-null": 73,
+      "deep": 73,
+      "unicode-long": 73,
+      "invalid": 73,
+      "imports-runtime": 73
+    },
+    "nodeKinds": {
+      "Program": 366,
+      "Fn": 366,
+      "TName": 953,
+      "Num": 367,
+      "TypeDecl": 146,
+      "TObject": 219,
+      "TOptional": 146,
+      "Binary": 178,
+      "Member": 277,
+      "Ident": 182,
+      "Str": 73,
+      "Use": 36,
+      "Call": 36,
+      "Index": 16,
+      "Array": 16,
+      "Unary": 15,
+      "Ternary": 10,
+      "Bool": 10,
+      "Object": 22
+    },
+    "diagnostics": {
+      "M001": 104,
+      "M401": 30,
+      "M410": 18,
+      "M501": 6
+    },
+    "maxSourceChars": 1178,
+    "maxDepth": 41
+  },
+  "failures": [],
+  "reproducibility": {
+    "command": "node tests/attack-fuzz.mjs --cases 512 --seed 2809262093",
+    "sourceRevision": "working-tree"
+  }
+}

@@ -1,9 +1,39 @@
 {
-  "schemaVersion": 1,
-  "accounting": "non-empty executable function/entrypoint declarations in the checked-in app sources",
-  "moteCoreDeclarations": 3,
-  "typescriptAdapterDeclarations": 1,
-  "typescriptCliEntrypoints": 1,
-  "typescriptStatementShare": 0.25,
-  "performanceClaim": false
+  "schemaVersion": 2,
+  "accounting": "non-empty, non-comment executable declarations and source metrics from checked-in app files",
+  "mote": {
+    "files": 6,
+    "lines": 23,
+    "nonCommentLines": 23,
+    "declarations": 14,
+    "estimatedTokens": 294
+  },
+  "typescript": {
+    "files": 2,
+    "lines": 59,
+    "nonCommentLines": 59,
+    "declarations": 7,
+    "estimatedTokens": 822,
+    "cliEntrypoints": 1,
+    "externalRuntimeDependencies": 0
+  },
+  "tests": {
+    "file": "tests/ledger-app.mjs",
+    "assertions": 8
+  },
+  "generated": {
+    "status": "PRESENT",
+    "files": 13,
+    "lines": 202,
+    "nonCommentLines": 202,
+    "declarations": 40,
+    "estimatedTokens": 2515
+  },
+  "startup": {
+    "command": "node examples/ledger-app/build.mjs",
+    "status": "MEASURED_BY_BUILD_GATE",
+    "wallClockMs": null
+  },
+  "performanceClaim": false,
+  "adapterStatementShare": 0.7195121951219512
 }

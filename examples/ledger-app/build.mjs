@@ -15,6 +15,7 @@ if (compile.status !== 0) { process.stderr.write(compile.stderr || compile.stdou
 const core = spawnSync(process.execPath, [tsc, "-p", join(generated, "tsconfig.json")], { cwd: ROOT, encoding: "utf8", windowsHide: true });
 if (core.status !== 0) { process.stderr.write(core.stderr || core.stdout); process.exit(1); }
 const adapter = join(APP, "adapter.ts");
-const typed = spawnSync(process.execPath, [tsc, "--strict", "--target", "ES2022", "--module", "NodeNext", "--moduleResolution", "NodeNext", "--outDir", APP, "--rootDir", APP, adapter], { cwd: ROOT, encoding: "utf8", windowsHide: true });
+const cliSource = join(APP, "cli.ts");
+const typed = spawnSync(process.execPath, [tsc, "--strict", "--target", "ES2022", "--module", "NodeNext", "--moduleResolution", "NodeNext", "--outDir", APP, "--rootDir", APP, adapter, cliSource], { cwd: ROOT, encoding: "utf8", windowsHide: true });
 if (typed.status !== 0) { process.stderr.write(typed.stderr || typed.stdout); process.exit(1); }
 console.log(JSON.stringify({ status: "PASS", generated }));
