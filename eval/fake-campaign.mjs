@@ -11,7 +11,7 @@ import { compile } from "../src/compile.mjs";
 import { expected } from "../bench/corpus/oracles.mjs";
 import { FIXTURE_BY_ID } from "../bench/corpus/accepted/registry.mjs";
 import { loadAcceptedTasks } from "../bench/corpus/accepted/validate.mjs";
-import { hashJson } from "../bench/protocol.mjs";
+import { gitSha, hashJson } from "../bench/protocol.mjs";
 import { createScriptedAdapter, runScriptedConversation } from "./fake-provider.mjs";
 
 const root = resolve(fileURLToPath(new URL("../", import.meta.url)));
