@@ -1,0 +1,24 @@
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { validateTaskSet } from "../bench/protocol.mjs";
+
+const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
+let failed = 0;
+const expect = (name, condition) => { if (!condition) { failed++; console.error(`FAIL ${name}`); } };
+const taskSet = JSON.parse(readFileSync(join(root, "bench/corpus/manifest.json"), "utf8"));
+const representation = JSON.parse(readFileSync(join(root, "bench/experiments/representation/manifest.json"), "utf8"));
+const roadmap = JSON.parse(readFileSync(join(root, "bench/corpus/main-roadmap.json"), "utf8"));
+const density = JSON.parse(readFileSync(join(root, "bench/raw/semantic-density-latest.json"), "utf8"));
+const ablations = JSON.parse(readFileSync(join(root, "bench/raw/ablation-design-latest.json"), "utf8"));
+const dashboard = readFileSync(join(root, "bench/dashboard/index.html"), "utf8");
+expect("pilot manifest validates", validateTaskSet(taskSet).ok);
+expect("representation has four scales", representation.scales.length === 4 && representation.scales.at(-1).moduleCount === 60);
+expect("paired representation fixtures exist", ["small", "medium", "large", "very-large"].every((scale) => ["mote", "typescript"].every((language) => existsSync(join(root, "bench/experiments/representation/fixtures", scale, language, "relevance.json")))));
+expect("main corpus does not fake acceptance", roadmap.status === "NOT_READY_FOR_FREEZE" && roadmap.acceptedPilotTasks === 20 && roadmap.remainingTasks === 180);
+expect("density is descriptive", density.status === "DESCRIPTIVE_ACCOUNTING_ONLY" && density.rows.length === 40);
+expect("type-light ablation is explicit", ablations.tasks.every((task) => task.variants["type-light"].status === "NOT_APPLICABLE"));
+expect("dashboard exposes live-data boundary", dashboard.includes("NO LIVE MODEL DATA") && dashboard.includes("Dashboard numbers are not manually transcribed"));
+expect("fixture files are non-empty", readdirSync(join(root, "bench/experiments/representation/fixtures/very-large/mote/src")).length === 60);
+console.log(`${failed ? "FAIL" : "PASS"} experiment controls`);
+process.exit(failed ? 1 : 0);

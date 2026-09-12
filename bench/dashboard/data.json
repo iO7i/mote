@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-09-12",
+  "evidenceBoundary": "NO_LIVE_MODEL_DATA",
+  "liveRecordCount": 0,
+  "mutation": {
+    "generated": 60,
+    "valid": 60,
+    "killed": 39,
+    "equivalent": 21,
+    "survivors": 0,
+    "invalid": 0,
+    "score": 0.65
+  },
+  "fuzz": {
+    "cases": 512,
+    "contained": 0,
+    "crashes": 0,
+    "metamorphicChecks": 732,
+    "failures": 0
+  },
+  "pilot": {
+    "tasks": 0,
+    "equivalence": 0,
+    "mutationControls": 0,
+    "familiarityRisk": 0
+  },
+  "fake": {
+    "pairedTasks": 20,
+    "armRuns": 40,
+    "status": "PASS"
+  },
+  "density": {
+    "moteRows": 20,
+    "typescriptRows": 20
+  },
+  "representation": [
+    {
+      "scale": "small",
+      "language": "mote",
+      "total": 168,
+      "relevant": 81,
+      "ratio": 0.48214285714285715,
+      "editFiles": 2
+    },
+    {
+      "scale": "small",
+      "language": "typescript",
+      "total": 251,
+      "relevant": 123,
+      "ratio": 0.4900398406374502,
+      "editFiles": 2
+    },
+    {
+      "scale": "medium",
+      "language": "mote",
+      "total": 511,
+      "relevant": 85,
+      "ratio": 0.16634050880626222,
+      "editFiles": 2
+    },
+    {
+      "scale": "medium",
+      "language": "typescript",
+      "total": 761,
+      "relevant": 127,
+      "ratio": 0.16688567674113008,
+      "editFiles": 2
+    },
+    {
+      "scale": "large",
+      "language": "mote",
+      "total": 1278,
+      "relevant": 89,
+      "ratio": 0.06964006259780908,
+      "editFiles": 2
+    },
+    {
+      "scale": "large",
+      "language": "typescript",
+      "total": 1905,
+      "relevant": 131,
+      "ratio": 0.06876640419947506,
+      "editFiles": 2
+    },
+    {
+      "scale": "very-large",
+      "language": "mote",
+      "total": 2556,
+      "relevant": 84,
+      "ratio": 0.03286384976525822,
+      "editFiles": 2
+    },
+    {
+      "scale": "very-large",
+      "language": "typescript",
+      "total": 3810,
+      "relevant": 125,
+      "ratio": 0.03280839895013123,
+      "editFiles": 2
+    }
+  ]
+}

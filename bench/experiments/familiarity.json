@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "experiment": "model-familiarity-penalty",
+  "status": "PRE_REGISTERED_NO_AGENT_RUN",
+  "conditions": [
+    { "id": "cold-mote", "language": "mote", "context": "new-repository", "priorExposure": "none" },
+    { "id": "warm-mote", "language": "mote", "context": "same-repository-after-training-block", "priorExposure": "same-model-prior-task" },
+    { "id": "few-shot-mote", "language": "mote", "context": "new-repository", "priorExposure": "curated-syntax-examples" },
+    { "id": "cold-typescript", "language": "typescript", "context": "new-repository", "priorExposure": "none" }
+  ],
+  "replicates": { "perTaskCondition": 3, "taskCountMinimum": 40, "scales": ["small", "medium", "large", "very-large"] },
+  "metrics": ["terminalSuccess", "verifiedWorkUnits", "compilerFeedbackDensity", "relevantContextRatio", "toolCalls", "repairRounds", "billedTokens", "costUsd", "wallClockMs"],
+  "breakEven": "Estimate the smallest task count and context size where warm/few-shot Mote reaches cold-TypeScript success with paired confidence intervals; report non-identifiability when intervals overlap.",
+  "learningCurve": "Fit only to pre-registered task order and retain task identity as a paired random effect.",
+  "exclusions": ["live provider failures", "infrastructure failures", "fake transcripts", "post-hoc task removal"],
+  "liveExecution": "BLOCKED PENDING AUTHORIZATION"
+}

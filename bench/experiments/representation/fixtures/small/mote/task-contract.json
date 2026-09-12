@@ -1,0 +1,12 @@
+{
+  "scale": "small",
+  "language": "mote",
+  "moduleCount": 4,
+  "tasks": [
+    "change-fee-policy",
+    "trace-invalid-entry"
+  ],
+  "sameBehaviorKey": "normalize(enabled,value)=enabled?value:0",
+  "target": "src/module-02.mt",
+  "oracle": "private paired oracle outside visible repository"
+}

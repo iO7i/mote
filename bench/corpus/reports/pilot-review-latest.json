@@ -1,0 +1,1142 @@
+{
+  "schemaVersion": 1,
+  "report": "pilot-corpus-review",
+  "corpusVersion": "pilot-0.2.0",
+  "taskSetHash": "7e20309aa06063d9330ec507ba2c1b26036328a1078802ace6b5abdb197f0247",
+  "reviewedAt": "2026-09-12",
+  "decision": "PILOT_ACCEPTED_WITH_LIMITATIONS",
+  "limitations": [
+    "All 20 accepted tasks are compact synthetic fixtures, so familiarity and single-function priors are high.",
+    "The pilot establishes harness validity and oracle controls; it does not estimate model efficacy.",
+    "Runtime and package-interoperability coverage is represented by dedicated strata but remains fixture-level."
+  ],
+  "summary": {
+    "accepted": 20,
+    "equivalencePass": 20,
+    "mutationControlPass": 20,
+    "highFamiliarityRisk": 20,
+    "hiddenLeakageFlags": 0
+  },
+  "tasks": [
+    {
+      "id": "P01",
+      "title": "Normalize paginated records",
+      "strata": {
+        "primary": "typed-transformation",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 43,
+            "lines": 1,
+            "estimatedTokens": 11
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 69,
+            "lines": 1,
+            "estimatedTokens": 18
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p01-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P02",
+      "title": "Merge sparse configuration",
+      "strata": {
+        "primary": "typed-transformation",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 48,
+            "lines": 1,
+            "estimatedTokens": 13
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 82,
+            "lines": 1,
+            "estimatedTokens": 22
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p02-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P03",
+      "title": "Summarize nullable metrics",
+      "strata": {
+        "primary": "typed-transformation",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 58,
+            "lines": 1,
+            "estimatedTokens": 15
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 87,
+            "lines": 1,
+            "estimatedTokens": 23
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p03-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P04",
+      "title": "Parse versioned JSON envelope",
+      "strata": {
+        "primary": "data-boundary",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 45,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 71,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p04-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P05",
+      "title": "Validate webhook payload",
+      "strata": {
+        "primary": "data-boundary",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 45,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 71,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p05-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P06",
+      "title": "Serialize import error parts",
+      "strata": {
+        "primary": "parser-serializer",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 46,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 72,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p06-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P07",
+      "title": "Route typed request",
+      "strata": {
+        "primary": "api-handler",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 54,
+            "lines": 1,
+            "estimatedTokens": 14
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 80,
+            "lines": 1,
+            "estimatedTokens": 21
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p07-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P08",
+      "title": "Add authenticated health endpoint",
+      "strata": {
+        "primary": "api-handler",
+        "kind": "feature-addition",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 48,
+            "lines": 1,
+            "estimatedTokens": 13
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 74,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p08-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P09",
+      "title": "Decode line-oriented events",
+      "strata": {
+        "primary": "parser-serializer",
+        "kind": "new-module",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 44,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 70,
+            "lines": 1,
+            "estimatedTokens": 18
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p09-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P10",
+      "title": "Round-trip configuration format",
+      "strata": {
+        "primary": "parser-serializer",
+        "kind": "new-module",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 37,
+            "lines": 1,
+            "estimatedTokens": 10
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 63,
+            "lines": 1,
+            "estimatedTokens": 17
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p10-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P11",
+      "title": "Track bounded job state",
+      "strata": {
+        "primary": "stateful-module",
+        "kind": "new-module",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 47,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 73,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p11-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P12",
+      "title": "Repair stale cache transition",
+      "strata": {
+        "primary": "stateful-module",
+        "kind": "bug-repair",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 46,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 72,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p12-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P13",
+      "title": "Read a Node filesystem fixture",
+      "strata": {
+        "primary": "npm-node-interoperability",
+        "kind": "integration",
+        "repoScale": "small"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 44,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 70,
+            "lines": 1,
+            "estimatedTokens": 18
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p13-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P14",
+      "title": "Call a typed package adapter",
+      "strata": {
+        "primary": "npm-node-interoperability",
+        "kind": "integration",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 50,
+            "lines": 1,
+            "estimatedTokens": 13
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 79,
+            "lines": 1,
+            "estimatedTokens": 21
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p14-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P15",
+      "title": "Repair a boundary regression",
+      "strata": {
+        "primary": "bug-repair",
+        "kind": "bug-repair",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 51,
+            "lines": 1,
+            "estimatedTokens": 13
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 80,
+            "lines": 1,
+            "estimatedTokens": 21
+          }
+        },
+        "privateOracleCases": 4,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p15-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 4,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P16",
+      "title": "Add a compatible optional field",
+      "strata": {
+        "primary": "feature-addition",
+        "kind": "feature-addition",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 46,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 80,
+            "lines": 1,
+            "estimatedTokens": 21
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p16-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P17",
+      "title": "Refactor duplicated validation",
+      "strata": {
+        "primary": "refactoring",
+        "kind": "refactoring",
+        "repoScale": "medium"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 43,
+            "lines": 1,
+            "estimatedTokens": 11
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 72,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p17-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P18",
+      "title": "Split a multi-file service",
+      "strata": {
+        "primary": "multi-file-maintenance",
+        "kind": "refactoring",
+        "repoScale": "large"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 57,
+            "lines": 1,
+            "estimatedTokens": 15
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 86,
+            "lines": 1,
+            "estimatedTokens": 23
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p18-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P19",
+      "title": "Maintain an unfamiliar repository",
+      "strata": {
+        "primary": "long-context",
+        "kind": "bug-repair",
+        "repoScale": "large"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 46,
+            "lines": 1,
+            "estimatedTokens": 12
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 72,
+            "lines": 1,
+            "estimatedTokens": 19
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p19-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    },
+    {
+      "id": "P20",
+      "title": "Implement a cross-module migration",
+      "strata": {
+        "primary": "long-context",
+        "kind": "feature-addition",
+        "repoScale": "large"
+      },
+      "acceptance": {
+        "decision": "ACCEPTED",
+        "equivalence": true,
+        "mutationControls": true,
+        "referenceArmStatuses": {
+          "mote": "PASS",
+          "typescript": "PASS"
+        }
+      },
+      "accounting": {
+        "visibleSource": {
+          "mote": {
+            "files": 1,
+            "bytes": 37,
+            "lines": 1,
+            "estimatedTokens": 10
+          },
+          "typescript": {
+            "files": 1,
+            "bytes": 63,
+            "lines": 1,
+            "estimatedTokens": 17
+          }
+        },
+        "privateOracleCases": 3,
+        "mutationControls": 1,
+        "phaseCount": 10,
+        "repositorySeed": "p20-seed-2026-09-12",
+        "dependencyLockfileHash": "fixture-lock-v1"
+      },
+      "functionality": {
+        "publicApi": "solve(input)",
+        "boundaryCases": 3,
+        "hiddenOracleIndependent": true,
+        "generatedTypescriptRequired": true
+      },
+      "documentation": {
+        "promptPresent": true,
+        "languageNeutral": true,
+        "reviewNotesPresent": true
+      },
+      "familiarity": {
+        "risk": "HIGH",
+        "reason": "single-function synthetic starter with a named solve API; suitable for pilot controls, insufficient for a general familiarity claim",
+        "requiredFollowUp": "repeat in cold/warm/few-shot and multi-module repository conditions"
+      },
+      "exclusions": []
+    }
+  ]
+}

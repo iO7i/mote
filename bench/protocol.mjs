@@ -6,7 +6,7 @@ import { join, relative, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
 export const PROTOCOL_VERSION = "1.0.0";
-export const RUN_STATUSES = Object.freeze(["IMPLEMENTED", "LOCALLY VERIFIED", "LIVE RUN", "NOT RUN", "BLOCKED"]);
+export const RUN_STATUSES = Object.freeze(["IMPLEMENTED", "LOCALLY VERIFIED", "LIVE RUN", "SIMULATION_ONLY", "NOT RUN", "BLOCKED", "PROVIDER_ERROR"]);
 export const DEFAULT_BUDGETS = Object.freeze({
   contextTokens: 32768,
   cumulativeTokenCheckpoints: [8000, 32000, 100000],
@@ -66,16 +66,21 @@ export function packageMetadata(repoRoot) {
   try { return JSON.parse(readFileSync(file, "utf8")); } catch { return {}; }
 }
 
-export function createRunManifest({ repoRoot, taskSet, taskIds, model, provider, settings = {}, regime, language, seed, budgets = DEFAULT_BUDGETS, pricing = null, promptHash = null, toolsHash = null, usage = null, resultHash = null, status = "NOT RUN", timestamps = {} }) {
+export function createRunManifest({ repoRoot, taskSet, taskSetHash = null, taskIds, model, provider, settings = {}, regime, language, seed, budgets = DEFAULT_BUDGETS, pricing = null, promptHash = null, toolsHash = null, usage = null, resultHash = null, status = "NOT RUN", timestamps = {}, runId = null, attempt = 1, arm = null, pairId = null, counterbalance = null, workspacePolicy = "unspecified", toolCalls = null, repairRounds = null, failureClass = null, providerError = null, exclusionReason = null, statusReason = null, resumableKey = null }) {
   if (!RUN_STATUSES.includes(status)) throw new Error(`unknown run status: ${status}`);
   const pkg = packageMetadata(repoRoot);
   return {
     schemaVersion: 1,
     protocolVersion: PROTOCOL_VERSION,
     status,
+    runId,
+    attempt,
+    pairId,
+    arm,
+    counterbalance,
     moteGitSha: gitSha(repoRoot),
     benchmarkVersion: taskSet?.corpusVersion ?? null,
-    taskSetHash: taskSet ? hashJson(taskSet) : null,
+    taskSetHash: taskSetHash ?? (taskSet ? hashJson(taskSet) : null),
     taskIds: [...(taskIds ?? [])].sort(),
     model: { provider: provider ?? null, id: model ?? null, settings },
     systemPromptHash: promptHash,
@@ -89,10 +94,18 @@ export function createRunManifest({ repoRoot, taskSet, taskIds, model, provider,
     dependencyLockfileHash: existsSync(join(repoRoot, "package-lock.json")) ? sha256(readFileSync(join(repoRoot, "package-lock.json"))) : null,
     seed: seed ?? null,
     limits: structuredClone(budgets),
+    workspacePolicy,
+    toolCalls,
+    repairRounds,
+    failureClass,
+    providerError,
+    exclusionReason,
+    statusReason,
     pricingSnapshot: pricing,
     usage,
     timestamps: { startedAt: timestamps.startedAt ?? null, endedAt: timestamps.endedAt ?? null },
     resultHash,
+    resumableKey,
   };
 }
 

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "experiment": "representation-stress",
+  "version": "representation-0.1.0",
+  "status": "DESIGNED_NO_AGENT_RUN",
+  "pairedLanguages": ["mote", "typescript"],
+  "scales": [
+    { "id": "small", "moduleCount": 4, "maintenanceTasks": ["change-fee-policy", "trace-invalid-entry"] },
+    { "id": "medium", "moduleCount": 12, "maintenanceTasks": ["change-fee-policy", "trace-invalid-entry", "add-reconciliation-field"] },
+    { "id": "large", "moduleCount": 30, "maintenanceTasks": ["change-fee-policy", "trace-invalid-entry", "add-reconciliation-field", "repair-cross-module-import"] },
+    { "id": "very-large", "moduleCount": 60, "maintenanceTasks": ["change-fee-policy", "trace-invalid-entry", "add-reconciliation-field", "repair-cross-module-import", "migrate-ledger-status"] }
+  ],
+  "taskContract": { "sameBehavior": true, "sameInputs": true, "sameHiddenOracle": true, "sameTargetEditSurface": true, "distractorsVisible": true },
+  "metrics": ["totalSourceTokens", "relevantContextTokens", "relevantContextRatio", "editSurfaceFiles", "semanticCaseCount", "compilerFeedbackDensity", "generatedTokens", "adapterTokens"],
+  "liveExecution": "BLOCKED PENDING AUTHORIZATION"
+}

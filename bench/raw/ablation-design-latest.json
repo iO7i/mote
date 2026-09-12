@@ -1,0 +1,793 @@
+{
+  "schemaVersion": 1,
+  "experiment": "representation-ablations",
+  "status": "DESIGN_ONLY_NO_AGENT_RUN",
+  "taskSetHash": "7e20309aa06063d9330ec507ba2c1b26036328a1078802ace6b5abdb197f0247",
+  "soundnessRule": "Only syntax-preserving formatter projections and prompt additions are materialized; type-light is explicitly not applicable.",
+  "tasks": [
+    {
+      "id": "P01",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "00c8924e264f93a6d5bb12d5a972f5843e3339e4f1f9d5705b487d2093bd2c84",
+          "sourceBytes": 43,
+          "sourceTokens": 11,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "1999730cc6d2ffcf7e5cd35bfde5a459998373da370adeb31e076b957a9ce052",
+          "sourceBytes": 56,
+          "sourceTokens": 15,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "de3941a11dbfff280ed01e8e324aea00a7ba188707548e47b05317f5dc1b492c",
+          "promptBytes": 301,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "ccae4995cb03888d07a61f77fb2e1ae25d16fb47170b692fb7949eb08d5d7043",
+          "sourceBytes": 69,
+          "sourceTokens": 18,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P02",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "c96e826ab6bbd59d5a5f167aa2138d80fd932917ee049c9efa157a5f38551ffb",
+          "sourceBytes": 48,
+          "sourceTokens": 13,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "47da2b7baaf4dcaf231e112a067ee94f3888aa0e8fc2cd3bd4b1d8e4f6b9c7e1",
+          "sourceBytes": 61,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "77539834c90a112b4bf38e62422a6d1a6e29c55e1631fb599b79fa979f20b0bc",
+          "promptBytes": 300,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "b240a196275c89c685267c7606ce014766a3030028a5d17243ac7721f3037294",
+          "sourceBytes": 82,
+          "sourceTokens": 22,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P03",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "7d68a6dc1d7b35ccf2ee771474d1daa0ce467f0e4e7c6c891fdb957d77f963cb",
+          "sourceBytes": 58,
+          "sourceTokens": 15,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "59eafeaa8ba9b2deab4d02f5374785c530b39177bf0914a694b094ff6e358351",
+          "sourceBytes": 75,
+          "sourceTokens": 20,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "b3797bb31523c0b7a959e90286734c74e394a43266a3ca5539e3736cb5707d13",
+          "promptBytes": 300,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "c83116cf547a46246906dd0433f28504d45a43036b1cb6b3730f7162306f733f",
+          "sourceBytes": 87,
+          "sourceTokens": 23,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P04",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "aae19c0188812ddcc2d2736182866ea4ac1c074e459cbcaaf10ea255d5683b4f",
+          "sourceBytes": 45,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "b3c68732f48e47d8c9b38d143d5fa6ffb881ca91b8a7be08febd30adfb6d6199",
+          "sourceBytes": 58,
+          "sourceTokens": 15,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "c3880622a815f02d6d3f09a1130d69877767e8830c937e9a2c951529827a1958",
+          "promptBytes": 303,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "9433bb68c1450f53ae4f29476016e2de107e57b8b8b337ba5d930c0f4f36a20a",
+          "sourceBytes": 71,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P05",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "a40d68b94f98f4a2b294a6836ce8e0de6ce09903dc3275cb724b2239038aa8d6",
+          "sourceBytes": 45,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "624434ca827faea233702a25c9e75becbad1302068fa3e23ccd4a8f2f1118952",
+          "sourceBytes": 58,
+          "sourceTokens": 15,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "1f464af20632e1de662909a08999decc26d4c75857bb18c0d2a99a1070bd6596",
+          "promptBytes": 298,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "0dfb501e7074d8dc09008b8acfbe1481c21261e30670bd38efa8ea763c2e35a9",
+          "sourceBytes": 71,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P06",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "118c54adc0166eb65a096b3939776778811ca0e1bfbb79fb201d98470160e58f",
+          "sourceBytes": 46,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "62e104311b63a252f2a782a4890cc2bfca6e9150f113c6e140baeeaafa6185a1",
+          "sourceBytes": 59,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "5758917904be1a64a2148d6fb19b613587379dd596eddb22e7a61c9b1a687d52",
+          "promptBytes": 302,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "6e9a03640b247f1727403bdabfbd2823ffe538bfaa0b77c9179e569489e62b11",
+          "sourceBytes": 72,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P07",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "3e6f0241e20c1c28ac9d89a77695761c813637bd407fd478ecd4a2ba48fca66a",
+          "sourceBytes": 54,
+          "sourceTokens": 14,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "c24dd999c446d76dbf73c35f7a81377d4ada19c95721fb3b315ee9a6e345c198",
+          "sourceBytes": 67,
+          "sourceTokens": 18,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "d40586f6dfc20caf553ed0754d32a1d7d3fcd8af7e3649a184a44dad02c78eca",
+          "promptBytes": 293,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "ec4a56a16d36bc4dcc8334570d51ee6d0e28e53b6318826a356ef4b0b88a7a8e",
+          "sourceBytes": 80,
+          "sourceTokens": 21,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P08",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "b925e179e4aa4f5dd501424ce7f6bab0e9db5b01f43cc9b8f27711862d5205dd",
+          "sourceBytes": 48,
+          "sourceTokens": 13,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "5a971187bc28cafc2d02dcd1c3f97c9d8fb4ccd70dcc3b9ed4c258ee58a62b1a",
+          "sourceBytes": 61,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "5f89c79bf0a60dfa95a404350f86bcec7a2379a4e0d23a9b7a4b642087f2e011",
+          "promptBytes": 307,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "052d6ddcfc3121f3db2b4eae7ed75364b3c9bf5d05487287df9fad2a34c6348d",
+          "sourceBytes": 74,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P09",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "8e79fcfd0a41025393121d0dfaa3acc8dc88aed56069f1a9ff71483fade68e2c",
+          "sourceBytes": 44,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "5ee77af4e56f25b3f9dbc9590d0bdaefcaaa2464c75aa79870c20bd60f86cb70",
+          "sourceBytes": 57,
+          "sourceTokens": 15,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "40c6332f56416425fe0b4dc2922bf77518fac4e366bb32914086a3c8a4ef7cb7",
+          "promptBytes": 301,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "a4bbc955419bdba89c4d487bb477d3101c52d5321a742fa5f195b672a501a8d2",
+          "sourceBytes": 70,
+          "sourceTokens": 18,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P10",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "0cb81b867e5be1e55ec77f59c9d2560c6ee9249129a70e85db37c980c96e9689",
+          "sourceBytes": 37,
+          "sourceTokens": 10,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "a40f5eb32fccacd0e2616ad20ebf500c3ee92d32b8e18470861d04b039da431f",
+          "sourceBytes": 50,
+          "sourceTokens": 13,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "e5a368eea5bf645b22181910e494776467c389de1f94de8a5c7ac4ee7cfaaf22",
+          "promptBytes": 305,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "5d4ba90108552b4d7ee93e840832e7abf547aa46bc83f9e9fd353daf9d9ce97c",
+          "sourceBytes": 63,
+          "sourceTokens": 17,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P11",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "9e02ee4bfe2cd33dc7f0e2434fe74ec970626a6b87dfd55de5726da7f0053e4e",
+          "sourceBytes": 47,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "1ba669e808f4137fb169f5c6c156fa994bbdd5e8d97671b7bce87583b57cda4b",
+          "sourceBytes": 60,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "af0ced05ec23a01b51a63289c979a194260413cf7ba1345e3fbb025eb6a15f48",
+          "promptBytes": 297,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "8712dc4590118da3b2c8fe450c46c5785de0a9fc53003d896139653b80119bf7",
+          "sourceBytes": 73,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P12",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "d29b958c3cbec3bf221204a73d801c9b791712b6ea7ca019d66f1c95367272c2",
+          "sourceBytes": 46,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "48ae3ec4f2a8b82d77f2eab848155bb6ed15cea8902624b9f8335f1adbd4df1e",
+          "sourceBytes": 59,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "d238f98b3f27bfcca8e768608319efad6882f6229bd08001850b3c8c21a2a8d0",
+          "promptBytes": 303,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "4e61ca181ab4fce92f2ffaa0957316f53adec78984c7f943e2a22c06de6076cc",
+          "sourceBytes": 72,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P13",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "8e79fcfd0a41025393121d0dfaa3acc8dc88aed56069f1a9ff71483fade68e2c",
+          "sourceBytes": 44,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "5ee77af4e56f25b3f9dbc9590d0bdaefcaaa2464c75aa79870c20bd60f86cb70",
+          "sourceBytes": 57,
+          "sourceTokens": 15,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "9065dec9338ed617a9ba8f960f9a6c2dfc42f8a662206646f418d839988e2b44",
+          "promptBytes": 304,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "a4bbc955419bdba89c4d487bb477d3101c52d5321a742fa5f195b672a501a8d2",
+          "sourceBytes": 70,
+          "sourceTokens": 18,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P14",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "cafc40c27fbeae23014c19d128ccbbccd05522b47ef0ef10a60b46b2a7e62982",
+          "sourceBytes": 50,
+          "sourceTokens": 13,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "520385e34b8075201bde8387c66ee040715ec59e7f24c2ccf1cc4f1a663608c2",
+          "sourceBytes": 67,
+          "sourceTokens": 18,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "5cc01a51bf2e6b210c332a97e59eb04cd9cf24bb8a329b51dc65a76191d16754",
+          "promptBytes": 302,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "1d789a2c1d455bbd8869fa3d55fb6aac0688803d7ac51857ae91ffaacbe1d07c",
+          "sourceBytes": 79,
+          "sourceTokens": 21,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P15",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "0504d5dcb550da4fdce410c17ad87f81c8f16693c5a85ae72954720117a63c29",
+          "sourceBytes": 51,
+          "sourceTokens": 13,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "fa256b7a8753f2226a4c033cd8250bf953b35bbb49fa9f613a4f8659a742e90c",
+          "sourceBytes": 68,
+          "sourceTokens": 18,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "bf415772ea1d3b7a1da80ea6e14cff672475ff2bd4ae7404493a5965ca942da5",
+          "promptBytes": 302,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "1d069626e246a598221e4f1e0c0150b02858be946f255cc0d8cc4c3da8aaff3e",
+          "sourceBytes": 80,
+          "sourceTokens": 21,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P16",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "c98080ab0216aaa7ff0869b0c5d1445e04f3ba18d767586003899b6b6c159f35",
+          "sourceBytes": 46,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "8706cb99f9d336de3f85907a0a1c952bf9004a736988cbd77606dc2ca065889d",
+          "sourceBytes": 59,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "968896891e0ea871302ce6826090b8d089f7e5f659a56e5f2e571c8a99d1e277",
+          "promptBytes": 305,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "e9bc69fbc9227cd2fedbf0a61128afa50c18434d4f2c45ecfeed621065f0d581",
+          "sourceBytes": 80,
+          "sourceTokens": 21,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P17",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "c6c990f0b59f4c92a54f1545c791d79242ee9e1decce717bda0d24fc6efe17ac",
+          "sourceBytes": 43,
+          "sourceTokens": 11,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "805378f4ca3fbf92ac15c094bb376ac92338ddb92f5937c5fc7f8fdfb2a0da0b",
+          "sourceBytes": 60,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "ed17b7ae10cd6488d5eef2094bd29559e2b117d1044c2d8bb0cdcc0fb4bd7573",
+          "promptBytes": 304,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "0631cf6a35789b18a8445728f49bb99dcb93d648b097c843a98543e0dd018d91",
+          "sourceBytes": 72,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P18",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "177e2d9c622b9ac35988328bd9691b22679a5bd23ce3136603e9668ee391c9af",
+          "sourceBytes": 57,
+          "sourceTokens": 15,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "e36f671ca21623c4657a4a34c71afb815a81ce723f2ec503bc433fa5d3a0527c",
+          "sourceBytes": 74,
+          "sourceTokens": 19,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "a4738e28dc8bd1c45f4c9780aeba85c07761feafefb66ebc4d9e99d1a89c0fac",
+          "promptBytes": 300,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "831173f25340b83d139a9b11d489f937cda5a5a0924d2f315f5b8e8b8730c3cf",
+          "sourceBytes": 86,
+          "sourceTokens": 23,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P19",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "a1334d61d750e30687d73552ed33e8a9f68f130eb4df347ec1bcbeaf1916f1df",
+          "sourceBytes": 46,
+          "sourceTokens": 12,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "35f5dcaa195f425b331b9a801ac4e0583b45208a4c9da5ade9af1bb0fa6f00f0",
+          "sourceBytes": 59,
+          "sourceTokens": 16,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "e1eb291fcb1b080f858c6e3cac154dc7af2b326b2022f3ff9c53400cdb0378e2",
+          "promptBytes": 307,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "5d783b3783890b37cea66bc3b5aeec7c22f227e3f4237ba20c3eedd83760eff6",
+          "sourceBytes": 72,
+          "sourceTokens": 19,
+          "note": "paired language control"
+        }
+      }
+    },
+    {
+      "id": "P20",
+      "variants": {
+        "compact-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "7030575761faa19bc41ce59f8d4ad4b47e0e62da8e286c6f07d2569b4f556039",
+          "sourceBytes": 37,
+          "sourceTokens": 10,
+          "note": "same source contract"
+        },
+        "verbose-mote": {
+          "status": "MATERIALIZED",
+          "language": "mote",
+          "sourceHash": "0d3204ce3c8fde82b83cbc117fcbd1d34d8c57a7dd2e2c4f215a17a3fb5358a4",
+          "sourceBytes": 50,
+          "sourceTokens": 13,
+          "note": "formatter-readable projection; AST round-trip required"
+        },
+        "type-light": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Removing the visible type boundary is unsound for this task's contract; no invalid ablation is materialized."
+        },
+        "documentation-heavy": {
+          "language": "mote",
+          "promptHash": "44eac4a4474230d09c068199b15c2223051f5d6978de86434287148030e14f3c",
+          "promptBytes": 308,
+          "source": "compact-mote"
+        },
+        "typescript-control": {
+          "status": "MATERIALIZED",
+          "language": "typescript",
+          "sourceHash": "bba9fc1d9114bb6018935baa076148d15741b704bed041083dd0913aa452da60",
+          "sourceBytes": 63,
+          "sourceTokens": 17,
+          "note": "paired language control"
+        }
+      }
+    }
+  ],
+  "exclusions": [
+    "No ablation result is a model observation.",
+    "Documentation-heavy changes prompt tokens and must be cost-accounted."
+  ]
+}

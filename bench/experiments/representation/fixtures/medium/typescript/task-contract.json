@@ -1,0 +1,13 @@
+{
+  "scale": "medium",
+  "language": "typescript",
+  "moduleCount": 12,
+  "tasks": [
+    "change-fee-policy",
+    "trace-invalid-entry",
+    "add-reconciliation-field"
+  ],
+  "sameBehaviorKey": "normalize(enabled,value)=enabled?value:0",
+  "target": "src/module-06.ts",
+  "oracle": "private paired oracle outside visible repository"
+}

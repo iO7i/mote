@@ -1,0 +1,15 @@
+{
+  "scale": "very-large",
+  "language": "typescript",
+  "moduleCount": 60,
+  "tasks": [
+    "change-fee-policy",
+    "trace-invalid-entry",
+    "add-reconciliation-field",
+    "repair-cross-module-import",
+    "migrate-ledger-status"
+  ],
+  "sameBehaviorKey": "normalize(enabled,value)=enabled?value:0",
+  "target": "src/module-30.ts",
+  "oracle": "private paired oracle outside visible repository"
+}

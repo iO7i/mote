@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "corpus": "mote-main",
+  "status": "NOT_READY_FOR_FREEZE",
+  "targetAcceptedTasks": 200,
+  "acceptedPilotTasks": 20,
+  "remainingTasks": 180,
+  "expansionPolicy": "Add reviewed tasks in waves; never promote generated placeholders to accepted status.",
+  "waves": [
+    { "id": "W1", "target": 30, "focus": ["typed transformations", "nullability", "boundary validation"], "scales": ["small", "medium"] },
+    { "id": "W2", "target": 30, "focus": ["API handlers", "parser/serializer", "state transitions"], "scales": ["small", "medium", "large"] },
+    { "id": "W3", "target": 30, "focus": ["Node package adapters", "filesystem", "configuration"], "scales": ["medium", "large"] },
+    { "id": "W4", "target": 30, "focus": ["bug repair", "regression repair", "negative tasks"], "scales": ["medium", "large"] },
+    { "id": "W5", "target": 30, "focus": ["multi-file refactoring", "cross-module migrations"], "scales": ["large", "very-large"] },
+    { "id": "W6", "target": 30, "focus": ["long-context maintenance", "representation ablations", "hard negatives"], "scales": ["large", "very-large"] }
+  ],
+  "requiredAcceptance": ["paired repository", "same visible task contract", "independent hidden oracle", "at least three boundary cases", "meaningful mutation control", "language-neutral prompt", "familiarity review", "reproducible lock/hash", "independent reviewer"],
+  "whyNotMechanical": "The 180 remaining tasks require domain-diverse source, private expected behavior, mutation controls, and human review; duplicating the pilot's single-function template would create a biased corpus.",
+  "liveExecution": "BLOCKED PENDING AUTHORIZATION"
+}

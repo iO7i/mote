@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "experiment": "context-pressure-frontier",
+  "status": "PRE_REGISTERED_NO_AGENT_RUN",
+  "unit": "task-arm-replicate",
+  "budgets": [
+    { "id": "B1", "contextTokens": 8000, "cumulativeInputTokens": 12000, "cumulativeOutputTokens": 4000, "maxToolCalls": 20 },
+    { "id": "B2", "contextTokens": 16000, "cumulativeInputTokens": 24000, "cumulativeOutputTokens": 8000, "maxToolCalls": 40 },
+    { "id": "B3", "contextTokens": 32768, "cumulativeInputTokens": 50000, "cumulativeOutputTokens": 12000, "maxToolCalls": 80 },
+    { "id": "B4", "contextTokens": 65536, "cumulativeInputTokens": 100000, "cumulativeOutputTokens": 16000, "maxToolCalls": 120 }
+  ],
+  "outcomes": ["taskSuccess", "verifiedWorkUnits", "relevantContextRatio", "editSurfaceFiles", "toolCalls", "repairRounds", "compilerFeedbackDensity", "wallClockMs", "billedTokens", "costUsd"],
+  "analysis": ["success-by-budget", "paired-difference-by-budget", "token-cost-frontier", "failure-taxonomy-by-budget"],
+  "stoppingRule": "Do not pool budget checkpoints as independent observations; analyze terminal success and repeated checkpoint curves separately.",
+  "exclusions": ["provider errors", "Docker failures", "missing arms", "transcript replays", "simulated fake-provider runs"],
+  "liveExecution": "BLOCKED PENDING AUTHORIZATION"
+}

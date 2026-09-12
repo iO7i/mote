@@ -1,0 +1,1274 @@
+{
+  "schemaVersion": 1,
+  "campaign": "accepted-pilot-fake-agent",
+  "status": "PASS",
+  "executionClass": "SIMULATION_ONLY",
+  "liveModelRuns": "BLOCKED PENDING AUTHORIZATION",
+  "corpusVersion": "pilot-0.2.0",
+  "taskSetHash": "7e20309aa06063d9330ec507ba2c1b26036328a1078802ace6b5abdb197f0247",
+  "pairedTasks": 20,
+  "armRuns": 40,
+  "counterbalance": {
+    "oddTaskIds": "mote-first",
+    "evenTaskIds": "typescript-first"
+  },
+  "results": [
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P01",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "ae500e0c7db04a9ebcab39a3cb8ce8006499378cfd2a11ebffa57a7a43ebfddb",
+      "traceHash": "85d8c81e1c4eec0a197e10bb56c3ff089ddc6352f73d24d3f2beb1ed12bb1b4b",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P01:mote:ae500e0c7db04a9ebcab39a3cb8ce8006499378cfd2a11ebffa57a7a43ebfddb"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P01",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "354bfe2d439e0c803e3e47e79dc4a5ac279e7632df320ae46748dd38d20b3ba5",
+      "traceHash": "75a6ad8b00481767ecb0ead35e5609f0dc9297cd7b4ac1e37e79ac3a00039b95",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P01:typescript:354bfe2d439e0c803e3e47e79dc4a5ac279e7632df320ae46748dd38d20b3ba5"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P02",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "60364d5def8aebc3025da5ded6fe2174f7a51d985dcb9e2afe781e7655d91e3b",
+      "traceHash": "bf7f7bec42de690e658c47f1df360755d68a43a270e322fb1a5342a85c41c1c6",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P02:typescript:60364d5def8aebc3025da5ded6fe2174f7a51d985dcb9e2afe781e7655d91e3b"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P02",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "5760cc4e1c9f674114e2f3507bde3119bb585bb9b8302e21edd1a46d712c01f5",
+      "traceHash": "409b699d54e2ca8609f9d5b633cb30d78f7a0d7518b8fef3b471bb2d73c4aeba",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P02:mote:5760cc4e1c9f674114e2f3507bde3119bb585bb9b8302e21edd1a46d712c01f5"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P03",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "8e63a97036699b52017d7f563dfef1da40d903e277681b75fe25db57d3da4589",
+      "traceHash": "f92b5c60e47fec860f47685945ee0b98712a6bd379a91d8e193c14550f41a392",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P03:mote:8e63a97036699b52017d7f563dfef1da40d903e277681b75fe25db57d3da4589"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P03",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "959a93525a1588fe9c01ce5c1cd38546c65b02c9f92a1a4b14f773215ce92e21",
+      "traceHash": "47fd042a5d1067e946ed5fcfb233939841a92ad888d1e2c8676a575d750a36ea",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P03:typescript:959a93525a1588fe9c01ce5c1cd38546c65b02c9f92a1a4b14f773215ce92e21"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P04",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "c0169ca3618380aab181c8afa31f72f863c1113c2b42164cbee6d5b6b30422ff",
+      "traceHash": "574f0c329d9a66814c0d4b89791d67721547b15ab9cecbfb0cb946616f56c9e3",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P04:typescript:c0169ca3618380aab181c8afa31f72f863c1113c2b42164cbee6d5b6b30422ff"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P04",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "9aa3d5b0b3e5e71bbf759d821f92737f4f5bd85a9fc457224a9a9a58e449112e",
+      "traceHash": "7b21fe414a5ab2c7e191cbad622a3be2bdcf358f7c92bbd646a4ce1b6f791122",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P04:mote:9aa3d5b0b3e5e71bbf759d821f92737f4f5bd85a9fc457224a9a9a58e449112e"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P05",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "b586b5dd2f17503fe1a94d90ac1ebda7c9b666984eec2ec1ea469a5d17c56dec",
+      "traceHash": "5b74f4a2d727908e8ee83e2464f14180dd7c18129fcb5a254f05282d56f66c12",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P05:mote:b586b5dd2f17503fe1a94d90ac1ebda7c9b666984eec2ec1ea469a5d17c56dec"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P05",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "a8102486d61aaab87540b11949ef53493ee28209a45619f194fdd183383868d0",
+      "traceHash": "b8c48450d3a21af5a557ee90335c4412ca49b052605bcceba8e3adf4e98fbcf2",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P05:typescript:a8102486d61aaab87540b11949ef53493ee28209a45619f194fdd183383868d0"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P06",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "5af9606f109da0c76e5a15caff08b83c16d348809072019697b9047360d8ae43",
+      "traceHash": "8b1647c997b55c4acdb025b399af9b3b3c38b95bdf02d60f13a8549ab9855e02",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P06:typescript:5af9606f109da0c76e5a15caff08b83c16d348809072019697b9047360d8ae43"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P06",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "afc85dd95c5fb64f4090f2a1e6079dfecc1c95dd33fd9054058f6ccf87c9f57c",
+      "traceHash": "67a1fc822832ce5f33d8e6838315c354e46c8177e50cbc9ab696b14a49a3468a",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P06:mote:afc85dd95c5fb64f4090f2a1e6079dfecc1c95dd33fd9054058f6ccf87c9f57c"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P07",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "2a1d2a2c1a2be54d55d34c3227d6a16588f276dab66b6772358a301829a4897b",
+      "traceHash": "3eedea8cd43e0f715f4e26fb690f83f4334a9fb4aa234000d0566746dd4db326",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P07:mote:2a1d2a2c1a2be54d55d34c3227d6a16588f276dab66b6772358a301829a4897b"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P07",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "a54d2bf43f9f11ec1e6dcbd0983a1bc2e868f131a42592386772617416647e52",
+      "traceHash": "dda11295dbc737113e42fdccdfb7255b07a60e294280ba0dbdc74353f67d65d8",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P07:typescript:a54d2bf43f9f11ec1e6dcbd0983a1bc2e868f131a42592386772617416647e52"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P08",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "99f375016c099bd01d3f5174bfea3813574836c9d441b024456b0dae769b3d1e",
+      "traceHash": "c1b95ace66963f3bb5ba7d28ffee45c654e4ab4d57ccbc362a38235a9e36511e",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P08:typescript:99f375016c099bd01d3f5174bfea3813574836c9d441b024456b0dae769b3d1e"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P08",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "9d0abd44068a73ddd9c8376b8237cad52911e72f791dddbade644c1bafdd5841",
+      "traceHash": "5ef88fcf66287a12b9564ca1c1cf6de19183b38df2fbfb7add92f85e1587911e",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P08:mote:9d0abd44068a73ddd9c8376b8237cad52911e72f791dddbade644c1bafdd5841"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P09",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "566203f7877217adb3e1d89f847e5553db417e912ba8143629b6d9dc34f98193",
+      "traceHash": "310e9c674b6a8d73fff4f8b950f0b323631cb4caf04c73b340ee973a9ff26a01",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P09:mote:566203f7877217adb3e1d89f847e5553db417e912ba8143629b6d9dc34f98193"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P09",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "213611fb80be9fba1a532aa33ea581887327a61fa4bab0cfc34b0a1e1dfe87f4",
+      "traceHash": "ca2662ea1b2b4eea5ea6a096128c8b405086ec277e8727a5c242e6c6154b3d71",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P09:typescript:213611fb80be9fba1a532aa33ea581887327a61fa4bab0cfc34b0a1e1dfe87f4"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P10",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "f89d8fdae65883fc70b3e57bb49a4410fe945c1c5d52aee558d3bd57e84d9eb6",
+      "traceHash": "c161c1604946fa1a2cbf449f86a2a64d300517b10d9ab86d0866a5f78276e061",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P10:typescript:f89d8fdae65883fc70b3e57bb49a4410fe945c1c5d52aee558d3bd57e84d9eb6"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P10",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "26a2d7365486d0fa2f0562452ff8363c44e61c7c71b6b3bbd4124f40d368e39b",
+      "traceHash": "9be5d6b305d38dfc735416cfda1c9c60d388eabc893032ab7dbb4816d2e40b26",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P10:mote:26a2d7365486d0fa2f0562452ff8363c44e61c7c71b6b3bbd4124f40d368e39b"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P11",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "b2fc14088e134b4aed7c57ec6d8b2a93a2f0faeac792380e5bd5c46bdfa52618",
+      "traceHash": "9cb42fb63021e29d1ca90059298b2bfedc8c653309eba22bb7a43b1f7a3cb8c2",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P11:mote:b2fc14088e134b4aed7c57ec6d8b2a93a2f0faeac792380e5bd5c46bdfa52618"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P11",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "c5e5784114721bc8dfcc0894d4813e231c063b051e7372791d99c0dfcd666c8b",
+      "traceHash": "bd9f0a2979923e3254735f4041f2d99ad1d09c858b0cc90f506203f061a2e203",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P11:typescript:c5e5784114721bc8dfcc0894d4813e231c063b051e7372791d99c0dfcd666c8b"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P12",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "c2fdc22a5ad7d81334a2a01fa57bc8e18567f6c03d364ad192a7062d2c71dcfb",
+      "traceHash": "d4ad7eb99bf3d26e97a26365395304b44e63c8371d7bdedda6e07ccc1ef15439",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P12:typescript:c2fdc22a5ad7d81334a2a01fa57bc8e18567f6c03d364ad192a7062d2c71dcfb"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P12",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "7e7291f1ea12b4d1d647597ab59ef33bcf0218d8882dfb02a0f9e95d124a937d",
+      "traceHash": "5b76dc98383b148ca322ed40055e19d4f7182c06047f588eccfbd701784950e3",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P12:mote:7e7291f1ea12b4d1d647597ab59ef33bcf0218d8882dfb02a0f9e95d124a937d"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P13",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "3e0fc3c7560cbf649c5ac15903de46e0d5c3e573118536b88d889043146cc73f",
+      "traceHash": "21a403515ba8e88ff358e92b6c008fc80b377c3b1d275eb6103bdba28cc7fdd6",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P13:mote:3e0fc3c7560cbf649c5ac15903de46e0d5c3e573118536b88d889043146cc73f"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P13",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "e95cc6ad6491c861f657d1c201e0d210f4c4a3abe10c487aad0bb9b27319547b",
+      "traceHash": "499ee572b4cfb790c5352d68f5c927caa4cbf49acbc1a169741849c54ff75756",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P13:typescript:e95cc6ad6491c861f657d1c201e0d210f4c4a3abe10c487aad0bb9b27319547b"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P14",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "167a387cd13792f6816b65742f1071569367316b4b1013d0bacf8736a6034bee",
+      "traceHash": "c5cfa3e7f9b5b412b2f6cb257612decf58ff43daaae21959902f05a0c8b69dde",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P14:typescript:167a387cd13792f6816b65742f1071569367316b4b1013d0bacf8736a6034bee"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P14",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "e908fddb56c58d467e318f2f9b5f258d36b4c335646af2f01339d066d75191ed",
+      "traceHash": "443754502fcc83dbf54e71123b1a6d582361f91b649eac36d28694ee2c6a3c1a",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P14:mote:e908fddb56c58d467e318f2f9b5f258d36b4c335646af2f01339d066d75191ed"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P15",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "a3d4fe939291cedaa4b9236647ea6a7433a728cbdcbdeff55ad00e1023c3f86a",
+      "traceHash": "90c8a919e0acae9e9e80107186fb91aff835f7c939123a21c26a4006ea9e17b6",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 4,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P15:mote:a3d4fe939291cedaa4b9236647ea6a7433a728cbdcbdeff55ad00e1023c3f86a"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P15",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "41329fec260f0c95ef656ddb1c2794119b6aa4123581bbcbf681fd2efcf4cb39",
+      "traceHash": "e53bd547deb2d17168e82b7b0cd6eca614b40465f5504a282826e1ff621ba520",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 4,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P15:typescript:41329fec260f0c95ef656ddb1c2794119b6aa4123581bbcbf681fd2efcf4cb39"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P16",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "a7482b536b416c8b3b0d6e874bef2f23094389f1f5fda80072fc5f1d264fc7a0",
+      "traceHash": "71ee1d31eb2e97790e09a205b95b78cb1de4b01f3ed4f4c38e5ed0320264c4b6",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P16:typescript:a7482b536b416c8b3b0d6e874bef2f23094389f1f5fda80072fc5f1d264fc7a0"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P16",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "db6966a2b733dc20e15e87bed95d0c5621634ae61f3acd4ac981b9f4d3969ebd",
+      "traceHash": "6449f44ab16805e824b44aca5d236a68f04eb07a5730533cb885f6a9514efdba",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P16:mote:db6966a2b733dc20e15e87bed95d0c5621634ae61f3acd4ac981b9f4d3969ebd"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P17",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "44ac3358ba1dd1e89f3808654edaac9a91f46a4bf8507e8a8c242c8f26d87622",
+      "traceHash": "b6bd441f61b6c0ff5912b584d5c30142ce95114f3d4c02dd52dca9bed4a98aeb",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P17:mote:44ac3358ba1dd1e89f3808654edaac9a91f46a4bf8507e8a8c242c8f26d87622"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P17",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "e48f76e3c30b1317defd946ce2cbc4c89fa9611bac1a75658c9b763e0bdacda1",
+      "traceHash": "11e752845f4ed6708e448c80a1ce71c9deda3fbc2b33b4dde9d9d66098dab12c",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P17:typescript:e48f76e3c30b1317defd946ce2cbc4c89fa9611bac1a75658c9b763e0bdacda1"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P18",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "b7b63257caec2a175c6ba3902a8550d001e33d7f69e4c3ac4eb0923799150a98",
+      "traceHash": "ce5c0019d82627b5a691e7d680f6ec832e1b4b5f22f5ca7c207e0a5cd0d8432b",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P18:typescript:b7b63257caec2a175c6ba3902a8550d001e33d7f69e4c3ac4eb0923799150a98"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P18",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "7731173b2675696be639970957d391034989f81894de187961cf3652dfc9b92b",
+      "traceHash": "14092f62cbbbf0896c36ffb4058179cf0649defd1d02ca7a36872cf89130785c",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P18:mote:7731173b2675696be639970957d391034989f81894de187961cf3652dfc9b92b"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P19",
+      "language": "mote",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "10ed87a126cf9bd7d156f60854a1a4b4daa48026fc8c9701eced3d4646df22b2",
+      "traceHash": "b87332cabdd6843838feb012f74374cfb79c2429b12a145d2a8e37f0db302465",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P19:mote:10ed87a126cf9bd7d156f60854a1a4b4daa48026fc8c9701eced3d4646df22b2"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P19",
+      "language": "typescript",
+      "pairedOrder": [
+        "mote",
+        "typescript"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "5bfb9b3e2d2c1d086a8af9a8e54677ced9f6396c476ca63cc7bced278914d7a0",
+      "traceHash": "fa45b1ce185b212fe0635515eb8b10969cd09b959d6386f69523f5ad9387a777",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P19:typescript:5bfb9b3e2d2c1d086a8af9a8e54677ced9f6396c476ca63cc7bced278914d7a0"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P20",
+      "language": "typescript",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "6a06e0e82ac00908985a6efc01131b8f0bc7f9c5f077f2468726ebed137598bb",
+      "traceHash": "f30e1b2ca4bca37fb2bd04e21ed0c0152b09f1798d8872a2e9b068f97aeaabd4",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P20:typescript:6a06e0e82ac00908985a6efc01131b8f0bc7f9c5f077f2468726ebed137598bb"
+    },
+    {
+      "status": "SIMULATION_ONLY",
+      "taskId": "P20",
+      "language": "mote",
+      "pairedOrder": [
+        "typescript",
+        "mote"
+      ],
+      "freshWorkspace": true,
+      "success": true,
+      "conversationStatus": "COMPLETED",
+      "toolCalls": 3,
+      "repairRounds": 3,
+      "usage": {
+        "inputTokens": 38,
+        "outputTokens": 15,
+        "billedTokens": 53,
+        "cachedTokens": 0,
+        "reasoningTokens": 0
+      },
+      "transcriptHash": "fd4a1e7b9ff41d55831ca4300caa9129e60b916a87e42bd8922911b7f1f4790d",
+      "traceHash": "8ef281730034624dfe5a286907bf68a5d260db978b3b8eab0ab1a68de550d84b",
+      "oracle": {
+        "success": true,
+        "phase": "independent-oracle",
+        "cases": 3,
+        "failedCases": 0
+      },
+      "providerFailure": false,
+      "resumableKey": "P20:mote:fd4a1e7b9ff41d55831ca4300caa9129e60b916a87e42bd8922911b7f1f4790d"
+    }
+  ],
+  "providerFailures": [
+    {
+      "status": "PROVIDER_ERROR",
+      "separatedFromTaskResults": true
+    }
+  ],
+  "harnessProbes": {
+    "pathContainment": {
+      "blocked": true,
+      "conversationStatus": "COMPLETED"
+    }
+  },
+  "exclusions": [
+    "Fake transcripts write the private reference and therefore cannot measure model capability.",
+    "No record is eligible for the paired efficacy analyzer.",
+    "Docker and paid provider requests are not used."
+  ]
+}

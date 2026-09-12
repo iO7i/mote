@@ -40,21 +40,27 @@ export async function runLive({ repoRoot, taskDir, language, regime, provider, m
     const messages = [{ role: "system", content: system }, { role: "user", content: task.prompt ?? readFileSync(join(taskDir, "task.md"), "utf8") }];
     const usage = { inputTokens: 0, outputTokens: 0, billedTokens: 0, cachedTokens: 0, reasoningTokens: 0 };
     let finalText = "";
+    let providerError = null;
+    let toolCalls = 0;
     for (let round = 0; round <= budgets.maxRepairRounds; round++) {
-      const response = await adapter.complete({ messages, tools: LIVE_TOOL_DEFINITIONS });
+      let response;
+      try { response = await adapter.complete({ messages, tools: LIVE_TOOL_DEFINITIONS }); }
+      catch (error) { providerError = { class: "provider-error", message: error instanceof Error ? error.message : String(error) }; break; }
       addUsage(usage, response.usage);
       finalText += response.text;
       if (!response.toolCalls.length) break;
       messages.push({ role: "assistant", content: response.text, toolCalls: response.toolCalls });
       for (const call of response.toolCalls) {
+        toolCalls++;
         const output = performTool(call, workspace, task, budgets, language);
         messages.push({ role: "tool", toolCallId: call.id, name: call.name, content: JSON.stringify(output) });
       }
       if (usage.inputTokens + usage.outputTokens >= budgets.cumulativeInputTokens + budgets.cumulativeOutputTokens) break;
     }
-    const oracle = runPhases({ workspace, phases: task.phases?.[language] ?? task.phases ?? [], mode: "docker", limits: task.limits });
-    const result = { status: oracle.status === "PASSED" ? "LIVE RUN" : "LIVE RUN", language, regime, taskId: task.id ?? null, oracle, usage, repairRounds: messages.filter((m) => m.role === "assistant").length, finalTextHash: hashJson(finalText) };
-    const manifest = createRunManifest({ repoRoot, taskSet: task.taskSet ?? null, taskIds: [task.id], model, provider, settings, regime, language, seed, budgets, promptHash: hashJson(system), toolsHash: hashJson(LIVE_TOOL_DEFINITIONS), usage, resultHash: hashJson(result), status: "LIVE RUN", timestamps: { startedAt, endedAt: new Date().toISOString() } });
+    const oracle = providerError ? null : runPhases({ workspace, phases: task.phases?.[language] ?? task.phases ?? [], mode: "docker", limits: task.limits });
+    const status = providerError ? "PROVIDER_ERROR" : oracle.status === "BLOCKED" ? "BLOCKED" : "LIVE RUN";
+    const result = { status, infrastructureFailure: oracle?.status === "BLOCKED", providerFailure: Boolean(providerError), providerError, language, regime, taskId: task.id ?? null, oracle, usage, toolCalls, repairRounds: messages.filter((m) => m.role === "assistant").length, finalTextHash: hashJson(finalText) };
+    const manifest = createRunManifest({ repoRoot, taskSet: task.taskSet ?? null, taskSetHash: task.taskSetHash ?? null, taskIds: [task.id], model, provider, settings, regime, language, seed, budgets, promptHash: hashJson(system), toolsHash: hashJson(LIVE_TOOL_DEFINITIONS), usage, resultHash: hashJson(result), status, failureClass: providerError ? "provider-error" : oracle?.failureClass ?? null, providerError, exclusionReason: providerError ? "provider failure; not an efficacy observation" : oracle?.status === "BLOCKED" ? "infrastructure failure; not an efficacy observation" : null, statusReason: providerError?.message ?? oracle?.failureClass ?? null, runId: `${task.id}:${language}:${seed}`, arm: language, pairId: task.id ?? null, workspacePolicy: "fresh-temporary-workspace", toolCalls, repairRounds: result.repairRounds, resumableKey: `${task.id}:${language}:${seed}`, timestamps: { startedAt, endedAt: new Date().toISOString() } });
     return { ...result, manifest };
   } finally { rmSync(workspace, { recursive: true, force: true }); }
 }

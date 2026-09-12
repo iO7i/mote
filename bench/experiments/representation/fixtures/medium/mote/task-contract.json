@@ -1,0 +1,13 @@
+{
+  "scale": "medium",
+  "language": "mote",
+  "moduleCount": 12,
+  "tasks": [
+    "change-fee-policy",
+    "trace-invalid-entry",
+    "add-reconciliation-field"
+  ],
+  "sameBehaviorKey": "normalize(enabled,value)=enabled?value:0",
+  "target": "src/module-06.mt",
+  "oracle": "private paired oracle outside visible repository"
+}

@@ -1,0 +1,10 @@
+{
+  "target": "src/module-06.ts",
+  "relevantFiles": [
+    "src/module-06.ts",
+    "src/module-05.ts"
+  ],
+  "distractorFiles": 10,
+  "semanticCasesPerTask": 8,
+  "compilerFeedbackOpportunities": 15
+}

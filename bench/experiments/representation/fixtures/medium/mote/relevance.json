@@ -1,0 +1,10 @@
+{
+  "target": "src/module-06.mt",
+  "relevantFiles": [
+    "src/module-06.mt",
+    "src/module-05.mt"
+  ],
+  "distractorFiles": 10,
+  "semanticCasesPerTask": 8,
+  "compilerFeedbackOpportunities": 15
+}
