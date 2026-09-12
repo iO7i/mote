@@ -12,7 +12,7 @@
   },
   "stats": {
     "total": 512,
-    "contained": 0,
+    "contained": 512,
     "clean": 366,
     "malformed": 146,
     "crashes": 0,

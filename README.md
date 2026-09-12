@@ -6,7 +6,7 @@ Created by **Hosam Talbi**.
 
 Mote explores how compact syntax can reduce source-code token counts while preserving type checking, runtime validation, and interoperability with Node.js. Its compiler emits inspectable TypeScript or JavaScript, declaration files, and source maps.
 
-**Status: experimental.** Includes a compiler, command-line interface, formatter, examples, a tested LSP server, and a reproducible benchmark/research harness. The local pilot now has 20 accepted paired task definitions; the AI-engineering experiment still has no live-model result.
+**Status: experimental research platform.** Mote includes a compiler, command-line interface, formatter, examples, a tested LSP server, and a reproducible benchmark/research harness. The local pilot has 20 accepted paired task definitions; provider-backed model runs are intentionally blocked pending explicit authorization, credentials, and Docker isolation.
 
 ## Language features
 
@@ -109,18 +109,20 @@ checkout.
 
 | Claim | Evidence | Current status |
 | --- | --- | --- |
-| Compiler parses/type-checks Mote | `npm test`, 122 deterministic tests | verified locally |
+| Compiler parses/type-checks Mote | `npm test`, deterministic suite | verified locally |
 | Seeded compiler properties hold | `tests/property.mjs`, `tests/fuzz.mjs` | 12,000 + 256 cases locally verified |
-| Meaningful compiler mutations are detected | `tests/mutation.mjs` | 4/4 killed, 100% measured score |
+| Compiler mutation catalog is exercised | `tests/mutation.mjs` | 60 valid mutants; 39 killed, 21 oracle-equivalent, 0 survivors |
 | Historical benchmark mutations are detected | `bench/mutation.mjs` | 12/12 killed, 100% measured score |
 | Accepted paired pilot tasks | `bench/corpus/accepted/run.mjs` | 20/20 references pass; 40/40 mutation controls killed |
 | Generated TypeScript compiles | `tests/cli.mjs` and fixture audit | locally verified when TypeScript is installed |
 | LSP features work against compiler APIs | `tests/lsp.mjs` | locally verified |
 | Node/npm boundary is characterized | `interop/corpus.json`, `interop/fixture-matrix.mjs` | 8/8 offline fixtures pass; third-party probes remain separate |
-| Mote improves AI engineering efficiency | paired live run artifacts | **not established** |
+| Mote improves AI engineering efficiency | paired live run artifacts | **not established; live runs blocked** |
 
 See [compiler evidence](docs/COMPILER-EVIDENCE.md), [LSP support](docs/LSP.md),
 the [candidate sandbox](docs/CANDIDATE-SANDBOX.md), and [release preparation](docs/RELEASE.md) for exact boundaries.
+
+The generated [research console](bench/dashboard/index.html) is evidence-bound: it reports local compiler and harness results, and displays an explicit `NO LIVE MODEL DATA` state when no provider-backed records exist. The research roadmap remains `NOT_READY_FOR_FREEZE` until the planned 200-task corpus is accepted.
 
 Charts are generated from `bench/results.json`. To regenerate them, install Python with Matplotlib and run `python bench/charts.py`.
 

@@ -13,9 +13,10 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const taskSet = JSON.parse(await (await import("node:fs/promises")).readFile(join(root, "bench/corpus/manifest.json"), "utf8"));
 expect("corpus validates", validateTaskSet(taskSet).ok);
 expect("canonical hash is deterministic", hashJson(taskSet) === hashJson(JSON.parse(JSON.stringify(taskSet))));
-const manifest = createRunManifest({ repoRoot: root, taskSet, taskIds: ["P01"], model: "test-model", provider: "test-provider", regime: "cold-start", language: "mote", budgets: DEFAULT_BUDGETS, status: "LOCALLY VERIFIED" });
+const manifest = createRunManifest({ repoRoot: root, taskSet, taskIds: ["P01"], model: "test-model", provider: "test-provider", regime: "cold-start", language: "mote", budgets: DEFAULT_BUDGETS, status: "LOCALLY VERIFIED", runId: "research-test-1", arm: "mote", pairId: "P01", workspacePolicy: "fresh-temporary-workspace", toolCalls: 2, repairRounds: 1, resumableKey: "research-test-1" });
 expect("manifest records compiler SHA", typeof manifest.moteGitSha === "string" && manifest.moteGitSha.length > 10);
 expect("manifest records lock hash", typeof manifest.dependencyLockfileHash === "string");
+expect("manifest records reproducibility identity", manifest.runId === "research-test-1" && manifest.arm === "mote" && manifest.pairId === "P01" && manifest.workspacePolicy === "fresh-temporary-workspace" && manifest.resumableKey === "research-test-1");
 
 const workspace = join(root, "tests", ".research-runner");
 mkdirSync(workspace, { recursive: true });

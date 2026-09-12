@@ -27,7 +27,7 @@ export function livePrerequisites({ live = false, model, isolation, transport })
 
 export async function runLive({ repoRoot, taskDir, language, regime, provider, model, transport, apiKey, settings = {}, budgets = DEFAULT_BUDGETS, live = false, isolation = "docker", seed = 0x5eedc0de }) {
   const prereq = livePrerequisites({ live, model, isolation, transport });
-  if (!prereq.ok) return { status: "BLOCKED", reason: prereq.errors.join("; ") };
+  if (!prereq.ok) return { status: "BLOCKED", marker: "LIVE_PROVIDER_EXECUTION_BLOCKED", reason: prereq.errors.join("; ") };
   const taskFile = join(taskDir, "task.json");
   if (!existsSync(taskFile)) return { status: "BLOCKED", reason: "task.json with an oracle is required" };
   const task = JSON.parse(readFileSync(taskFile, "utf8"));
@@ -103,6 +103,7 @@ if (process.argv[1]?.endsWith("live.mjs")) {
     live: process.argv.includes("--live"),
     isolation: option("--isolation") ?? process.env.MOTE_EVAL_ISOLATION ?? "docker",
   });
+  if (result.status === "BLOCKED") console.error("LIVE_PROVIDER_EXECUTION_BLOCKED");
   console.log(JSON.stringify(result, null, 2));
   process.exit(result.status === "BLOCKED" ? 2 : 0);
 }

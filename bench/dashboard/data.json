@@ -13,13 +13,14 @@
   },
   "fuzz": {
     "cases": 512,
-    "contained": 0,
+    "contained": 512,
     "crashes": 0,
     "metamorphicChecks": 732,
     "failures": 0
   },
   "pilot": {
     "tasks": 0,
+    "totalTasks": 0,
     "equivalence": 0,
     "mutationControls": 0,
     "familiarityRisk": 0

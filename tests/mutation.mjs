@@ -9,6 +9,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { gitSha } from "../bench/protocol.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "bench", "raw");
@@ -151,7 +152,7 @@ const valid = results.filter((r) => r.valid);
 const report = {
   schemaVersion: 2,
   campaign: "compiler-mutation",
-  sourceRevision: readFileSync(join(ROOT, ".git", "HEAD"), "utf8").trim(),
+  sourceRevision: gitSha(ROOT),
   generated: results.length,
   valid: valid.length,
   counts,
