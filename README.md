@@ -1,21 +1,5 @@
 # Mote
 
-A typed, token-efficient programming language that compiles to readable TypeScript.
-
-Created by **Hosam Talbi**.
-
-Mote explores how compact syntax can reduce source-code token counts while preserving type checking, runtime validation, and interoperability with Node.js. Its compiler emits inspectable TypeScript or JavaScript, declaration files, and source maps.
-
-**Status: experimental research platform.** Mote includes a compiler, command-line interface, formatter, examples, a tested LSP server, and a reproducible benchmark/research harness. The local pilot has 20 accepted paired task definitions; provider-backed model runs are intentionally blocked pending explicit authorization, credentials, and Docker isolation.
-
-## Language features
-
-- Typed declarations, functions, structural records, and optional fields.
-- Static checking with stable diagnostic codes and explanations.
-- Runtime schemas derived from types for validating external JSON.
-- TypeScript and JavaScript output, declarations, and statement/column source-map anchors.
-- Node/npm imports, stable JSON diagnostics, and compact or readable formatting.
-
 ```mote
 type Payment={amount:num,currency:str?}
 
@@ -29,11 +13,19 @@ let payment=json<Payment>(raw)?
 console.log(describe(payment))
 ```
 
-`json<Payment>(raw)?` parses and validates input against a generated runtime schema, then unwraps the result or throws a validation error.
+Mote compiles this source to readable TypeScript or JavaScript. The compiler
+also emits declarations, runtime schemas for external JSON, and source maps.
+`json<Payment>(raw)?` parses and validates the input against the generated
+schema, then unwraps the value or throws a validation error.
 
-## Getting started
+The repository contains the compiler, CLI, formatter, examples, a compiler-
+backed LSP server, and the benchmark harness used to measure the language.
+Mote is experimental: the local paired pilot has 20 accepted task definitions,
+and no provider-backed model run has been made.
 
-Install a current Node.js LTS release and npm, then:
+## Install and run
+
+Install a current Node.js LTS release and npm:
 
 ```sh
 git clone https://github.com/iO7i/mote.git
@@ -45,20 +37,20 @@ node bin/mote.mjs run examples/typed-webhook.mt
 npm test
 ```
 
-To inspect and check the generated TypeScript:
+To inspect and type-check the generated TypeScript:
 
 ```sh
 node bin/mote.mjs compile examples/typed-webhook.mt --out dist
 npx tsc -p dist/tsconfig.json
 ```
 
-## Command-line interface
+## CLI and API
 
-Run commands with `node bin/mote.mjs`.
+Run commands with `node bin/mote.mjs`:
 
 ```text
-check <file|dir>                 Type-check source
-compile <file|dir> --out <dir>    Emit TypeScript, declarations, and runtime
+check <file|dir>                  Type-check source
+compile <file|dir> --out <dir>   Emit TypeScript, declarations, and runtime
 run <file.mt>                    Check and execute a program
 emit <file.mt> [--js]            Print generated TypeScript or JavaScript
 fmt <file.mt> --compact          Format source; --readable is also supported
@@ -66,7 +58,8 @@ measure <file.mt> --json         Produce a heuristic token estimate
 explain <M-code>                 Explain a compiler diagnostic
 ```
 
-`check` and `compile` accept `--json` for a versioned diagnostic envelope. The programmatic API is available through `mote/api`:
+`check` and `compile` accept `--json` for a versioned diagnostic envelope. The
+programmatic API is available through `mote/api`:
 
 ```js
 import { checkSource, compileSource } from "mote/api";
@@ -75,17 +68,51 @@ const result = checkSource("type Event={id:str}", { file: "event.mt" });
 console.log(result.envelope);
 ```
 
-Compilation and checking parse source only; they do not execute `use` imports. A failed directory compilation validates all inputs before writing output, so it does not leave a partial generated project behind.
+## Language and compiler behavior
 
-## Benchmarks
+The language currently supports:
 
-![Median code-token reduction across three tokenizers, measured on five synthetic tasks.](docs/images/tokenizer-savings.svg)
+- typed declarations, functions, structural records, and optional fields;
+- static checking with stable diagnostic codes and explanations;
+- runtime schemas derived from types for validating external JSON;
+- TypeScript and JavaScript output, declarations, and statement/column source-map anchors;
+- Node/npm imports, stable JSON diagnostics, and compact or readable formatting.
 
-![Full-source token counts by task, with and without the shared validation runtime.](docs/images/source-runtime.svg)
+The compiler pipeline is:
 
-The included report records five synthetic tasks with behavior and mutation tests. Across OpenAI o200k_base, Llama 3, and DeepSeek V3 tokenizers, the reported median extracted code-token reduction is **71.6–74.7%**. The separate full-source comparison against strict TypeScript records a **73.8%** median reduction using o200k_base, before shared runtime overhead.
+```text
+source → lexer → parser → type checker → emitter → TypeScript/JavaScript
+```
 
-These are fixture measurements from manual runs, not evidence of lower end-to-end cost or improved output quality. Results depend on workload and tokenizer. The roughly 1,300-token validation runtime can outweigh the savings of one small module before its cost is amortized. Code and explanatory text are measured separately; their percentage savings must not be added together.
+Checking and compilation parse source only; they do not execute `use` imports.
+Directory compilation validates every input before writing output, so a failed
+compile does not leave a partially generated project behind.
+
+Runtime validation treats `num` as a finite number and `nil` as JSON `null`.
+Optional record fields may be absent; when present, they must match their
+declared type, including rejecting an untyped `null`. Extra object properties
+are accepted for structural interoperability. `mote run` executes code with
+Node and is intended only for code you trust.
+
+## Tests and benchmarks
+
+Run the normal suite with:
+
+```sh
+npm test
+```
+
+The historical benchmark contains five synthetic tasks with behavior and
+mutation tests. Across OpenAI o200k_base, Llama 3, and DeepSeek V3 tokenizers,
+the reported median extracted code-token reduction is **71.6–74.7%**. A
+separate full-source comparison with strict TypeScript reports a **73.8%**
+median reduction using o200k_base, before shared runtime overhead.
+
+These are fixture measurements from manual runs. They do not show lower
+end-to-end cost or better generated code. Results depend on the workload and
+tokenizer; the roughly 1,300-token validation runtime can outweigh the savings
+of one small module before its cost is amortized. Code and explanatory text are
+measured separately.
 
 ```sh
 node bench/audit.mjs
@@ -93,40 +120,53 @@ node bench/run.mjs
 npm run audit:extended
 ```
 
-See [methodology](docs/BENCHMARKS.md) and the [detailed report](bench/REPORT.md) for baselines and limitations.
+The charts are generated from `bench/results.json` with Python Matplotlib:
 
-The historical five-task suite is a representation/compiler microbenchmark. The
-separate paired AI-engineering protocol is versioned in
-[docs/AI-ENGINEERING-BENCHMARK.md](docs/AI-ENGINEERING-BENCHMARK.md), with a
-24-entry pilot registry in `bench/corpus/`, of which 20 tasks are accepted by
-the local paired-oracle gate and four remain explicit hard-negative
-specifications. It measures verified work under fixed context, cumulative
-token, time, and cost budgets; it does not turn source-token savings into an
-end-to-end efficiency claim. No live model matrix has been run in this
-checkout.
+```sh
+python bench/charts.py
+```
 
-## Evidence at a glance
+![Median code-token reduction across three tokenizers, measured on five synthetic tasks.](docs/images/tokenizer-savings.svg)
 
-| Claim | Evidence | Current status |
-| --- | --- | --- |
-| Compiler parses/type-checks Mote | `npm test`, deterministic suite | verified locally |
-| Seeded compiler properties hold | `tests/property.mjs`, `tests/fuzz.mjs` | 12,000 + 256 cases locally verified |
-| Compiler mutation catalog is exercised | `tests/mutation.mjs` | 60 valid mutants; 39 killed, 21 oracle-equivalent, 0 survivors |
-| Historical benchmark mutations are detected | `bench/mutation.mjs` | 12/12 killed, 100% measured score |
-| Accepted paired pilot tasks | `bench/corpus/accepted/run.mjs` | 20/20 references pass; 40/40 mutation controls killed |
-| Generated TypeScript compiles | `tests/cli.mjs` and fixture audit | locally verified when TypeScript is installed |
-| LSP features work against compiler APIs | `tests/lsp.mjs` | locally verified |
-| Node/npm boundary is characterized | `interop/corpus.json`, `interop/fixture-matrix.mjs` | 8/8 offline fixtures pass; third-party probes remain separate |
-| Mote improves AI engineering efficiency | paired live run artifacts | **not established; live runs blocked** |
+![Full-source token counts by task, with and without the shared validation runtime.](docs/images/source-runtime.svg)
+
+## Paired AI-engineering benchmark
+
+The historical suite is a representation/compiler microbenchmark. The separate
+paired protocol is versioned in
+[docs/AI-ENGINEERING-BENCHMARK.md](docs/AI-ENGINEERING-BENCHMARK.md). Its pilot
+registry has 24 entries: 20 accepted tasks and four explicit hard-negative
+specifications.
+
+The protocol compares Mote and TypeScript under fixed context, cumulative token,
+time, and cost budgets. It does not infer end-to-end efficiency from source
+token counts. No live model matrix has been run, so an improvement in AI
+engineering efficiency has not been established.
+
+The [research console](bench/dashboard/index.html) reads the checked-in raw
+reports. When no provider-backed records exist it shows `NO LIVE MODEL DATA`.
+The corpus roadmap remains `NOT_READY_FOR_FREEZE` until the planned 200-task
+corpus is accepted.
+
+### Current checks
+
+| Check | Result |
+| --- | --- |
+| Compiler parsing and type checking | `npm test`; deterministic suite passes locally |
+| Seeded compiler properties | `tests/property.mjs` and `tests/fuzz.mjs`; 12,000 + 256 cases locally verified |
+| Compiler mutation catalog | `tests/mutation.mjs`; 60 valid mutants, 39 killed, 21 oracle-equivalent, 0 survivors |
+| Historical benchmark mutations | `bench/mutation.mjs`; 12/12 killed, 100% measured score |
+| Accepted paired pilot | `bench/corpus/accepted/run.mjs`; 20/20 references pass and 40/40 mutation controls pass |
+| Generated TypeScript | `tests/cli.mjs` and fixture audit; locally verified when TypeScript is installed |
+| LSP | `tests/lsp.mjs`; compiler-backed features locally verified |
+| Node/npm boundary | `interop/corpus.json` and `interop/fixture-matrix.mjs`; 8/8 offline fixtures pass; third-party probes are separate |
+| Mote efficiency versus TypeScript | No live result; live runs are blocked pending authorization |
 
 See [compiler evidence](docs/COMPILER-EVIDENCE.md), [LSP support](docs/LSP.md),
-the [candidate sandbox](docs/CANDIDATE-SANDBOX.md), and [release preparation](docs/RELEASE.md) for exact boundaries.
+the [candidate sandbox](docs/CANDIDATE-SANDBOX.md), [research-platform notes](docs/RESEARCH-PLATFORM.md),
+and [release preparation](docs/RELEASE.md) for the detailed test boundaries.
 
-The generated [research console](bench/dashboard/index.html) is evidence-bound: it reports local compiler and harness results, and displays an explicit `NO LIVE MODEL DATA` state when no provider-backed records exist. The research roadmap remains `NOT_READY_FOR_FREEZE` until the planned 200-task corpus is accepted.
-
-Charts are generated from `bench/results.json`. To regenerate them, install Python with Matplotlib and run `python bench/charts.py`.
-
-## Repository structure
+## Repository layout
 
 | Directory | Contents |
 | --- | --- |
@@ -139,9 +179,19 @@ Charts are generated from `bench/results.json`. To regenerate them, install Pyth
 | `interop` / `eval` | Versioned compatibility matrix, provider adapters, and bounded candidate runner |
 | `docs` | Specification and technical documentation |
 
-Pipeline: source → lexer → parser → type checker → emitter → TypeScript/JavaScript.
+## Current limitations
 
-## Documentation and boundaries
+Classes, inheritance, decorators, macros, native compilation, a browser
+runtime, advanced type-level programming, and rich semantic analysis across
+imported modules are outside the current implementation. The shipped LSP is
+limited to the single-document compiler capabilities listed in [LSP.md](docs/LSP.md).
+
+The paired pilot is synthetic and familiarity-risk-heavy. It is useful for
+checking the harness and its oracles, not for estimating general model
+performance. Provider-backed runs require a separate authorized environment;
+the repository does not claim a live result until a raw run manifest exists.
+
+## Documentation
 
 - [Language specification](docs/SPEC-v0.2.md)
 - [Type system](docs/TYPES.md)
@@ -149,9 +199,5 @@ Pipeline: source → lexer → parser → type checker → emitter → TypeScrip
 - [Compiler/API reference](docs/AGENT-REFERENCE.md)
 - [Evaluation protocol](docs/EVALUATION-PROTOCOL.md)
 - [Verification evidence](docs/COMPILER-EVIDENCE.md)
-
-Runtime validation treats `num` as a finite number and `nil` as JSON `null`. Optional record fields may be absent; when present, they must match their declared type (including rejecting an untyped `null`). Extra object properties are accepted to preserve structural interoperability. `mote run` executes code with Node and is intended only for code you trust.
-
-Classes, inheritance, decorators, macros, native compilation, a browser runtime, advanced type-level programming, and rich semantic analysis across imported modules are outside the current implementation. The shipped LSP is intentionally limited to the compiler-backed single-document capabilities listed in [LSP.md](docs/LSP.md).
 
 License: MIT.
